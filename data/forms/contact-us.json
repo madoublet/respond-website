@@ -1,0 +1,27 @@
+{
+    "id": "contact-us",
+    "name": "Contact Us",
+    "cssClass": "",
+    "fields": [
+        {
+            "id": "name",
+            "label": "* Name",
+            "type": "text",
+            "required": "true",
+            "options": "",
+            "helperText": "",
+            "placeholder": "",
+            "cssClass": ""
+        },
+        {
+            "id": "email",
+            "label": "* Email",
+            "type": "text",
+            "required": "true",
+            "options": "",
+            "helperText": "",
+            "placeholder": "",
+            "cssClass": ""
+        }
+    ]
+}

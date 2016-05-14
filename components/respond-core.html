@@ -1,0 +1,2110 @@
+<html><head><meta charset="UTF-8"></head><body><div hidden="" by-vulcanize=""><dom-module id="respond-content" assetpath="core/">
+    <template>
+  		<content></content>
+	</template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "respond-content",
+
+        // element attributes
+        properties: {
+            url: {
+                type: String
+            },
+            contentid: {
+                type: String
+            },
+            cssclass: {
+                type: String
+            }
+        },
+
+        // attached
+        attached: function() {
+
+            // replace '/' with '.'
+            var find = '/';
+            var re = new RegExp(find, 'g');
+            var url = this.url.replace(re, '.');
+
+            var context = this;
+
+            // xhr
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', encodeURI('fragments/page/' + url + '.html'));
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+
+                    var data = xhr.responseText;
+
+                    // place returned HTML into a node
+                    var div = document.createElement('div');
+
+                    if (this.contentid != '' && this.contentid != undefined) {
+                        div.setAttribute('id', this.contentid);
+                    }
+
+                    if (this.cssclass != '' && this.cssclass != undefined) {
+                        div.setAttribute('class', this.cssclass);
+                    }
+
+                    div.innerHTML = data;
+
+                    // apply to light dom
+                    Polymer.dom(context).appendChild(div);
+                    Polymer.dom.flush()
+
+                } else {
+                    console.log('[respond.error] respond-content component: failed post, xhr.status=' + xhr.status);
+                }
+            };
+            xhr.send();
+
+        }
+
+    });
+</script><dom-module id="respond-list" assetpath="core/">
+
+    <style>
+        /* actions */
+        .list-actions {
+            margin: 15px 0 25px 0;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        .list-actions .pager {
+            margin: 0 15px 0 0;
+            padding: 0;
+            display: none;
+        }
+
+        .list-actions .pager[visible] {
+            display: inline-block;
+        }
+
+        .list-actions button {
+            font-size: 14px;
+            display: inline-block;
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 0 15px;
+            font-size: 16px;
+            height: 45px;
+            line-height: 45px;
+            vertical-align: top;
+            outline: none;
+        }
+
+        .list-actions a {
+            display: inline-block;
+            box-sizing: border-box;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 0 15px;
+            margin: 0 1px;
+            font-size: 16px;
+            cursor: pointer;
+            height: 45px;
+            line-height: 45px;
+            vertical-align: top;
+        }
+
+        .list-actions a[active] {
+            background-color: #f0f0f0;
+        }
+
+        .list-actions button {
+            display: none;
+        }
+
+        .list-actions button[visible] {
+            display: inline-block;
+        }
+
+        .list-actions svg {
+            width: 25px;
+            height: 25px;
+            margin: 0;
+            padding: 0;
+            line-height: 25px;
+            display: inline-block;
+            vertical-align: middle;
+            fill: currentColor;
+        }
+
+    </style>
+
+    <template>
+
+		<div id="items"></div>
+		
+
+		<div id="actions" class="list-actions">
+
+			<span class="pager" visible$="{{showPager}}">
+				<template id="pager" is="dom-repeat" items="{{list}}">
+					<a on-click="gotoPage" active$="{{item.isActive}}">{{item.title}}</a>
+				</template>
+      </span>
+
+      <button on-click="previousPage" visible$="{{showPrevious}}" title="$=&quot;{{label.previous}}&quot;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></g></svg></button>
+
+      <button on-click="nextPage" visible$="{{showNext}}" title="$=&quot;{{label.next}}&quot;"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><g><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></g></svg></button>
+
+    </div>
+    
+
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "respond-list",
+
+        // element attributes
+        properties: {
+            url: {
+                type: String
+            },
+            display: {
+                type: String
+            },
+            pagesize: {
+                type: String
+            },
+            orderby: {
+                type: String
+            },
+            pageresults: {
+                type: String
+            }
+        },
+
+        // ready
+        ready: function() {
+
+            // set labels
+            this.label = {
+                previous: this.i18n('Previous'),
+                next: this.i18n('Next'),
+            };
+
+            // get page information
+            this.pageId = document.body.getAttribute('page');
+            this.siteId = respond.site.settings.SiteId;
+            this.api = respond.site.settings.API;
+            this.images = respond.site.settings.ImagesUrl;
+            this.pageResults = (this.pageresults === 'true');
+            this.currentIndex = 0;
+            this.list = [];
+            this.count = 0;
+
+            // set display
+            this.showPager = false;
+            this.showPrevious = false;
+            this.showNext = false;
+
+            // show pager
+            if (this.pageresults === 'true') {
+                this.showPager = true;
+            }
+
+            // init tag if undefined
+            if (this.tag == undefined) {
+                this.tag = '';
+            }
+
+            // build the list of pages
+            this.buildList(this.currentIndex);
+
+        },
+
+        // navigates to a page when clicked
+        gotoPage: function(e) {
+            var index = this.$.pager.itemForElement(e.target).title;
+
+            this.buildList(index - 1);
+        },
+
+        // navigate to previous page
+        previousPage: function() {
+            this.buildList(this.currentIndex - 1);
+        },
+
+        // navigate to next page
+        nextPage: function() {
+            this.buildList(this.currentIndex + 1);
+        },
+
+        // show previous and next buttons
+        showPreviousNext: function() {
+
+            // set next and previous
+            if (this.pageresults === 'true') {
+
+                // set next
+                if (this.currentIndex < (this.list.length - 1)) {
+                    this.showNext = true;
+                } else {
+                    this.showNext = false;
+                }
+
+                // set previous
+                if (this.currentIndex != 0) {
+                    this.showPrevious = true;
+                } else {
+                    this.showPrevious = false;
+                }
+
+            }
+        },
+
+        // build pager
+        buildPager: function() {
+
+            // clear list
+            this.list = [];
+
+            // build pager
+            for (x = 0; x < this.list.length; x++) {
+
+                isActive = false;
+
+                if (x == this.currentIndex) {
+                    isActive = true;
+                }
+
+                this.push('list', {
+                    'title': (x + 1),
+                    'isActive': isActive
+                });
+            }
+
+            // show previous/next
+            this.showPreviousNext();
+
+        },
+
+        // build list
+        buildList: function(currentIndex) {
+
+            // set params
+            var params = {
+                siteId: this.siteId,
+                url: this.url,
+                pagesize: this.pagesize,
+                current: this.current,
+                orderby: this.orderby
+            }
+
+            // set current index
+            this.currentIndex = currentIndex;
+            params.current = currentIndex;
+
+            // re-build the pager
+            this.buildPager();
+
+            // clear items in the list
+            var items = Polymer.dom(this.$.items).querySelectorAll('respond-list-item');
+
+            for (x = 0; x < items.length; x++) {
+                Polymer.dom(this.$.items).removeChild(items[x]);
+            }
+
+            // show previous and next
+            this.showPreviousNext();
+
+            // set loading
+            this.loading = true;
+
+            var context = this;
+
+            // submit form
+            var xhr = new XMLHttpRequest();
+
+            // set URI
+            var uri = 'data/pages.json';
+
+            xhr.open('GET', uri, true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+
+                    context.list = JSON.parse(xhr.responseText);
+
+                    // filter array by url
+                    context.list = context.list.filter(function(value){
+
+                      var url = params.url;
+                      url = url.replace(/^\/|\/$/g, '');
+
+                      if(value.url.substring(0, url.length) === url) {
+                        return true;
+                      }
+
+                    });
+
+                    // set class for data
+                    for (x = (params.current * params.pagesize); x < params.pagesize; x++) {
+
+                        if(context.list[x] != undefined) {
+
+                          // setup callout
+                          var callout = '';
+
+                          if(context.list[x].callout !== undefined) {
+                            callout = context.list[x].Callout;
+                          }
+
+                          // set photo
+                          var photo = '';
+
+                          if (context.list[x].photo !== undefined) {
+                            photo = context.list[x].photo;
+                          }
+
+                          // set thumb
+                          var thumb = '';
+
+                          if (context.list[x].thumb !== undefined) {
+                            thumb = context.list[x].thumb;
+                          }
+
+                          // create a list item
+                          var item = document.createElement('respond-list-item');
+                          item.setAttribute('display', context.display);
+                          item.setAttribute('thumb', thumb);
+                          item.setAttribute('url', context.list[x].url);
+                          item.setAttribute('title', context.list[x].title);
+                          item.setAttribute('callout', callout);
+                          item.setAttribute('description', context.list[x].description);
+                          item.setAttribute('photo', photo);
+                          item.setAttribute('first', context.list[x].firstName);
+                          item.setAttribute('last', context.list[x].lastName);
+                          item.setAttribute('date', context.list[x].lastModified);
+                          item.setAttribute('url', context.list[x].url);
+
+                          // append list item to the dom
+                          Polymer.dom(context.$.items).appendChild(item);
+
+                        }
+
+                    }
+
+                    // set loading
+                    context.loading = false;
+
+                } else if (xhr.status !== 200) {
+                    context.loading = false;
+                    console.log('[respond.error] respond-list-blog component: failed post, xhr.status=' + xhr.status);
+                }
+            };
+
+            // serialize the data
+            var qs = [];
+
+            for (p in params) {
+                qs.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
+            }
+
+            qs = qs.join("&");
+
+            // send serialized data
+            xhr.send(encodeURI(qs));
+
+        },
+
+        // translations
+        i18n: function(text) {
+            return respond.site.i18n(text);
+        }
+
+    });
+</script><dom-module id="respond-list-item" assetpath="core/">
+
+	<style>
+		/* respond-list-item */
+		:host:last-child .respond-list-item-container{
+			border-bottom: 1px solid #ddd;
+		}
+
+		.respond-list-item-container{
+		  	position: relative;
+		  	border-top: 1px solid #ddd;
+		  	border-left: 1px solid #ddd;
+		  	border-right: 1px solid #ddd;
+		  	padding: 10px;
+		}
+
+		.respond-list-item-container h4, .respond-list-item-container h5, .respond-list-item-container p{
+			margin: 0 0 5px 0;
+		  	padding: 0;
+		}
+
+		.respond-list-item-container p{
+			margin-bottom: 0;
+		}
+
+		.respond-list-item-container a, .respond-list-item-container a:visited, .respond-list-item-container a:hover{
+			text-decoration: none;
+		}
+
+		.respond-list-item-container img{
+		  	position: absolute;
+		  	top: 10px;
+		  	left: 10px;
+		  	width: 100px;
+		}
+
+		.respond-list-item-container.has-image{
+			padding-left: 120px;
+		  	min-height: 120px;
+		}
+
+		/* respond-thumbnail */
+		.respond-thumbnail{
+			vertical-align: top;
+			display: inline-block;
+			width: 200px;
+			height: 235px;
+		  	position: relative;
+		  	border: 1px solid #f0f0f0;
+		  	padding: 0;
+		  	margin: 0 10px 10px 0;
+		}
+
+		.respond-thumbnail h4, .respond-thumbnail h5{
+			margin: 0 0 5px 0;
+		  	padding: 0;
+		}
+
+		.respond-thumbnail a, .respond-thumbnail a:visited, .respond-thumbnail a:hover{
+			text-decoration: none;
+		}
+
+		.respond-thumbnail img{
+		  	position: absolute;
+		  	top: 5px;
+		  	left: 5px;
+		  	width: 190px;
+		  	height: 190px;
+		}
+
+		.respond-thumbnail h4{
+			margin-top: 7px;
+			text-align: center;
+			font-size: 14px;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 190px;
+			padding: 5px 0;
+			margin: 0;
+		}
+
+		.respond-thumbnail h5{
+			background-color: #888;
+			color: #fff;
+			position: absolute;
+			left: 5px;
+			bottom: 30px;
+			padding: 5px 0;
+			margin: 0;
+			width: 190px;
+			text-align: center;
+			font-size: 13px;
+			font-weight: normal;
+		}
+
+		html[dir=rtl] .respond-list-item-container.has-image[style-scope=respond-list-item]{
+		    padding-left: 10px;
+		    padding-right: 120px;
+		}
+		html[dir=rtl] .respond-list-item-container[style-scope=respond-list-item] img[style-scope=respond-list-item]{
+		    left: auto;    right: 10px;
+		}
+
+	</style>
+
+	<template></template>
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-list-item",
+
+	  	// element attributes
+	  	properties: {
+	  		display: { type: String },
+	  		thumb: { type: String },
+	  		url: { type: String },
+	  		title: { type: String },
+	  		callout: { type: String },
+	  		description: { type: String },
+	  		photo: { type: String },
+	  		first: { type: String },
+	  		last: { type: String },
+	  		date: { type: String }
+		},
+
+		// attached
+		attached: function() {
+
+			if(this.display == 'list-blog'){
+
+				// create a post
+				var div = document.createElement('div');
+				div.setAttribute('class', 'blog-post');
+
+				// create the content element
+				var content = document.createElement('respond-content');
+				content.setAttribute('url', this.url);
+
+				// create meta element
+				var meta = document.createElement('respond-meta');
+				meta.setAttribute('photo', this.photo);
+				meta.setAttribute('first', this.first);
+				meta.setAttribute('last', this.last);
+				meta.setAttribute('date', this.date);
+
+				// append content and meta
+				div.appendChild(content);
+				div.appendChild(meta);
+
+				// append the div
+				Polymer.dom(this.root).appendChild(div);
+
+			}
+			else if(this.display == 'list-thumbnails'){
+
+				// create a thumbnail
+				var a = document.createElement('a');
+				a.setAttribute('class', 'respond-thumbnail');
+				a.setAttribute('href', this.url);
+
+				// create image
+				if(this.thumb != '' && this.thumb != undefined){
+					cssClass += ' has-image';
+
+					var img = document.createElement('img');
+					img.setAttribute('src', respond.site.settings.ImagesUrl + this.thumb);
+
+					a.appendChild(img);
+				}
+
+				// set title
+				var h4 = document.createElement('h4');
+				h4.innerHTML = this.title;
+
+				// append h4
+				a.appendChild(h4);
+
+				// set h5
+				if(this.callout != '' && this.callout != undefined){
+					var h5 = document.createElement('h5');
+					h5.innerHTML = this.callout;
+
+					a.appendChild(h5);
+				}
+
+				// append the thumbnail
+				Polymer.dom(this.root).appendChild(a);
+
+			}
+			else{
+
+				// create a list item (<respond-list-item>)
+				var div = document.createElement('div');
+				var cssClass = 'respond-list-item-container'
+
+				// setup thumb
+				if(this.thumb != '' && this.thumb != undefined){
+					cssClass += ' has-image';
+
+					var img = document.createElement('img');
+					img.setAttribute('src', respond.site.settings.ImagesUrl + this.thumb);
+
+					div.appendChild(img);
+				}
+
+				// set title
+				var h4 = document.createElement('h4');
+
+				// set link
+				var a = document.createElement('a');
+				a.setAttribute('href', this.url);
+				a.innerHTML = this.title;
+
+				// append a
+				h4.appendChild(a);
+
+				// append h4
+				div.appendChild(h4);
+
+				// set h5
+				if(this.callout != '' && this.callout != undefined){
+					var h5 = document.createElement('h5');
+					h5.innerHTML = this.callout;
+
+					div.appendChild(h5);
+				}
+
+				// set p
+				if(this.description != '' && this.description != undefined){
+					var p = document.createElement('p');
+					p.innerHTML = this.description;
+
+					div.appendChild(p);
+				}
+
+				// set class
+				div.setAttribute('class', cssClass);
+
+				// append the div
+				Polymer.dom(this.root).appendChild(div);
+
+			}
+
+		}
+
+	});
+</script><dom-module id="respond-search-toggle" assetpath="core/">
+
+  <style>
+    .toggle {
+      display: block;
+    }
+
+    .toggle svg {
+      width: 25px;
+      height: 25px;
+      margin: 0;
+      padding: 0;
+      line-height: 25px;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      fill: currentColor;
+    }
+  </style>
+
+  <template>
+
+		<a class="toggle" visible$="{{showSearch}}" on-click="toggleSearch"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg></a>
+
+	</template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "respond-search-toggle",
+
+    // element attributes
+    properties: {},
+
+    // attached
+    attached: function() {
+      this.showSearch = respond.site.settings.ShowSearch;
+    },
+
+    // toggle search
+    toggleSearch: function() {
+
+      // fire search toggle
+      this.fire('search-toggled');
+
+    }
+
+  });
+</script><dom-module id="respond-search" assetpath="core/">
+
+	<style>
+
+		.respond-search-container{
+		  	position: fixed;
+		  	top: 0;
+		  	left: 0;
+		  	width: 100%;
+		  	padding: 0;
+		  	z-index: 100;
+		  	text-align: left;
+		  	margin-top: -400px;
+		  	z-index: 5;
+		  	background-color: #fff;
+		  	z-index: 10000;
+			transition: .35s all ease;
+			box-shadow: 1px 2px 3px rgba(119,119,119,0.25);
+		}
+
+			.respond-search-container[visible]{
+				margin-top: 0;
+			}
+
+
+			.respond-search-container svg{
+				width: 25px;
+			    height: 25px;
+			  	margin: 0;
+			  	padding: 0;
+			  	line-height: 25px;
+			  	display: inline-block;
+			  	vertical-align: middle;
+			  	fill: currentColor;
+			}
+
+		/* close search */
+		.respond-search-container .close-search{
+			height: 40px;
+			width: 40px;
+			line-height: 40px;
+			text-align: center;
+			color: #ccc;
+			position: absolute;
+			top: 15px;
+			right: 10px;
+	  	background: none;
+	  	border: none;
+	  	outline: none;
+	  	z-index: 10;
+		}
+
+		/* close search */
+		.respond-search-container .search-loading{
+			text-align: center;
+			position: absolute;
+			top: 15px;
+			right: 100px;
+		  	background: none;
+		  	border: none;
+		  	outline: none;
+		  	z-index: 10;
+		  	display: none;
+		  	color: #888;
+			vertical-align: top;
+			width: 25px;
+			height: 25px;
+			margin-top: 8px;
+			margin-right: 5px;
+		}
+
+			.respond-search-container .search-loading[visible]{
+				display: block;
+			}
+
+			.respond-search-container .search-loading svg{
+				display: block;
+				vertical-align: top;
+				width: 25px;
+			    height: 25px;
+			  	margin: 0;
+			  	padding: 0;
+			  	line-height: 25px;
+			  	display: inline-block;
+			  	vertical-align: middle;
+			  	text-align: center;
+			  	fill: currentColor;
+			}
+
+		/* respond-search */
+		.respond-search-container .search-container{
+		  	position: relative;
+		  	display: block;
+		  	box-sizing: border-box;
+		  	margin: 10px 10px 10px 10px;
+		}
+
+		.respond-search-container form{
+			padding: 5px;
+		  	background-color: #fff;
+		    border-bottom: 1px solid #ddd;
+		}
+
+		.respond-search-container input{
+			font-family: 'Open Sans', sans-serif;
+		  	font-size: 15px;
+			background-color: #fff;
+		  	width: calc(100% - 50px);
+		  	border: 1px solid #ddd;
+		  	height: 40px !important;
+		  	line-height: 40px;
+		  	outline: none;
+		  	text-indent: 10px;
+		}
+
+		.respond-search-container .search-container button.search{
+			position: absolute;
+		  	top: 0;
+		  	right: 50px;
+		  	margin: 0;
+		  	padding: 0 10px;
+		  	background: none;
+		  	border: none;
+		  	color: #ccc;
+		  	height: 40px;
+		  	line-height: 40px;
+		  	outline: none;
+		}
+
+		.respond-search-container h4{
+			font-size: 15px;
+		  	line-height: auto;
+		  	margin: 0;
+		  	padding: 10px 10px 2px 10px;
+		}
+
+		.respond-search-container small{
+			font-size: 11px;
+		  	margin: 0;
+		  	padding: 0 10px 2px 10px;
+		}
+
+		.respond-search-container p{
+			font-size: 13px;
+		  	line-height: 19px;
+		  	margin: 0;
+		  	padding: 0 10px 10px 10px;
+		}
+
+		.respond-search-container-results{
+		  	max-height: 275px;
+		  	overflow: auto;
+		  	display: none;
+		}
+
+			.respond-search-container-results[visible]{
+				display: block;
+			}
+
+		.respond-search-container ul{
+			margin: 0;
+		  	padding: 0;
+		}
+
+		.respond-search-container li{
+		  	font-size: 13px;
+		  	list-style: none;
+		  	text-align: left;
+		  	margin: 0;
+		  	padding: 5px;
+		  	border-bottom: 1px solid #ddd;
+		}
+
+		.respond-search-container li p{
+			overflow: hidden;
+		  	text-overflow: ellipsis;
+		  	margin-bottom: 0 !important;
+		}
+
+		.respond-search-container li.has-image a{
+			min-height: 70px;
+		}
+
+		.respond-search-container li img{
+			float: left;
+		  	width: 50px;
+		  	height: 50px;
+		  	margin-right: 10px;
+		  	margin-top: 5px;
+		}
+
+		.respond-search-container li.searching,
+		.respond-search-container li.no-results{
+			padding: 10px 20px;
+		    border-top: none;
+		}
+
+		.respond-search-container li.searching i{
+			color: config(--search-text-color);
+		}
+
+		.respond-search-container li:last-child{
+			border-bottom: none;
+		}
+
+		.respond-search-container li.no-results{
+			display: none;
+		}
+
+		.respond-search-container li.no-results[visible]{
+			display: block;
+		}
+
+		/* rtl */
+		.respond-search-container[dir="rtl"] .search-container button.search{
+			right: auto;
+			left: 50px;
+		}
+
+		.respond-search-container[dir="rtl"] .close-search{
+			right: auto;
+			left: 10px;
+		}
+
+		.respond-search-container[dir="rtl"] .search-container input{
+			margin-left: 50px;
+		}
+
+    </style>
+
+	<template>
+
+		<div class="respond-search-container" visible$="{{showSearch}}" dir$="{{dir}}">
+
+			<button class="close-search" on-click="close"><svg viewBox="0 0 24 24" width="24" height="24" preserveAspectRatio="xMidYMid meet"><g><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></g></svg></button>
+
+			<span class="search-loading" visible$="loading">
+				
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><g><path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"></path><path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite"></animateTransform></path></g></svg>
+			</span>
+
+			<form class="respond-search-form" on-submit="search">
+		      <div class="search-container">
+		        <input id="searchText" type="text" autocomplete="off">
+		        <button class="search"><svg viewBox="0 0 24 24" width="24" height="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg></button>
+		      </div>
+		    </form>
+
+		  	<div class="respond-search-results" visible$="{{showResults}}">
+
+		  		<ul>
+
+				<template id="resultsList" is="dom-repeat" items="{{results}}">
+					<li>
+						<h4><a href="{{item.url}}">{{item.title}}</a></h4>
+					  	<small><a href="{{item.url}}">{{item.url}}</a></small>
+					  	<p>{{item.description}}</p>
+					</li>
+				</template>
+
+				  	<li class="no-results" visible$="{{showNoResults}}">{{label.noResults}}</li>
+			  	</ul>
+		  	</div>
+		</div>
+
+	</template>
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-search",
+
+	  	// element attributes
+	  	properties: {},
+
+		// attached
+		attached: function() {
+
+			// set labels
+			this.label = {
+				noResults: this.i18n('No results found')
+			};
+
+			// initialize
+			this.results = [];
+			this.showSearch = false;
+			this.showResults = false;
+			this.showNoResults = false;
+			this.loading = false;
+
+			// set direction
+			this.dir = respond.site.settings.Direction;
+
+			if(sessionStorage['respond-direction'] != null){
+				this.dir = sessionStorage['respond-direction'];
+			}
+
+			// set context
+			var context = this;
+
+			// wait for toggle event
+		  	var items = document.querySelectorAll('respond-search-toggle');
+
+		  	for(x=0; x<items.length; x++){
+
+				// toggle search
+				items[x].addEventListener('search-toggled', function(e) {
+
+					if(context.showSearch == true){
+						context.close();
+					}
+					else{
+						context.open();
+					}
+				});
+
+			}
+		},
+
+		// opens the search
+		open: function(){
+
+			this.showSearch = true;
+			this.results = [];
+			this.showResults = false;
+			this.$.searchText.value = '';
+			this.showNoResults = false;
+			respond.site.searchVisible = false;
+
+		},
+
+		// closes the search
+		close: function(){
+
+			this.showSearch = false;
+			this.results = [];
+			this.showResults = false;
+			this.$.searchText.value = '';
+			this.showNoResults = false;
+			respond.site.searchVisible = false;
+
+
+		},
+
+		// performs a search
+		search: function(e, d, s){
+
+			// get search and language
+			this.text = this.$.searchText.value;
+			this.siteId = respond.site.settings.SiteId;
+			this.language = respond.site.settings.Language;
+			this.api = respond.site.settings.API;
+			this.loading = true;
+			this.showResults = true;
+
+			// set params
+			var params = {
+				siteId: this.siteId,
+				locale: this.language
+			}
+
+			var context = this;
+
+			// submit form
+			var xhr = new XMLHttpRequest();
+
+			// set URI
+			var uri = 'data/pages-extended.json';
+
+			xhr.open('POST', encodeURI(uri));
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.onload = function() {
+			    if(xhr.status === 200){
+
+			    	context.results = [];
+
+					var data = JSON.parse(xhr.responseText);
+
+					// set class for data
+					for(x in data){
+
+						// pages are stored in objects
+						if(typeof(data[x]) == 'object'){
+
+							var includeOnly = false;
+
+							// set include only
+							if(data[x]['includeOnly'] != undefined && data[x]['includeOnly'] != null){
+
+								if(data[x]['includeOnly'] == 1){
+									includeOnly = true;
+								}
+
+							}
+
+							// check for results in non-includeOnly pages
+							if(includeOnly == false){
+
+  							var ext = '.html';
+
+  							if(respond.site.settings.useFriendlyURLs == true) {
+    							ext = '';
+  							}
+
+								// this is what will be returned
+								var result = {
+									pageId: x,
+									title: data[x]['title'],
+									url: data[x]['url'] + ext,
+									description: data[x]['description']
+								}
+
+								// walk through data[x]
+								for(y in data[x]){
+
+									var text = data[x][y].toLowerCase();
+
+									// searh for the term
+									if(text.search(new RegExp(context.text.toLowerCase(), 'i')) != -1){
+
+										// push found pages
+										context.push('results', result);
+
+										break;
+
+									}
+
+								}
+
+							}
+
+						}
+
+					}
+
+
+					// set noResults
+					if(context.results.length == 0){
+						context.showNoResults = true;
+					}
+					else{
+						context.showNoResults = false;
+					}
+
+
+					// set loading
+					context.loading = false;
+			    }
+			    else if(xhr.status !== 200){
+			    	context.loading = false;
+			        console.log('[respond.error] respond-search component: failed post, xhr.status='+xhr.status);
+			    }
+			};
+
+			// serialize the data
+			var qs = [];
+
+			for(p in params){
+			    qs.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
+			}
+
+			qs = qs.join("&");
+
+			// send serialized data
+			xhr.send(encodeURI(qs));
+
+			e.preventDefault();
+			return false;
+
+		},
+
+		i18n: function(text){
+		  	return respond.site.i18n(text);
+		}
+
+	});
+</script><dom-module id="respond-form" assetpath="core/">
+
+	<style>
+
+    /* messages */
+		.success, .error{
+			display: none;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			padding: 10px 15px;
+			font-size: 16px;
+			margin: 0 0 0 15px;
+		}
+
+			.success[visible], .error[visible]{
+				display: inline-block;
+			}
+
+		.error{
+			border: 1px solid #CF4647;
+			color: #fff;
+			background-color: #CF4647;
+		}
+
+		.success{
+			border: 1px solid #08B168;
+			color: #fff;
+			background-color: #08B168;
+		}
+
+		/* loading */
+		.loading{
+			display: none;
+			color: #888;
+			vertical-align: top;
+			width: 25px;
+			height: 25px;
+			margin-top: 5px;
+			margin-left: 5px;
+		}
+
+			.loading[visible]{
+				display: inline-block;
+			}
+
+			.loading svg{
+				display: block;
+				vertical-align: top;
+				width: 25px;
+			    height: 25px;
+			  	margin: 0;
+			  	padding: 0;
+			  	line-height: 25px;
+			  	display: inline-block;
+			  	vertical-align: middle;
+			  	text-align: center;
+			  	fill: currentColor;
+			}
+
+
+	</style>
+
+	<template>
+
+    <div class="respond-container">
+
+	    	<form id$="{{id}}">
+	    		<content id="content"></content>
+
+	    		<button type="button" class="btn btn-primary" on-click="submitForm">{{submit}}</button>
+
+      		<span class="loading" visible$="{{loading}}">
+      			
+      			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g><path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"></path><path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z"><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite"></animateTransform></path></g></svg>
+      		</span>
+
+      		<span class="success" visible$="{{showSuccess}}">{{success}}</span>
+
+      		<span class="error" visible$="{{showError}}">{{error}}</span>
+          
+
+	    	</form>
+
+	  </div>
+
+	</template>
+
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-form",
+
+	  	// element attributes
+	  	properties: {
+  	  	id: { type: String },
+	  		success: {
+	  			type: String,
+	  			value: 'Form submitted successfully'
+	  		},
+	  		error: {
+	  			type: String,
+	  			value: 'There was an error submitting your form'
+	  		},
+	  		submit: {
+	  			type: String,
+	  			value: 'Submit'
+	  		}
+		},
+
+		// attached
+		ready: function() {
+
+      // defaults
+			this.loading = false;
+			this.showSuccess = false;
+			this.showError = false;
+
+			// set fields
+			this.fields = [];
+
+			// translate messages
+			this.success = this.i18n(this.success);
+			this.error = this.i18n(this.error);
+			this.submit = this.i18n(this.submit);
+
+		},
+
+		// handles the form submit
+		submitForm: function(event, detail, sender) {
+
+			// init messages
+			this.showSuccess = false;
+			this.showError = false;
+			this.loading = false;
+
+			// select all inputs in the local DOM
+			var groups = Polymer.dom(this.$.fields).querySelectorAll('.form-group');
+
+			// get page information
+			var siteId = respond.site.settings.id;
+			var api = respond.site.settings.api;
+
+			// create submission
+			var submission = {
+  			url: window.location.href,
+  			siteId: siteId,
+  			formId: this.id,
+  			fields: []
+			};
+
+			// walk through inputs
+			for(x=0; x<groups.length; x++) {
+
+				// get name, id, type
+				var label = groups[x].getAttribute('data-label');
+				var id = groups[x].getAttribute('data-id');
+				var type = groups[x].getAttribute('data-type');
+				var required = groups[x].getAttribute('data-required');
+
+				// get value by type
+				var value = '';
+
+				if(type == 'text'){
+					value = groups[x].querySelector('input').value;
+				}
+				else if(type == 'textarea'){
+					value = groups[x].querySelector('textarea').value;
+				}
+				else if(type == 'radiolist'){
+					var radio = groups[x].querySelector('input[type=radio]:checked');
+
+					if(radio != null){
+						value = radio.value;
+					}
+				}
+				else if(type == 'select'){
+					value = groups[x].querySelector('select').value;
+				}
+				else if(type == 'checkboxlist'){
+					var checkboxes = groups[x].querySelectorAll('input[type=checkbox]:checked');
+
+					// create comma separated list
+					for(y=0; y<checkboxes.length; y++){
+						value += checkboxes[y].value + ', ';
+					}
+
+					// remove trailing comma and space
+					if(value != ''){
+						value = value.slice(0, -2);
+					}
+				}
+
+				submission.fields.push(
+				  {
+  				  id: id,
+  				  value: value
+				  }
+				);
+
+				// check required fields
+				if(required == 'true' && value == ''){
+					this.showError = true;
+					groups[x].className += ' has-error';
+				}
+
+			}
+
+			// exit if error
+			if(this.showError == true) {
+				return false;
+			}
+
+			// set loading
+			this.loading = true;
+
+			// set context
+			var context = this;
+
+			// submit form
+			var xhr = new XMLHttpRequest();
+
+			// set URI
+			var uri = api + '/submissions/add';
+
+			xhr.open('POST', encodeURI(uri));
+
+			// handle success
+			xhr.onload = function() {
+			    if(xhr.status === 200){
+			    	// clear form, hide loading
+			    	context.loading = false;
+			    	context.showSuccess = true;
+			    	context.clearForm();
+			    }
+			    else if(xhr.status !== 200){
+			    	context.loading = false;
+			        console.log('[respond.error] respond-form component: failed post, xhr.status='+xhr.status);
+			    }
+			};
+
+			// send serialized data
+			xhr.send(JSON.stringify(submission));
+
+		},
+
+		// clears the form on submit
+		clearForm:function() {
+
+			// clear text fields
+			var els = Polymer.dom(this).querySelectorAll('input[type=text]');
+
+			for(x=0; x<els.length; x++){
+				els[x].value = '';
+			}
+
+			// clear text ares
+			var els = this.querySelectorAll('textarea');
+
+			for(x=0; x<els.length; x++){
+				els[x].value = '';
+			}
+
+			// clear checkboxes
+			var els = Polymer.dom(this).querySelectorAll('input[type=checkbox]');
+
+			for(x=0; x<els.length; x++){
+				els[x].checked = false;
+			}
+
+			// clear radios
+			var els = Polymer.dom(this).querySelectorAll('input[type=radio]');
+
+			for(x=0; x<els.length; x++){
+				els[x].checked = false;
+			}
+
+			// reset selects
+			var els = Polymer.dom(this).querySelectorAll('select');
+
+			for(x=0; x<els.length; x++){
+				els[x].selectedIndex = 0;
+			}
+
+		},
+
+    // handles translations
+		i18n: function(text) {
+			return respond.site.i18n(text);
+		}
+
+	});
+</script><dom-module id="respond-form-field" assetpath="core/">
+	<template>
+  		<content></content>
+	</template>
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-form-field",
+
+	  	// element attributes
+	  	properties: {
+	  		fieldid: { type: String },
+	  		type: { type: String },
+	  		label: {
+	  			type: String,
+	  			value: ''
+	  		},
+	  		required: {
+	  			type: String,
+	  			value: ''
+	  		},
+	  		helper: {
+	  			type: String,
+	  			value: ''
+	  		},
+	  		placeholder: {
+	  			type: String,
+	  			value: ''
+	  		},
+	  		cssclass: {
+	  			type: String,
+	  			value: ''
+	  		},
+	  		options: {
+	  			type: String,
+	  			value: ''
+	  		}
+		},
+
+		// attached
+		attached: function() {
+
+			// set label
+			var html = '<label for="' + this.fieldid + '"';
+			var prefix = '';
+			var pageId = document.body.getAttribute('page');
+
+			if(this.fieldid != null){
+
+				// get pageId
+				prefix = pageId + '.';
+
+				html += 'id="' + this.fieldid + '-label" class="control-label">';
+			}
+			else{
+				html += '>';
+			}
+
+			html += this.label + '</label>';
+
+			var req = '';
+
+			if(this.required == 'true'){
+				req = ' required';
+			}
+
+			// create textbox
+			if(this.type=='text'){
+				html += '<input id="' + this.fieldid + '" name="' + this.fieldid +
+						'" type="text" class="form-control" placeholder="'+this.placeholder+'"' + req +
+						'>';
+			}
+
+			// create textarea
+			if(this.type=='textarea'){
+				html += '<textarea id="' + this.fieldid + '" name="' + this.fieldid + '" class="form-control" placeholder="'+this.placeholder+'"' + req +
+						'></textarea>';
+			}
+
+			// create select
+			if(this.type=='select'){
+				html += '<select id="' + this.fieldid + '" name="' + this.fieldid + '" class="form-control"' + req +
+				'>';
+
+				var arr = this.options.split(',');
+
+				for(x=0; x<arr.length; x++){
+
+					if(this.id != null){
+						html += '<option id="' + this.fieldid + '-option' + (x+1) + '">' + arr[x].trim() + '</option>';
+					}
+					else{
+		  				html += '<option>' + arr[x].trim() + '</option>';
+		  			}
+				}
+
+				html += '</select>'
+			}
+
+			// create checkboxlist
+			if(this.type=='checkboxlist'){
+				html += '<span class="checkbox list">';
+
+				var arr = this.options.split(',');
+
+				for(x=0; x<arr.length; x++){
+
+					var val = arr[x].trim();
+
+		  			html += '<label class="checkbox"><input name="' + this.fieldid + '" type="checkbox" value="' + arr[x].trim() + '">';
+
+		  			if(this.fieldid != null){
+			  			html += '<span id="' + this.fieldid + '-checkbox' + (x+1) + '">';
+					}
+					else{
+						html += '<span>';
+					}
+
+		  			html += arr[x].trim() + '</span></label>';
+				}
+
+				html += '</span>';
+			}
+
+			// create radio list
+			if(this.type=='radiolist'){
+				html += '<span class="radio list">';
+
+				var arr = this.options.split(',');
+
+				for(x=0; x<arr.length; x++){
+		  			html += '<label class="radio"><input name="' + this.fieldid + '" type="radio" value="' + arr[x].trim() + '" name="' + this.fieldid + '">';
+
+		  			if(this.fieldid != null){
+			  			html += '<span id="' + this.fieldid + '-radio' + (x+1) + '">';
+					}
+					else{
+						html += '<span>';
+					}
+
+		  			html += arr[x].trim() + '</span></label>';
+				}
+
+				html += '</span>';
+			}
+
+			// create helper
+			if(this.helper != '') {
+
+				if(this.fieldid != null){
+		  			html += '<span id="' + this.fieldid + '-help" class="help-block">' + this.helper + '</span>';
+				}
+				else{
+					html += '<span class="help-block">' + this.helper + '</span>';
+				}
+
+			}
+
+			// create field
+			var div = document.createElement('div');
+			div.setAttribute('data-id', this.fieldid);
+			div.setAttribute('data-label', this.label);
+			div.setAttribute('data-type', this.type);
+			div.setAttribute('data-required', this.required);
+			div.setAttribute('class', 'form-group');
+			div.innerHTML = html;
+
+			// append to the light dom
+			Polymer.dom(this).appendChild(div);
+
+		}
+
+	});
+</script><dom-module id="respond-map" assetpath="core/">
+	<style>
+
+    /* map display */
+		.respond-map-container{
+			margin: 0 0 25px 0;
+		  padding: 0;
+		}
+
+		.respond-map-container .map-container{
+			width: 100%;
+		  	height: 200px;
+		  	border: 1px solid #ddd;
+		  	margin-bottom: 5px;
+		}
+
+		.respond-map-container p{
+			margin: 0 0 5px 0;
+		  padding: 0;
+		}
+
+		.respond-map-container a, .respond-map-container a:visited, .respond-map-container a:hover{
+			text-decoration: none;
+		}
+    </style>
+
+	<template>
+
+		<div class="respond-map-container">
+			<div id="mapContainer" class="map-container"></div>
+				<p class="map-address">
+					<span>{{address}}</span>&nbsp;
+					<a id="directions" href$="{{url}}">{{label.getDirections}}</a>
+				</p>
+			</div>
+		
+
+	</template>
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: "respond-map",
+
+    // element attributes
+    properties: {
+      edit: {
+        type: Boolean,
+        value: true
+      },
+      address: {
+        type: String,
+        observer: '_addressChanged'
+      },
+      zoom: {
+        type: String,
+        observer: '_zoomChanged'
+      }
+    },
+
+    /**
+     * Displays the component
+     */
+    ready: function() {
+
+      // labels
+      this.label = {
+        getDirections: this.i18n('Get Directions')
+      };
+
+      // setup the map
+      this.setupMap();
+      this.setLocation();
+
+    },
+
+
+    /**
+     * Handles updating the view when the address changes
+     * @param {String} newValue the new value of the attribute
+     * @param {String} oldValue the old value of the attribute
+     */
+    _addressChanged: function(newValue, oldValue) {
+
+      if(this.map == null || this.map == undefined){
+
+        // this fixes a render bug when a new map is dragged from the editor onto the page
+        context = this;
+
+        setTimeout(function(){
+          context.setupMap();
+        }, 100);
+
+      }
+
+      this.setLocation();
+
+    },
+
+    /**
+     * Handles updating the view when the zoom changes
+     * @param {String} newValue the new value of the attribute
+     * @param {String} oldValue the old value of the attribute
+     */
+    _zoomChanged: function(newValue, oldValue) {
+
+      if(this.map != undefined){
+        this.map.setZoom(parseInt(newValue));
+      }
+
+    },
+
+    /**
+      * Setup map
+      */
+    setupMap: function() {
+
+      // set url
+      this.url = 'http://maps.google.com/?q=' + this.address;
+
+      // set zoom
+      var defaultZoom = 8;
+
+      if (this.zoom != 'auto' && this.zoom != undefined) {
+        defaultZoom = parseInt(this.zoom);
+      }
+
+      // create the map
+      var mapOptions = {
+        center: new google.maps.LatLng(38.6272, -90.1978),
+        zoom: defaultZoom,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      // create the map
+      var container = this.$.mapContainer;
+
+      // create map and bounds
+      this.map = new google.maps.Map(container, mapOptions);
+
+    },
+
+    /**
+     * Sets the location on the map (this.map) to the current address (this.address)
+     */
+    setLocation: function() {
+
+      // look for a default address
+      if (this.address != null && this.address != undefined) {
+
+        // geo-code the address
+        var geocoder = new google.maps.Geocoder();
+
+        var context = this;
+
+        geocoder.geocode({
+          'address': this.address
+        }, function(results, status) {
+
+          if (status == google.maps.GeocoderStatus.OK) {
+
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var content = results[0].formatted_address;
+
+            var coords = new google.maps.LatLng(latitude, longitude);
+
+            var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+
+            // create marker
+            var marktext = '<div>' + content + '</div>';
+
+            var marker = new google.maps.Marker({
+              position: coords,
+              map: context.map,
+              title: marktext
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(map, marker);
+            });
+
+
+            context.map.setCenter(coords);
+
+          }
+
+        });
+
+      }
+
+    },
+
+    /**
+     * Translates the string
+     */
+    i18n: function(text) {
+
+      if(respond.site.i18n) {
+        return respond.site.i18n(text);
+      }
+
+
+    }
+
+  });
+
+</script><dom-module id="respond-video" assetpath="core/">
+	<style>
+		.video-container {
+		    position: relative;
+		    padding-bottom: 56.25%;
+		    padding-top: 30px; 
+		    height: 0; 
+		    overflow: hidden;
+		    margin-bottom: 25px;
+		}
+		 
+		.video-container iframe,
+		.video-container object,
+		.video-container embed {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+	</style>
+
+	<template>
+		<content id="content"></content>
+	</template>
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-video",
+	
+	  	// element attributes
+	  	properties: {
+	  		videoid: { type: String },
+	  		class: { type: String }
+		},
+		
+		// attached
+		attached: function() {
+		
+			var video = document.createElement('div');
+			var cssClass = 'video-container';
+			
+			if(this.class != '' && this.class != undefined){
+				cssClass += ' ' + this.class;
+			}
+			
+			video.setAttribute('class', cssClass);
+		
+			var html = this.innerHTML;
+			
+			// set html
+			video.innerHTML = html;
+			
+			// get children
+			var children = Polymer.dom(this).childNodes;
+			
+			// clear children
+			for(x=0; x<children.length; x++){
+				Polymer.dom(this).removeChild(children[x]);
+			}
+			
+			// append video
+			Polymer.dom(this).appendChild(video);
+		
+		},
+		
+		i18n: function(text){
+		  	return respond.site.i18n(text);
+		}
+	
+	});
+</script><dom-module id="respond-gallery" assetpath="core/">
+	<style>
+
+  	.respond-edit, .respond-container {
+    	display: none;
+  	}
+
+  	.respond-edit[visible], .respond-container[visible] {
+    	display: block;
+    	visibility: visible;
+  	}
+
+		/* edit display */
+    .respond-edit {
+      position: relative;
+      padding: 10px 0;
+      margin: 0;
+      min-height: 70px;
+      background-color: #f8f8f8;
+      border: 1px solid #f0f0f0;
+      text-align: center;
+    }
+
+    .respond-edit .icon {
+      display: inline-block;
+      text-align: center;
+      color: #ddd;
+    }
+
+    .respond-edit svg {
+      fill: currentColor;
+      width: 35px;
+      height: 35px;
+    }
+
+    .respond-edit .title {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: normal;
+      font-size: 14px;
+      display: block;
+      margin: 0 0 10px 0;
+      color: #555;
+    }
+
+    .respond-edit .description {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: normal;
+      font-size: 12px;
+      display: block;
+      margin: 5px 0 10px 0;
+      padding: 0;
+      color: #888;
+    }
+
+		.respond-container {
+			margin-bottom: 25px;
+		}
+
+		.respond-container a {
+			display: inline-block;
+			width: 200px;
+			height: 200px;
+			margin: 0 10px 10px 0;
+		}
+
+		.respond-container a img {
+			width: 200px;
+			height: 200px;
+		}
+
+	</style>
+
+	<template>
+
+	  <div class="respond-edit" visible$="{{edit}}">
+
+      <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"></path>
+      </svg></span>
+
+      <span class="title">Gallery Component</span>
+
+    </div>
+    
+
+		<div id$="{{id}}" class="respond-container" visible$="{{!edit}}">
+
+			<div id="galleryList" role="listbox"></div>
+			
+
+		</div>
+		
+
+
+	</template>
+</dom-module>
+
+<script>
+  Polymer({
+	  	is: "respond-gallery",
+
+	  	// element attributes
+	  	properties: {
+	  		id: { type: String }
+		},
+
+		ready: function() {
+
+  		// edit mode
+      this.edit = false;
+
+      if(document.body.hasAttribute('edit')) {
+        this.edit = true;
+      }
+
+			// get images
+			var images = Polymer.dom(this).querySelectorAll('img');
+
+			for(x=0; x<images.length; x++){
+
+				// set active
+				var active = '';
+
+				if(x==0){
+					active = ' active';
+				}
+
+				// get caption
+				var caption = images[x].getAttribute('data-caption') || '';
+
+				// get thumb
+				var thumb = images[x].getAttribute('data-thumb') || '';
+
+				// create a gallery image
+				var a = document.createElement('a');
+
+				a.setAttribute('title', caption);
+				a.setAttribute('class', 'gallery-item');
+				a.setAttribute('respond-lightbox', '');
+				a.setAttribute('href', images[x].src);
+
+				var img = document.createElement('img');
+				img.setAttribute('src', thumb);
+
+				a.appendChild(img);
+
+				// append gallery image to list
+				Polymer.dom(this.$.galleryList).appendChild(a);
+
+			}
+
+		},
+
+		i18n: function(text){
+		  	return respond.site.i18n(text);
+		}
+
+	});
+</script></div></body></html>

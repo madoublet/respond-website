@@ -1,0 +1,302 @@
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, p, blockquote {
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 25px;
+}
+
+header, .hero, footer {
+  background-color: #2F3243;
+}
+
+header *, .hero *, footer * {
+  color: #fff;
+}
+
+/* responsive styles */
+.md-plus {
+  visibility: visible;
+  display: block;
+}
+
+.sm {
+  visibility: hidden;
+  display: none;
+}
+
+/* grid */
+.grid {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+  .grid.alternate-background {
+    background-color: #2F3243;
+  }
+
+  .grid.alternate-background * {
+    color: #fff;
+  }
+
+.grid-cell {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+  /* consistent with #edit */
+  .grid-cell * {
+    position: relative;
+  }
+
+/* padding */
+.base-padding {
+  padding: 20px;
+}
+
+  .pad-top {
+    padding-top: 40px;
+  }
+
+  .pad-bottom {
+    padding-bottom: 40px;
+  }
+
+/* alignment */
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.valign-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valign-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+}
+
+/* header */
+header {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  padding: 20px;
+  text-align: right;
+  z-index: 11;
+}
+
+header .brand {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+header img {
+  max-height: 35px;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0 50px 0 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin: 0 0 0 20px;
+  padding: 0;
+  display: inline-block;
+}
+
+header nav ul li a {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+header .menu {
+  position: absolute;
+  top: 25px;
+  right: 65px;
+  height: 35px;
+  width: 35px;
+}
+
+header .search {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  height: 35px;
+  width: 35px;
+}
+
+/* .hero */
+.hero a {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  margin-right: 15px;
+  min-width: 100px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero a.primary {
+  border: 1px solid #00ADE3;
+}
+
+/* images */
+.circle-icon {
+  display: inline-block;
+  margin-bottom: 20px;
+  max-width: 100px;
+}
+
+.screen {
+  width: 100%;
+  border-bottom: 1px solid #2F3243;
+  border-left: 10px solid rgba(255,255,255,.25);
+  border-top: 10px solid rgba(255,255,255,.25);
+}
+
+  .screen-on-whitebg {
+    border-bottom: none;
+    border-left: 10px solid #f8f8f8;
+    border-top: 10px solid #f8f8f8;
+  }
+
+/* footer */
+footer nav ul {
+  list-style: none;
+  margin: 0 0 25px 0;
+  padding: 0;
+}
+
+footer nav ul li {
+  margin: 0 0 0 20px;
+  padding: 0;
+  display: inline-block;
+}
+
+footer nav ul li a {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* drawer */
+[toggle-drawer] {
+  cursor: pointer;
+}
+
+.drawer {
+  position: absolute;
+  top: -500px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #2F3243;
+  z-index: 10;
+  border-top: 1px solid #00ADE3;
+  transition: all 0.1s ease;
+}
+
+  .drawer[active] {
+    top: 75px;
+  }
+
+
+  .drawer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .drawer ul li {
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    margin: 0;
+    padding: 0;
+  }
+
+  .drawer ul li a {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #2F3243;
+    text-transform: uppercase;
+  }
+
+
+@media (max-width:768px) {
+
+  /* responsive styles */
+  .md-plus {
+    visibility: hidden;
+    display: none;
+  }
+
+  .sm {
+    visibility: visible;
+    display: block;
+  }
+
+  /* grid */
+  .grid {
+    display: block;
+  }
+
+  /* grid */
+  .grid-cell {
+    flex: none;
+    display: block;
+  }
+
+  .screen {
+    width: 100%;
+    width: calc(100% - 20px);
+    border-right: 10px solid rgba(255,255,255,.25);
+  }
+
+    .screen-on-whitebg {
+      border-bottom: none;
+      border-right: 10px solid #f8f8f8;
+    }
+
+}
