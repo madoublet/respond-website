@@ -8,11 +8,13 @@ html, body {
 
 a {
   text-decoration: none;
+  color: #00ADE3;
 }
 
 h1, h2, h3, h4, h5, p, blockquote {
   margin: 0 0 20px 0;
   padding: 0;
+  color: #2F3243;
 }
 
 h1 {
@@ -30,6 +32,7 @@ h3 {
 p {
   font-size: 14px;
   line-height: 25px;
+  color: #555;
 }
 
 header, .hero, footer {
@@ -262,6 +265,65 @@ footer nav ul li a {
     background-color: #2F3243;
     text-transform: uppercase;
   }
+
+/* body.content */
+body.content .container {
+  max-width: 1000px;
+  min-height: 500px;
+  margin: 25px auto 0 auto;
+}
+
+body.content h3 {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+body.content .table {
+  width: 100%;
+  margin: 0 0 25px 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+body.content .table th {
+  text-transform: uppercase;
+  color: #888;
+  font-weight: normal;
+  font-size: 13px;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+body.content .table thead tr {
+  border-bottom: 1px solid #ddd;
+}
+
+body.content .table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+body.content .table td {
+  margin: 0;
+  padding: 10px 10px 10px 0;
+}
+
+body.content pre {
+    background-color: rgba(50,153,187,0.05);
+    border-radius: 0;
+    border: 1px solid #ddd;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+body.content li {
+  margin-bottom: 5px;
+}
+
+body.content ul, body.content ol {
+  margin-bottom: 20px;
+}
+
 
 
 @media (max-width:768px) {

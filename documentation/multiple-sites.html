@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+ <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{page.title}}</title>
+  <title>Respond - Managing multiple sites</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="{{page.description}}">
+  <meta name="description" content="Welcome to your new homepage created with Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -42,6 +42,7 @@
 
     <ul respond-plugin type="menu" menu="primary">
       <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
@@ -65,9 +66,44 @@
 
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
-    <div class="col col-md-12">
-        <h1>{{page.title}}</h1>
-        <p>{{page.description}}</p>
+    <div  class="col col-md-12">
+      <h1>Managing Multiple Sites</h1>
+      <p>A core feature of Respond is the ability to create and manage multiple sites using the CMS. &nbsp;This works out-of-the-box without any additional tools or plugins installed. &nbsp; In this documentation, we will take a look at how this works and provide some guidance on how to manage multiple sites within the CMS</p>
+      <h3>How it works</h3>
+      <p>Sites in Respond are created "on an island". &nbsp;What this means is that all users of the site can only access that site. &nbsp;This also means that emails (or user logins) are not unique in the system. &nbsp;They are unique per site.</p>
+      <h3>Site Administrator</h3>
+      <p>The one exception to this rule is the Site Administrator. &nbsp;This property of a user allows him/her with the ability to view all sites created in the system and perform common functions. &nbsp;See table below.&nbsp;</p>
+      <table id="table-1" class="table table-striped table-bordered col-2">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Domain</td>
+            <td>Same as in the Settings. &nbsp;The Domain is the URL where the site can be accessed publicly. &nbsp;It also provides CORS access so that the site can access the REST API.<br></td>
+          </tr>
+          <tr>
+            <td>Amazon S3 Bucket</td>
+            <td>The Amazon S3 bucket where files are stored (if applicable).</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>The status of the site: &nbsp;Trial, Active, Expired. &nbsp;Trial sites will see a message asking them to upgrade.</td>
+          </tr>
+          <tr>
+            <td>User Limit</td>
+            <td>The number of users that can be created for the site.</td>
+          </tr>
+          <tr>
+            <td>File Limit</td>
+            <td>The storage limit for the site (10MB, 100MB, 1GB, 10GB).</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Any user in the system can become a Site Administrator. &nbsp;This can be done only if you have access to the database. &nbsp;You must navigate to that user in the database and set the SiteAdmin flag for the User to 1.</p>
     </div>
   </div>
 </div>

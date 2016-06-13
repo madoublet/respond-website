@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Respond - Install on Digital Ocean</title>
+
+  <!-- meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Welcome to your new homepage created with Respond">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <!-- base -->
+  <base href="../">
+
+  <!-- icons -->
+  <link theme-icon rel="icon" href="">
+  <meta theme-color name="msapplication-TileColor" content="">
+  <meta theme-color name="msapplication-TileImage" content="">
+  <meta theme-color name="theme-color" content="">
+  <link theme-icon rel="apple-touch-icon" href="">
+
+  <!-- font -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- css -->
+  <link type="text/css" href="css/libs.min.css" rel="stylesheet">
+  <link type="text/css" href="css/site.css" rel="stylesheet">
+
+</head>
+
+<body class="content">
+
+<header role="banner">
+
+  <a class="brand md-plus" href="index"><img theme-logo src="resources/respond-logo.png"></a>
+
+  <a class="brand sm" href="index"><img theme-logo src="resources/respond-logo-sm.png"></a>
+
+  <nav class="navbar md-plus" role="navigation">
+
+    <ul respond-plugin type="menu" menu="primary">
+      <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
+      <li><a href="page/tour">Tour</a></li>
+      <li><a href="learn">Learn</a></li>
+      <li><a href="marketplace">Store</a></li>
+      <li><a href="help">Help</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="menu sm" toggle-drawer>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg>
+  </div>
+
+  <div class="search" fire-event="search-toggled">
+    <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
+  </div>
+
+</header>
+
+<div id="content" class="container" role="main">
+  <div id="block-1" class="block row">
+    <div  class="col col-md-12">
+      <h1>Install On Digital Ocean</h1>
+    </div>
+  </div>
+  <div id="block-2" class="block row">
+    <div  class="col col-md-9">
+      <p>This tutorial will walk you step-by-step through installation on Digital Ocean.</p>
+      <h3 id="h3-1">Create Digital Ocean Account</h3>
+      <p id="p-1">1. Start by creating your account on Digital Ocean. &nbsp;Use our<a href=" https://www.digitalocean.com/?refcode=a0ca7859692b"> referral code to support the project.</a>
+      </p>
+      <p id="p-2" >2. Key a hostname (e.g. respondcms.com), select a size for your installation, and select a region.</p>
+      <p id="p-3">3. Select Applications -&gt; LAMP on Ubuntu 14.04. &nbsp;You could do this manually, but this speeds up the process.</p>
+      <p id="p-4">4. Your will receive a password via email to SSH into your account. &nbsp;It is recommended you change this to an SSH key later.</p>
+      <p id="p-28">5. You should now have a basic LAMP install, but it is good form to double check&nbsp;<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Digital Ocean's guide on setting up and securing the installation</a>.</p>
+      <h3 id="h3-2">Install PHPMyAdmin and the&nbsp;Respond&nbsp;Schema</h3>
+      <p id="p-5">1. SSH into the server. &nbsp;The welcome message will give you your default password for MySQL.</p>
+      <p id="p-6">2. Run&nbsp;mysql_secure_installation to secure your installation. &nbsp;Change your default password, disable anonymous accounts, etc.</p>
+      <p id="p-7">3. Install PHPMyAdmin. This is just a visual way to create your databases. &nbsp;For the options, select Apache2 and choose default options.</p>
+      <pre id="pre-1" class="prettyprint linenums pre-scrollable">apt-get update
+apt-get install phpmyadmin</pre>
+      <p id="p-8" data-i18n="5415de777e724.p-8">4. Enable mcrypt</p>
+      <pre id="pre-2" class="prettyprint linenums pre-scrollable">php5enmod mcrypt
+service apache2 restart</pre>
+      <p id="p-10">5. Login to PHPMyAdmin at: &nbsp;http://your_ip/phpmyadmin (your_ip is given to you in the welcome email). &nbsp;This page produced an error for me, so I had to do the following:</p>
+      <pre id="pre-4" class="prettyprint linenums pre-scrollable" description="Bug Fix" respond-pre="true">sudo cp /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin
+sudo service apache2 restart</pre>
+      <p id="p-11">7. Create a database called Respond and install the schema. &nbsp;The schema is located in the root of the Github repository under schema.sql.</p>
+      <p id="p-29">8. Secure your install using&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04">Digital Ocean's guide on Securing your PHPMyAdmin installation.</a>
+      </p>
+      <h3 id="h3-3">Install Git</h3>
+      <p id="p-9">1. Install Git</p>
+      <pre id="pre-3" class="prettyprint linenums pre-scrollable">apt-get install git</pre>
+      <h3 id="h3-4">Setup App</h3>
+      <p id="p-12">1. Create directory structure, setup permissions for sites&nbsp;</p>
+      <pre id="pre-5" class="prettyprint linenums pre-scrollable">// change to html directory
+cd /var/www/html
+
+// create Respond directory
+mkdir respond
+cd respond
+
+// create app and sites directory
+mkdir app
+
+// change to the app directory
+cd app</pre>
+      <p id="p-13">2. Clone the app repository into the app folder</p>
+      <pre id="pre-6" class="prettyprint linenums pre-scrollable">git clone https://github.com/madoublet/respond.git .</pre>
+      <p id="p-14">3. Create the sites directory in a subdirectory of the app directory. &nbsp;This will hold the sites created by Respond.</p>
+      <pre id="pre-7" >// make sites directory in app (app/sites)
+mkdir sites
+
+// give respond permissions to write to sites
+chown -R www-data sites</pre>
+      <p id="p-15">4. Install CURL</p>
+      <pre id="pre-8" class="prettyprint linenums pre-scrollable">apt-get install php5-curl</pre>
+      <h3 id="h3-5">Update Setup (setup.php)</h3>
+      <p id="p-22">1. Update /respond/app/setup.php with your database connection parameters and your application URL.</p>
+      <pre id="pre-12" class="prettyprint linenums pre-scrollable">/*********************************/
+/*  BASIC SETUP                  */
+/*********************************/
+
+// DB connection parameters
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'respond');
+define('DB_USER', 'dbuser');
+define('DB_PASSWORD', 'dbpass');
+
+// APP URL
+define('APP_URL', 'http://app.myrespond.com');</pre>
+      <h3 id="h3-6">Enable Mod_Rewrite</h3>
+      <p id="p-17">1. Enable mod_rewrite extension</p>
+      <pre id="pre-13">sudo a2enmod rewrite</pre>
+      <p id="p-18">2. Open&nbsp;/etc/apache2/apache2.conf via SSH or an editor using SFTP.&nbsp;Set AllowOverride to All.</p>
+      <pre id="pre-10">Options Indexes FollowSymLinks
+AllowOverride All
+Require all granted
+</pre>
+      <p id="p-19">3. Restart Apache (service apache2 restart)</p>
+      <p id="p-20">4. Test API at&nbsp;&nbsp;http://your_ip/respond/app/api/site/test. It should say "API works!".</p>
+      <h3 id="h3-9">Setup your domains</h3>
+      <p id="p-26">1. Point a domain or subdomain to your installation directory. &nbsp;This is done in Apache 2.4 by creating a configuration file at <b>etc/apache2/sites-available/app.myrespond.com.conf.</b></p>
+      <pre id="pre-11" description="PRE" respond-pre="true">&lt;VirtualHost *:80>
+
+    ServerAdmin admin@myrespond.com
+    ServerName app.myrespond.com
+
+    DocumentRoot /var/www/html/respond/app/
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+&lt;/VirtualHost>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet</pre>
+      <p id="p-21" data-i18n="5415de777e724.p-21">You then enable the site using the command:&nbsp;<code>a2ensite app.myrespond.com.conf</code>&nbsp;and restarting Apache. You can find a lot more detail on the Digital Ocean site:&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts">How to Set Up Apache Virtual Hosts tutorial on Digital Ocean.</a></p>
+      <p id="p-24" data-i18n="5415de777e724.p-24"><b>Important: </b>If you get the default Apache page after setting up and enabling your configuration, you might have to set the default server name to localhost. &nbsp;To do this, open <b>etc/apache2/sites-available/000-default.conf</b></p>
+      <pre id="pre-14" description="PRE" respond-pre="true">// change
+#ServerName www.example.com
+
+// to
+ServerName localhost</pre>
+      <p id="p-27">2. You can optionally&nbsp;setup wildcard subdomains or individual subdomains for the sites you create. &nbsp;Follow our tutorial on&nbsp;<a ui-sref="documentation/wildcard-subdomain-install" class="" target="" title="" href="/documentation/wildcard-subdomain-install">Setting up Wildcard subdomains</a>&nbsp;to setup wildcard subdomains.</p>
+      <h3 id="h3-7">Create your first site</h3>
+      <p id="p-23">1. If all goes well you should be able to create your first site at: &nbsp;http://your_url/. &nbsp;You should see a carousel of themes if the API is working.</p>
+    </div>
+    <div  class="col col-md-3">
+      <respond-content url="component/support-respond"></respond-content>
+    </div>
+  </div>
+</div>
+
+<footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
+
+  <h2>100% open source, always.</h2>
+
+  <p>Built by Matthew Smith in Manchester, MO.  Respond 6 is an open source, responsive content management system built on the Lumen PHP and Angular 2 frameworks.  Respond 6 is built so that you can quickly build beautiful, responsive websites.  The latest version features flat-file storage, a beautiful visual editor, and fast static sites.</p>
+
+  <nav>
+    <ul respond-plugin type="menu" menu="footer">
+      <li><a href="index">Home</a></li>
+      <li><a href="page/tour">Tour</a></li>
+      <li><a href="learn">Learn</a></li>
+      <li><a href="marketplace">Store</a></li>
+      <li><a href="help">Help</a></li>
+    </ul>
+  </nav>
+
+</footer>
+
+</body>
+
+<!-- js -->
+<script src="js/libs.min.js"></script>
+<script src="js/plugins.js"></script>
+
+<!-- respond-plugin:analytics -->
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-34995127-1', 'auto');
+   ga('send', 'pageview');
+
+</script>
+ <!-- /respond-plugin:analytics -->
+
+</html>

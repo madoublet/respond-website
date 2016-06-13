@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+ <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{page.title}}</title>
+  <title>Respond - Wildcard Subdomains</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="{{page.description}}">
+  <meta name="description" content="Learn how to create themes for Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -42,6 +42,7 @@
 
     <ul respond-plugin type="menu" menu="primary">
       <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
@@ -65,9 +66,32 @@
 
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
-    <div class="col col-md-12">
-        <h1>{{page.title}}</h1>
-        <p>{{page.description}}</p>
+    <div  class="col col-md-12">
+      <h1>Wildcard Subdomain Installation</h1>
+      <p>The default installation method for&nbsp;Respond&nbsp;is AngularJS HTML5 mode. &nbsp;This works best for sites on a subdomain or root domain. &nbsp;This guide walks you through setting up&nbsp;wildcard subdomains so that you have your sites that you create
+        automatically be mapped to a subdomain.
+      </p>
+      <h3>1. Enable vhost_alias module</h3>
+      <p>If you followed the Digital Ocean installation, you can do this via the following command.</p>
+      <pre class="prettyprint linenums pre-scrollable">a2enmod vhost_alias
+service apache2 restart</pre>
+      <p>See this thread for additional options to enable this module:&nbsp;<a href=" http://serverfault.com/questions/442611/invalid-command-virtualdocumentroot">Invalid Command VirtualDocumentRoot</a></p>
+      <h3>2. Set a subdomain to *</h3>
+      <p id="p-1" data-i18n="5415ded3341e9.p-1">This varies by DNS provider. &nbsp;But, typically you set the subdomain to * and URL Redirect it to a URL pointing at your server. &nbsp;If you use Namecheap, they provide a guide: &nbsp;<a href="https://www.namecheap.com/support/knowledgebase/article.aspx/597/10/how-can-i-set-up-a-catchall-wildcard-subdomain">How can I set up a catch-all (wildcard) subdomain?</a>
+      </p>
+      <h3>3. Create a VirtualHost for your wildcard subdomains</h3>
+      <p>If you followed the&nbsp;<a ui-sref="documentation/install-on-digital-ocean">Digital Ocean setup</a>, you can create your VirtualHost using the following code. &nbsp;The exact virtualhost setup for our demo site is shown below.</p>
+      <pre class="prettyprint linenums pre-scrollable">&lt;VirtualHost *:80>
+	ServerName responddemo.website
+	ServerAlias *.responddemo.website
+
+	ServerAdmin matt@matthewsmith.com
+	VirtualDocumentRoot /var/www/html/responddemo/app/sites/%1/
+&lt;/VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+</pre>
+      <p>I use a standalone domain for this purpose. &nbsp;I have found that trying to use the same domain as your app (or other subdomains) causes issues.</p>
     </div>
   </div>
 </div>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Respond - Creating Plugins</title>
+
+  <!-- meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Learn how to create plugins for Respond">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <!-- base -->
+  <base href="../">
+
+  <!-- icons -->
+  <link theme-icon rel="icon" href="">
+  <meta theme-color name="msapplication-TileColor" content="">
+  <meta theme-color name="msapplication-TileImage" content="">
+  <meta theme-color name="theme-color" content="">
+  <link theme-icon rel="apple-touch-icon" href="">
+
+  <!-- font -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- css -->
+  <link type="text/css" href="css/libs.min.css" rel="stylesheet">
+  <link type="text/css" href="css/site.css" rel="stylesheet">
+
+</head>
+
+<body class="content">
+
+<header role="banner">
+
+  <a class="brand md-plus" href="index"><img theme-logo src="resources/respond-logo.png"></a>
+
+  <a class="brand sm" href="index"><img theme-logo src="resources/respond-logo-sm.png"></a>
+
+  <nav class="navbar md-plus" role="navigation">
+
+    <ul respond-plugin type="menu" menu="primary">
+      <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
+      <li><a href="page/tour">Tour</a></li>
+      <li><a href="learn">Learn</a></li>
+      <li><a href="marketplace">Store</a></li>
+      <li><a href="help">Help</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="menu sm" toggle-drawer>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg>
+  </div>
+
+  <div class="search" fire-event="search-toggled">
+    <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
+  </div>
+
+</header>
+
+<div id="content" class="container" role="main">
+  <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
+    <div  class="col col-md-12">
+      <h1>Creating Plugins</h1>
+      <p>Respond enables you to create plugins using the same mechanism that the editor published content to the page: &nbsp;using standard HTML and Polymer-based web components to provide its utility on the site. &nbsp;A sample plugin is available in the app at <b>/plugins/sample/</b>. &nbsp;This documentation will walk you through how to enable the sample plugin and provides an explanation as to how it is structured so that you can create your own plugins.</p>
+      <h2 id="h2-1" class="top-divider" data-i18n="54860d04eb7ee.h2-1">Enabling the Plugin</h2>
+      <p id="p-1" data-i18n="54860d04eb7ee.p-1">The&nbsp;<code>/plugins/sample/plugin.json</code>&nbsp;file provides the application with all the information it needs to render your plugin. &nbsp;The enable the plugin, simply copy the JSON in this file into the&nbsp;<code>/data/editor.json</code>&nbsp;file. &nbsp;This file tells the editor what plugins to make available to the end user.</p>
+      <p id="p-2" data-i18n="54860d04eb7ee.p-2">NOTE: &nbsp;If you are logged into the application, you will need to logout and re-login to enable the plugin because the JSON file is cached at login.</p>
+      <h2 id="h2-2" class="top-divider" data-i18n="54860d04eb7ee.h2-2">Plugin Structure</h2>
+      <p id="p-4" data-i18n="54860d04eb7ee.p-4">A plugin consists of three parts: &nbsp;(1) an HTML file that handles the configuration form displayed in the contextual menu (the menu to the right of the editor), (2) a JavaScript file that processes this configuration file, and a (3) Polymer-based web component that the site uses to render the plugin.</p>
+      <p id="p-5" data-i18n="54860d04eb7ee.p-5">We will walk through each one of these parts for the sample plugin.</p>
+      <h3 id="h3-3" data-i18n="54860d04eb7ee.h3-3">1. HTML configuration file</h3>
+      <p id="p-6" data-i18n="54860d04eb7ee.p-6">You can find the HTML configuration file for the sample plugin in your build at <b>/plugins/sample/config/sample.html.</b> &nbsp;The HTML configuration file is used to specify what is displayed in the right&nbsp;context menu of the editor when the plugin gains focus. &nbsp;Form elements in this file are assigned to a model using AngularJS. &nbsp;This model automatically maps the value in the model to the attribute in the editor. &nbsp;So, when you change a value in the contextual menu, it is automatically reflected in the editor.</p>
+      <p id="p-10" data-i18n="54860d04eb7ee.p-10">You specify these form fields just like you would any other AngularJS form.</p>
+      <pre id="pre-2" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">&lt;div class="form-group">
+    &lt;label for="id">{{'Id' | i18next}}&lt;/label>
+        &lt;input name="id" type="text" maxlength="128" class="form-control"
+            ng-model="node.id">
+&lt;/div></pre>
+      <p id="p-11" data-i18n="54860d04eb7ee.p-11">In the example above, the text input field is being mapped to the model <b>node.id</b>. &nbsp;This will automatically set the <b>data-id</b>&nbsp;attribute for that element when the value is changed. &nbsp;As you dig through the example plugins, you might also see an element mapped to the <b>element.attribute</b>. &nbsp;This is for more advanced plugins that enable modifying an element within the node. &nbsp;In this case, the data attribute will change for the current element, not the node itself.</p>
+      <h3 id="h3-2" data-i18n="54860d04eb7ee.h3-2">2. &nbsp;Plugin JavaScript file</h3>
+      <p id="p-3" data-i18n="54860d04eb7ee.p-3">The plugin JavaScript file interacts with the editor during key events within the lifecycle of the editor. &nbsp;Specifically, it handles the creation of a new plugin (create), the parsing of an existing plugin (parse), and the generating of the HTML that is rendered to the site (generate). &nbsp;The table below outlines these methods for the sample plugin. &nbsp;Each method is required. &nbsp;And each method returns HTML. &nbsp;The create and parse produce a common set of HTML that is displayed in the editor. &nbsp;The generate produces the web component code that is published to your site.</p>
+      <table id="table-1" class="table table-striped table-bordered col-2">
+        <thead>
+          <th>JavaScript Method</th>
+          <th>Usage</th>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>plugin.sample.create</td>
+            <td>This creates the initial HTML used by the editor to display the plugin to the editor.</td>
+          </tr>
+          <tr>
+            <td>plugin.sample.parse</td>
+            <td>Parses the element in the page and creates HTML used by the editor to display the plugin to the editor. &nbsp; Note: &nbsp;this content should match what is returned in the plugin.sample.create method.</td>
+          </tr>
+          <tr>
+            <td>plugin.sample.generate</td>
+            <td>Generates the element that is published to the page.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="h3-4" data-i18n="54860d04eb7ee.h3-4">3. Polymer-based web component</h3>
+      <p id="p-7" data-i18n="54860d04eb7ee.p-7">Respond uses Polymer to provide the utility of your plugin to the site. &nbsp;Respond passes information to the component via the HTML attributes and content created in the generate function of your plugin (as described above). &nbsp;The great thing about Polymer is that the element itself is just a standard HTML element. &nbsp;It can have attributes and even contain other elements. &nbsp;For example, the HTML for &nbsp;<b>respond-map</b>&nbsp;plugin is shown below.&nbsp;</p>
+      <pre id="pre-1" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">&lt;respond-map address="55 sample ave, St. Louis MO 63105" zoom="5">&lt;/respond-map></pre>
+      <p id="p-12" data-i18n="54860d04eb7ee.p-12">The sample plugin generates HTML as shown below.&nbsp;</p>
+      <pre id="pre-3" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">&lt;plugin-sample id="sampleId" class="sampleClass" data-attr1="option-1" data-attr2="option-2">&lt;/plugin-sample></pre>
+      <p id="p-9" data-i18n="54860d04eb7ee.p-9">Providing the display of the component is handled by your Polymer element. &nbsp;Developing web components via Polymer is out of the scope of this document. &nbsp;To learn more, via&nbsp;the&nbsp;<a href="https://www.polymer-project.org/">Polymer Project</a>&nbsp;web site.</p>
+      <p id="p-8" data-i18n="54860d04eb7ee.p-8">The Polymer element itself is stored in <b>/plugins/sample/component/plugin-sample.html</b>. &nbsp;This directory is deployed to the site when it is published. &nbsp;You can directly reference the plugin from your HTML using an HTML import. &nbsp;(NOTE: this is shimmed by Polymer for browsers not supporting HTML imports)</p>
+      <pre id="pre-4" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">&lt;link rel="import" href="components/plugin-sample.html"></pre>
+      <p id="p-13" data-i18n="54860d04eb7ee.p-13">You may have noticed that the built-in plugins are automatically deployed without a specific reference (as above). &nbsp;This is because they are part of the default build that goes out with the site.</p>
+      <pre id="pre-5" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">&lt;link rel="import" href="components/respond-build.html"></pre>
+      <p id="p-14" data-i18n="54860d04eb7ee.p-14">Respond uses&nbsp;<a href="https://www.polymer-project.org/articles/concatenating-web-components.html">Polymer's Vulcanize build tool</a>&nbsp;to concatenate and trim the build files. &nbsp;This makes for a cleaner build with less requests. &nbsp;You can build your own components along with the default Respond components. &nbsp;Simply copy your plugin to <b>/site/components/</b>&nbsp;and include a reference to your plugin in <b>/site/components/respond.html</b>&nbsp;and run the Vulcanize tool from the command line.</p>
+      <pre id="pre-6" class="prettyprint linenums pre-scrollable" description="PRE" respond-pre="true">vulcanize respond.html > respond-build.html --strip-comments --inline-css
+</pre>
+      <p id="p-15" data-i18n="54860d04eb7ee.p-15">Vulcanize does require NodeJS and NPM. &nbsp;For more information, see the&nbsp;<a href="https://www.polymer-project.org/articles/concatenating-web-components.html">Vulcanize Tool page</a>.</p>
+    </div>
+  </div>
+</div>
+
+<footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
+
+  <h2>100% open source, always.</h2>
+
+  <p>Built by Matthew Smith in Manchester, MO.  Respond 6 is an open source, responsive content management system built on the Lumen PHP and Angular 2 frameworks.  Respond 6 is built so that you can quickly build beautiful, responsive websites.  The latest version features flat-file storage, a beautiful visual editor, and fast static sites.</p>
+
+  <nav>
+    <ul respond-plugin type="menu" menu="footer">
+      <li><a href="index">Home</a></li>
+      <li><a href="page/tour">Tour</a></li>
+      <li><a href="learn">Learn</a></li>
+      <li><a href="marketplace">Store</a></li>
+      <li><a href="help">Help</a></li>
+    </ul>
+  </nav>
+
+</footer>
+
+</body>
+
+<!-- js -->
+<script src="js/libs.min.js"></script>
+<script src="js/plugins.js"></script>
+
+<!-- respond-plugin:analytics -->
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-34995127-1', 'auto');
+   ga('send', 'pageview');
+
+</script>
+ <!-- /respond-plugin:analytics -->
+
+</html>

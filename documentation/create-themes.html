@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+ <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{page.title}}</title>
+  <title>Respond - Creating themes</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="{{page.description}}">
+  <meta name="description" content="Learn how to create themes for Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -42,6 +42,7 @@
 
     <ul respond-plugin type="menu" menu="primary">
       <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
@@ -63,13 +64,84 @@
 
 </header>
 
-<div id="content" class="container" role="main">
-  <div id="block-1" class="block row">
-    <div class="col col-md-12">
-        <h1>{{page.title}}</h1>
-        <p>{{page.description}}</p>
-    </div>
-  </div>
+<div class="container" id="content" role="main">
+   <div class="block row">
+      <div class="col col-md-12">
+         <h1>Creating Themes</h1>
+         <p>This tutorial will provide you
+            with everything you need to know about themes in&nbsp;Respond. This
+            tutorial includes the location of themes, creating a new theme, and a
+            description of&nbsp;all the files that make up a theme.
+         </p>
+
+         <h3>Sites as Themes</h3>
+
+         <p>To build a theme for Respond 6, simply build a site and then add a <code>theme.json</code> configuration file to tell the CMS what containers can be edited and what elements can be dragged.</p>
+
+         <h3>Theme Settings</h3>
+
+         <p>The <code>settings.json</code> file should be placed in the <code>.private/settings.json</code> folder for your theme.</p>
+
+         <pre class="prettyprint linenums pre-scrollable">
+[
+    {
+        "id": "packages",
+        "value": "core, bootstrap"
+    },
+    {
+        "id": "editable",
+        "value": "[role=\"main\"]"
+    },
+    {
+        "id": "sortable",
+        "value": ".col, .column"
+    }
+]</pre>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Setting</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>packages</td>
+                <td>A comma separated list of built-in plugin packages (e.g. packages)</td>
+              </tr>
+              <tr>
+                <td>editable</td>
+                <td>A comma separated list of selectors to elements that are editable</td>
+              </tr>
+              <tr>
+                <td>sortable</td>
+                <td>A comma separated list of selectors to elements that are sortable.  These should be a container of relative placed elements.</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Default Content</h3>
+
+          <p>Default content is the content added to a new page created within Respond.  Default content should be placed in the <code>.default.html</code> file in the root of the theme.</p>
+
+         <h3>Theme Best Practices</h3>
+
+         <ol>
+            <li>Elements in the <code>draggable</code> containers should be positioned relative.</li>
+            <li>Elements in the <code>draggable</code> containers should not be floated.</li>
+            <li>An element should have a <code>role="main"</code> attribute.  This is used as the main content for the page by the <code>respond-content</code> and <code>respond-list</code> plugins.</li>
+         </ol>
+
+         <h3>Installing a theme</h3>
+
+         <p>
+           Simply place the theme folder in <code>resources/themes</code>
+         </p>
+
+      </div>
+   </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">

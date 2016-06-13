@@ -1,0 +1,91 @@
+.pay-block {
+  margin-bottom: 25px;
+  padding: 25px 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.pay-block input[type=number] {
+  width: 100px;
+  height: 50px;
+  font-size: 25px;
+  text-align: right;
+}
+
+.pay-block .mark {
+  font-size: 25px;
+  color: #888;
+  display: inline-block;
+  width: 15px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.pay-block .pay-radio {
+  display: block;
+  margin: 10px 0 25px 15px;
+}
+
+.pay-block .pay-radio label {
+  margin-right: 15px;
+}
+
+.pay-block button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #888;
+  margin-right: 15px;
+  min-width: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #00ADE3;
+  background-color: #00ADE3;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pay-block a {
+  color: #00ADE3;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* perks */
+.perk {
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  margin: 0 0 25px 0;
+  padding: 25px;
+}
+
+.perk h4, .perk p {
+  margin: 0;
+  padding: 0;
+}
+
+.perk h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  color: #2F3243;
+}
+
+.perk small {
+  display: block;
+
+  color: #00ADE3;
+  text-transform: uppercase;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+.perk p {
+  color: #888;
+}
+
+.perk p strong {
+  color: #555;
+}

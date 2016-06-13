@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+ <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{page.title}}</title>
+  <title>Respond - Install with ZPANEL</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="{{page.description}}">
+  <meta name="description" content="Welcome to your new homepage created with Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -42,6 +42,7 @@
 
     <ul respond-plugin type="menu" menu="primary">
       <li><a href="index">Home</a></li>
+      <li><a href="download">Download</a></li>
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
@@ -64,12 +65,7 @@
 </header>
 
 <div id="content" class="container" role="main">
-  <div id="block-1" class="block row">
-    <div class="col col-md-12">
-        <h1>{{page.title}}</h1>
-        <p>{{page.description}}</p>
-    </div>
-  </div>
+  <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass=""><div  class="col col-md-12"><h1>Install with ZPanel</h1><p>This tutorial will walk you through installing&nbsp;Respond&nbsp;on an Ubuntu server with ZPanel installed. &nbsp;This tutorial is provided by&nbsp;<a href="https://github.com/glenskie16">Glenn</a>&nbsp;and available on his&nbsp;<a href="https://github.com/glenskie16/Composer-install">Github page</a>.&nbsp; If you are using Digital Ocean, use&nbsp;<a href="https://www.digitalocean.com/?refcode=0d40ffc9ced0">Glen's referral code when you sign up</a>&nbsp;to show support. &nbsp;</p><h3 id="h3-1" ng-i18next="[html]54256e894390c.h3-1">Prerequisites</h3><p id="p-1" ng-i18next="[html]54256e894390c.p-1">To get started, make sure you have ZPanel (or Sentora) installed and you are running Ubuntu 12.04 LTS.</p><h3 id="h3-2" ng-i18next="[html]54256e894390c.h3-2">1. Logon to your server as root</h3><pre id="pre-1" description="PRE" respond-pre="true" ng-non-bindable="true">sudo -i</pre><h3 id="h3-3" ng-i18next="[html]54256e894390c.h3-3">2. Ensure you are in the home directory</h3><pre id="pre-2" description="PRE" respond-pre="true" ng-non-bindable="true">cd</pre><h3 id="h3-4" ng-i18next="[html]54256e894390c.h3-4">3. Download the installer</h3><pre id="pre-3" description="PRE" respond-pre="true" ng-non-bindable="true">wget https://raw.githubusercontent.com/glenskie16/Composer-install/master/composerinstall.sh</pre><h3 id="h3-5" ng-i18next="[html]54256e894390c.h3-5">4. Make the installer executable</h3><pre id="pre-4" description="PRE" respond-pre="true" ng-non-bindable="true">chmod +x composerinstall.sh</pre><h3 id="h3-6" ng-i18next="[html]54256e894390c.h3-6">5. Run the installer</h3><pre id="pre-5" description="PRE" respond-pre="true" ng-non-bindable="true">sudo ./composerinstall.sh</pre><h3 id="h3-7" ng-i18next="[html]54256e894390c.h3-7">6. Follow the onscreen instructions during the installation</h3></div></div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
