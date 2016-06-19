@@ -64,8 +64,19 @@
 
 </header>
 
+
 <div id="content" class="container" role="main">
-  <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass=""><div  class="col col-md-12"><h1>Install</h1><p>Are you ready to get started with&nbsp;Respond? &nbsp;Learn how to install it on a traditional LAMP deployment. &nbsp;Read more about the&nbsp;<a ui-sref="documentation/server-requirements" href="/documentation/server-requirements">server requirements.</a></p><h3 id="h3-1" data-i18n="5415d5b5dfaf6.h3-1">1. Create the directory structure for&nbsp;Respond</h3><p id="p-1" data-i18n="5415d5b5dfaf6.p-1">You create your directory structure by navigating to your web root and creating folders for&nbsp;Respond.</p><pre id="pre-1" class="prettyprint linenums pre-scrollable" description="Step 1" respond-pre="true">// go to your HTML root
+   <div id="block-1" class="block row">
+      <div class="col col-md-12">
+
+         <h1>Installation</h1>
+         
+         <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>. This helps us pay for hosting.</p>
+         
+         <p>Are you ready to get started with Respond? Learn how to install it on a traditional LAMP deployment. Read more about the <ahref="documentation/system-requirements">server requirements.</a></p>
+         <h3>1. Create the directory structure for Respond</h3>
+         <p>You create your directory structure by navigating to your web root and creating folders for Respond.</p>
+         <pre id="pre-1" class="prettyprint">// go to your HTML root
 cd var/www/html
 
 // create the respond directory
@@ -81,28 +92,37 @@ mkdir app
 cd app
 
 // make sites directory in app (app/sites)
-mkdir sites</pre><h3 id="h3-2" data-i18n="5415d5b5dfaf6.h3-2">2. &nbsp;Make the sites directory writeable</h3><p id="p-2" data-i18n="5415d5b5dfaf6.p-2">This is typically done by making Apache the owner of the directory. &nbsp;You can also set permissions on the folder. &nbsp;Contact your hosting provider about the correct permissions for writeable directories.</p><pre id="pre-2" class="prettyprint linenums pre-scrollable" description="Step 2" respond-pre="true">chown -R www-data sites
-</pre><h3 id="h3-3" data-i18n="5415d5b5dfaf6.h3-3">3. &nbsp;Map domains</h3><p id="p-3" data-i18n="5415d5b5dfaf6.p-3">We recommend you setup a domain for your application and a sub-domain (or domain) for each of your sites. &nbsp;This allows you to secure your application using https and provide nice URLs for sites created using the CMS. &nbsp;Domains are typically setup
-            using DNS and your htdocs file. Refer to your hosting provider's documentation on setting up domains. &nbsp;For installs that will host multiple sites, we have created a guide for&nbsp;<a ui-sref="documentation/wildcard-subdomain-install" href="/documentation/wildcard-subdomain-install">installing wildcard DNS</a>&nbsp;based
-            on our Digital Ocean setup.</p><pre id="pre-3" class="prettyprint linenums pre-scrollable" description="Step 3" respond-pre="true">.../respond
-     .../respond/app   ->  http://app.myrespond.com
-     .../respond/app/sites/mysite  ->  http://mysite.myrespond.com</pre><h3 id="h3-4" data-i18n="5415d5b5dfaf6.h3-4">4. &nbsp;Pull Repository</h3></div></div><div id="block-3" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass=""><div  class="col col-md-9"><p id="p-4" data-i18n="5415d5b5dfaf6.p-4">Respond&nbsp;hosts its source code on Github. &nbsp;It consists of two repositories (one for the app, and one for the API). Clone the repository into your app directory. &nbsp;Note the trailing period (.). &nbsp;This clones the repo into the current directory. &nbsp;The end result should be the structure pictured on the right.&nbsp;</p><pre id="pre-4" class="prettyprint linenums pre-scrollable" description="Step 4" respond-pre="true">// switch to app directory
+mkdir public/sites</pre>
+         <h3 id="h3-2" data-i18n="5415d5b5dfaf6.h3-2">2. Make the sites directory writeable</h3>
+         <p id="p-2" data-i18n="5415d5b5dfaf6.p-2">This is typically done by making Apache the owner of the directory. You can also set permissions on the folder. Contact your hosting provider about the correct permissions for writeable directories.</p>
+         <pre id="pre-2" class="prettyprint pre-scrollable">chown -R www-data public/sites
+chown -R www-data resources/sites</pre>
+         
+         <h3>3. Pull Repository or Copy from ZIP</h3>
+         <p>Respond can be pulled from Github or installed from a ZIP file.  The ZIP file should be extracted to your app directory created above.  Git installation shown below.  Note the trailing comma to copy the repository into the current directory.</p>
+         <pre class="prettyprint pre-scrollable">// switch to app directory
 cd app
 
 // clone Respond repository
 git clone https://github.com/madoublet/respond.git .
-</pre></div><div  class="col col-md-3"><div id="image-1" class="respond-image" data-display="standalone" data-i18n="5415d5b5dfaf6.image-1"><a href="http://respondcms.com.s3-website-us-east-1.amazonaws.com/respond/files/structure.png" respond-lightbox><img src="http://respondcms.com/files/structure-sm.png" data-location="local"></a></div><p id="p-5" class="enlarge-image-text" data-i18n="5415d5b5dfaf6.p-5">Click to Enlarge</p></div></div><div id="block-4" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass=""><div  class="col col-md-12"><h3 id="h3-6" data-i18n="5415d5b5dfaf6.h3-6">5. &nbsp;Create your Database</h3><p id="p-6" data-i18n="5415d5b5dfaf6.p-6">Respond&nbsp;using MySQL to store data for the CMS. &nbsp;You need to install the schema (/schema.sql) to get it up and running. &nbsp;Refer to your host's documentation on installing and configuring MySQL. &nbsp;</p><h3 id="h3-7" data-i18n="5415d5b5dfaf6.h3-7">6. &nbsp;Update Settings</h3><p id="p-9" data-i18n="5415d5b5dfaf6.p-9">Update the database connection parameters and APP_URL in /setup.php.</p><pre id="pre-7" class="prettyprint linenums pre-scrollable" description="Step 7 B" respond-pre="true">/*********************************/
-/*  BASIC SETUP                  */
-/*********************************/
+</pre>
+        <h3>4. Setup env</h3>
+         <p>Copy the env file.  You can <a href="documentation/setup-reference">set this up later</a> to specify email and other settings.</p>
+         <pre id="pre-4" class="prettyprint pre-scrollable" description="Step 4" respond-pre="true">// switch to app directory
+cp .env.example .env
+</pre>
 
-// DB connection parameters
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'respond');
-define('DB_USER', 'dbuser');
-define('DB_PASSWORD', 'dbpass');
-
-// APP URL
-define('APP_URL', 'http://app.myrespond.com');</pre><h3 id="h3-8" data-i18n="5415d5b5dfaf6.h3-8">7. Create your first site</h3><p id="p-10" data-i18n="5415d5b5dfaf6.p-10">Simple go to your application URL (e.g. http://app.myrespond.com) and follow the instructions. &nbsp;Your default passcode is <b>iloverespond</b>.</p><respond-content url="component/installation-help"></respond-content></div></div>
+      <h3>5. Map domains</h3>
+      <p>We recommend you setup a domain for your application and a sub-domain (or domain) for each of your sites. This allows you to secure your application using https and provide nice URLs for sites created using the CMS. Domains are typically setup
+            using DNS and your htdocs file. Refer to your hosting provider's documentation on setting up domains. For installs that will host multiple sites, we have created a guide for <a href="/documentation/wildcard-subdomain-install">installing wildcard DNS</a> based
+            on our Digital Ocean setup.
+         </p>
+         <pre class="prettyprint pre-scrollable">.../respond
+.../respond/app   ->  https://app.myrespond.com
+.../respond/app/public/sites/mysite  ->  https://mysite.myrespond.com or https://app.myrespond.com/sites/my-site</pre>
+    
+      </div>
+   </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
@@ -124,6 +144,9 @@ define('APP_URL', 'http://app.myrespond.com');</pre><h3 id="h3-8" data-i18n="541
 </footer>
 
 </body>
+
+<!-- prettyprint for docs -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 <!-- js -->
 <script src="js/libs.min.js"></script>

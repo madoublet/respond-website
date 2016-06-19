@@ -53,6 +53,14 @@
   cursor: pointer;
 }
 
+.pay-block .processed-by {
+  font-size: 13px;
+  color: #888;
+  text-transform: uppercase;
+  margin: 25px 0 0 0;
+  padding: 0;
+}
+
 /* perks */
 .perk {
   border: 1px solid #ddd;

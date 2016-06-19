@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Video Plugin</title>
+  <title>Respond - Creating themes</title>
 
   <!-- meta -->
   <meta charset="utf-8">
@@ -64,13 +64,76 @@
 
 </header>
 
-<div id="content" class="container" role="main">
-  <div id="block-1" class="block row">
-    <div  class="col col-md-12">
-      <h1>Video Plugin</h1>
-      <p>More details soon.</p>
-    </div>
-  </div>
+<div class="container" id="content" role="main">
+   <div class="block row">
+      <div class="col col-md-12">
+         <h1>Settings</h1>
+         <p>Theme settings enable you to allow global configurations across your site.  They work great when you want to provide easy access for your users to change global design elements, such as logos, icons, or tile colors.  A user can edit settings in the Settings UI of the Respond application.</p>
+         
+         <h3>Creating a Setting</h3>
+         
+         <p>Settings are stored on the theme under <code>resources/theme-name/.private/settings.json</code>.  They are copied to the site under <code>resources/sites/site-name/settings.json</code>.  Settings are stored in JSON in the following format.
+
+         <pre class="prettyprint linenums pre-scrollable">
+{
+  "id": "theme-logo",
+  "label": "Logo",
+  "description": "Primary logo of the site",
+  "type": "image",
+  "value": "files\/sample-logo.png",
+  "sets": "attribute",
+  "attribute": "src"
+}</pre>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Setting</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>The unique identifier for the setting.</td>
+              </tr>
+              <tr>
+                <td>label</td>
+                <td>The label shown in the settings UI.</td>
+              </tr>
+              <tr>
+                <td>description</td>
+                <td>The description shown in the settings UI.</td>
+              </tr>
+              <tr>
+                <td>type</td>
+                <td>The type of input shown in the settings UI (text or image are supported).</td>
+              </tr>
+              <tr>
+                <td>value</td>
+                <td>The default value of the setting.</td>
+              </tr>
+              <tr>
+                <td>sets</td>
+                <td>What is set by the setting (e.g. attribute)</td>
+              </tr>
+              <tr>
+                <td>attribute</td>
+                <td>The attribute that is set by the setting.</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>Reference Settings in Code</h3>
+          
+          <p>You reference a setting using the <code>id</code> of the setting as an attribute for the element.</p>
+          
+          <pre class="prettyprint linenums pre-scrollable">&lt;img theme-logo src="files/persistence.png"&gt;</pre>
+          
+          
+
+      </div>
+   </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
@@ -110,4 +173,4 @@
 </script>
  <!-- /respond-plugin:analytics -->
 
-</html>
+</html>s

@@ -7,7 +7,7 @@
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to create themes in Respond">
+  <meta name="description" content="Learn how to create themes for Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
@@ -64,174 +64,83 @@
 
 </header>
 
-<div id="content" class="container" role="main">
-  <div id="block-2" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
-    <div  class="col col-md-12">
-      <h1 id="h1-1" ng-i18next="[html]5415de2c409e4.h1-1">Creating Themes</h1>
-      <p id="p-1" ng-i18next="[html]5415de2c409e4.p-1">This tutorial will provide you with everything you need to know about themes in&nbsp;Respond. This tutorial includes the location of themes, creating a new theme, and a description of&nbsp;all the files that make up a theme.</p>
-      <h3 id="h3-1" ng-i18next="[html]5415de2c409e4.h3-1">Location and Installation</h3>
-      <p id="p-2" ng-i18next="[html]5415de2c409e4.p-2">Themes for Respond are located in the /themes folder off your installation directory. By default,&nbsp;Respond&nbsp;ships with 1 theme: simple located at /themes/simple.
-      </p>
-      <h3 id="h3-9" ng-i18next="[html]5415de2c409e4.h3-9">Creating a Theme</h3>
-      <p id="p-3" ng-i18next="[html]5415de2c409e4.p-3">The easiest way to create a theme for Respond is to copy the <b>simple</b> theme to a new folder within the themes folder, and then use that as a starting point for your own theme. This tutorial will get into the details of what each theme file
-        does.
-      </p>
-      <h3 id="h3-2" ng-i18next="[html]5415de2c409e4.h3-2">Theme Folders</h3>
-      <p id="p-4" ng-i18next="[html]5415de2c409e4.p-4">The following folders are used to create a theme for Respond.</p>
-      <table id="table-2" class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th class="col-1">Folder</th>
-            <th class="col-2">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-1">/themes/theme-name/files</td>
-            <td class="col-2">Holds any files you want added to the site along with your theme. You can use this folder to upload JS and images that support your theme. These will be transferred to the sites files/ directory after installation. All files uploaded
-              here will show up in the files section of the app and can be accessed by the user. For files that you don't want the user interacting with, consider using the resources (see below) folder.
-            </td>
-          </tr>
-          <tr>
-            <td class="col-1">/themes/theme-name/layouts</td>
-            <td class="col-2">Layouts in Respond define the structure of pages for the application. They are written in HTML with special mustache-syntax based tags that allow the page to interact with the CMS. <a href="../documentation/mustache"> Learn more about Respond's Mustache Syntax</a>.</td>
-          </tr>
-          <tr>
-            <td class="col-1">/themes/theme-name/pages</td>
-            <td class="col-2">The pages define the default content for the about, blog, contact, error, home, and post pages that are created when you create a new site in Respond with the theme. You set which theme Respond uses by default in <b>setup.php</b> using
-              the <code>DEFAULT_THEME</code> constant.
-            </td>
-          </tr>
-          <tr>
-            <td class="col-1">/themes/theme-name/styles</td>
-            <td class="col-2">The styles folder contains the LESS files that define the presentation for a site within Respond. The LESS files are compiled into CSS when the site is published or a change is made via the application.</td>
-          </tr>
-          <tr>
-            <td class="col-1">/themes/theme-name/resources</td>
-            <td class="col-2"><b>Version 2.9+: </b>The resources folder holds any static files (e.g. images, fonts, JavaScript, or CSS libraries) that you don't want the user interacting with. This folder is copied to the /sites/[my-site]/themes/[theme-name]/resources
-              folder and can be referenced with {{resources}} from the layout or ../themes/[theme-name]/resources/ from your LESS.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 id="h3-3" ng-i18next="[html]5415de2c409e4.h3-3">Layouts</h3>
-      <p id="p-5" ng-i18next="[html]5415de2c409e4.p-5">The following layouts must be defined for each theme created in Respond. However, you can create as many layouts as you want for your theme.</p>
-      <table id="table-1" class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th class="col-1">Template File</th>
-            <th class="col-2">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-1">layouts/blog.html</td>
-            <td class="col-2">Defines the default layout for the blog list page.</td>
-          </tr>
-          <tr>
-            <td class="col-1">layouts/content.html</td>
-            <td class="col-2">Defines the default layout for all content pages. By default, these are any pages created in the pages/ directory.</td>
-          </tr>
-          <tr>
-            <td class="col-1">layouts/home.html</td>
-            <td class="col-2">Defines the default layout for the home page.</td>
-          </tr>
-          <tr>
-            <td class="col-1">layouts/post.html</td>
-            <td class="col-2">Defines the default layout for a blog post.</td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 id="h3-4" ng-i18next="[html]5415de2c409e4.h3-4">Styles</h3>
-      <p id="p-6" ng-i18next="[html]5415de2c409e4.p-6">The following styles (LESS) files must be defined for each theme created in Respond. However, you can create as many LESS files as you want.</p>
-      <p id="p-7" ng-i18next="[html]5415de2c409e4.p-7">Respond uses LESS as a pre-processor for its CSS. LESS is great for template building and makes it easy for others to update the color scheme of your template. To learn what you can do with LESS, see <a href="http://lesscss.org/">the official documentation</a>.</p>
-      <table id="table-5" class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th class="col-1">Styles File</th>
-            <th class="col-2">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-1">styles/content.less</td>
-            <td class="col-2">Defines the presentation for content pages created in Respond.</td>
-          </tr>
-          <tr>
-            <td class="col-1">styles/global.less</td>
-            <td class="col-2">Defines the global presentation for pages created in Respond. In the simple theme, all other LESS files import this stylesheet. However, you can decide how you want to structure these files.</td>
-          </tr>
-          <tr>
-            <td class="col-1">styles/home.less</td>
-            <td class="col-2">Defines the presentation for the home page in Respond.</td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 id="h3-5" ng-i18next="[html]5415de2c409e4.h3-5">Pages</h3>
-      <p id="p-8" ng-i18next="[html]5415de2c409e4.p-8">Respond allows you to define the content for the pages that are added by default when a site is created in Respond. The following pages are created by default in Respond 2.5+. You cannot define additional pages. You set which theme Respond
-        uses by default in <b style="font-size: 14px; line-height: 20px;">setup.php</b> using the <code>DEFAULT_THEME</code> constant.
-      </p>
-      <table id="table-4" class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th class="col-1">Page</th>
-            <th class="col-2">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-1">pages/about.html</td>
-            <td class="col-2">This is just a simple about us page.</td>
-          </tr>
-          <tr>
-            <td class="col-1">pages/blog.html</td>
-            <td class="col-2">A page that displays a list of recent blog posts ordered by the date created.</td>
-          </tr>
-          <tr>
-            <td class="col-1">pages/contact.html</td>
-            <td class="col-2">A form to allow a visitor to the site to contact the site owner.</td>
-          </tr>
-          <tr>
-            <td class="col-1">pages/error.html</td>
-            <td class="col-2">The page that is shown when a 404 (or other) error occurs on the site.</td>
-          </tr>
-          <tr>
-            <td class="col-1">pages/home.html</td>
-            <td class="col-2">The home page of the site.</td>
-          </tr>
-          <tr>
-            <td class="col-1">pages/post.html</td>
-            <td class="col-2">The sample blog post that is created with the site.</td>
-          </tr>
-        </tbody>
-      </table>
-      <h3 id="create-theme-h3-12" ng-i18next="[html]5415de2c409e4.create-theme-h3-12">Managing Resources</h3>
-      <p id="p-10" ng-i18next="[html]5415de2c409e4.p-10">Themes come with a lot of stuff (Images, CSS libraries, fonts, JavaScript libraries, CSS libraries, etc.) to make them work. While it makes sense to make some of this stuff accessible to the user via layouts, styles, and files. Some files
-        are really just static to the theme and should not be accessible to the user. The resources folder provides a place to store these files and copy them to the site.
-      </p>
-      <p id="p-11" ng-i18next="[html]5415de2c409e4.p-11">For layouts, resources are accessible via the new {{resources}} syntax. This provides you a quick way to reference your resources.</p>
-      <p id="p-13" ng-i18next="[html]5415de2c409e4.p-13">For your styles, there is no built-in way to reference your resources. Since styles, sit at the same depth throughout the app you can reference them via a relative url, e.g. ../themes/theme-name/resources/, or you can use a LESS variable,
-        as shown below.
-      </p>
-      <PRE id="pre-1" description="Styles Reference" respond-pre="true" ng-non-bindable="true">@resources: '../themes/theme-name/resources/';
-...
-@import url("@{resources}sample.css");
-...
-background: transparent url("@{resources}sample.png") no-repeat 0 0;</PRE>
-      <h3 id="create-theme-h3-16" ng-i18next="[html]5415de2c409e4.create-theme-h3-16">Branding Colors</h3>
-      <p id="p-14" ng-i18next="[html]5415de2c409e4.p-14">Respond&nbsp;allows you to expose colors through the Branding screen via LESS variables.</p>
-      <PRE id="pre-2" description="LESS" respond-pre="true" ng-non-bindable="true">// Defining a color in LESS, will show up in colors as 'Background Color'
-@background-color: #888888;</PRE>
-      <h3 id="h3-7" ng-i18next="[html]5415de2c409e4.h3-7">Setting a name and Description</h3>
-      <p id="p-15" ng-i18next="[html]5415de2c409e4.p-15">The name and description for your theme is shown in the Theme menu item within Respond. To configure this name and description, simply update the <code>theme.json</code> file in your theme folder.</p>
-      <PRE id="pre-3" class="prettyprint linenums pre-scrollable" description="Theme JSOn" respond-pre="true" ng-non-bindable="true">{
-	"name": "Simple",
-	"desc": "This is the default theme for Triangulate CMS and a great starting point for any responsive site"
-}</PRE>
-      <h3 id="h3-8" ng-i18next="[html]5415de2c409e4.h3-8">Installing and Distributing your Theme</h3>
-      <p id="p-16" ng-i18next="[html]5415de2c409e4.p-16">To install a theme, simply copy that theme to the <code>/themes</code> folder. Themes have no dependencies, so you can simply ZIP the theme folder to distribute it.</p>
-    </div>
-  </div>
+<div class="container" id="content" role="main">
+   <div class="block row">
+      <div class="col col-md-12">
+         <h1>Creating Themes</h1>
+         <p>This tutorial will provide you
+            with everything you need to know about themes in&nbsp;Respond. This
+            tutorial includes the location of themes, creating a new theme, and a
+            description of&nbsp;all the files that make up a theme.
+         </p>
+
+         <h3>Sites as Themes</h3>
+
+         <p>To build a theme for Respond 6, simply build a site and then add a <code>theme.json</code> configuration file to tell the CMS what containers can be edited and what elements can be dragged.</p>
+
+         <h3>Theme Settings</h3>
+
+         <p>The <code>settings.json</code> file should be placed in the <code>.private/settings.json</code> folder for your theme.</p>
+
+         <pre class="prettyprint linenums pre-scrollable">
+[
+    {
+        "id": "editable",
+        "value": "[role=\"main\"]"
+    },
+    {
+        "id": "sortable",
+        "value": ".col, .column"
+    }
+]</pre>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Setting</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>editable</td>
+                <td>A comma separated list of selectors to elements that are editable</td>
+              </tr>
+              <tr>
+                <td>sortable</td>
+                <td>A comma separated list of selectors to elements that are sortable.  These should be a container of relative placed elements.</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Default Content</h3>
+
+          <p>Default content is the content added to a new page created within Respond.  Default content should be placed in the <code>.default.html</code> file in the root of the theme.</p>
+
+         <h3>Theme Best Practices</h3>
+         
+         <h4>BASE element</h4>
+         
+         <p>Respond adds all links and images relative to the root of the site.  As a result, pages in the theme must specify a <code>base</code> element relative to the root.  For instance, pages in a <code>/page/</code> subdirectory must have a base of <code>&lt;base href="../"&gt;.</code></p>
+         
+         <h4>Sortable ellements must be positioned static or relative. These elements cannot be floated.</h4>
+         
+         <p>Immediate children of <code>sortable</code> containers (see settings) must be positioned relative or static.  They <b>cannot</b> be floated or positioned absolute.  However, children of those children do not have that restriction.</p>    
+         
+         <h4>Specify a [role="main"]</h4>
+         
+         <p>One element on the page should be given a <code>role="main"</code> attribute.  Respond uses this as the main content of the page.  This main content is searchable and added to the pages.json file so that it can be made available to plugins.</p>
+        
+
+         <h3>Installing a theme</h3>
+
+         <p>
+           Simply place the theme folder in <code>resources/themes</code>.
+         </p>
+
+      </div>
+   </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
@@ -271,4 +180,4 @@ background: transparent url("@{resources}sample.png") no-repeat 0 0;</PRE>
 </script>
  <!-- /respond-plugin:analytics -->
 
-</html>
+</html>s

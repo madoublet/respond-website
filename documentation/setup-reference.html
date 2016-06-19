@@ -67,9 +67,9 @@
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
     <div  class="col col-md-12">
-      <h1>Setup Files</h1>
-      <p>This documentation covers the setup options available for you to configure the&nbsp;Respond&nbsp;application.</p>
-      <h3>.env</h3>
+      <h1>Setup Respond</h1>
+      <p>This documentation covers the setup options available for you to configure the&nbsp;Respond&nbsp;application. Configurations are specified in the <code>/.env</code> file of the application</p>
+      <h3>Basic Settings</h3>
       <table class="table">
         <thead>
           <th>Variable</th>
@@ -81,8 +81,111 @@
             <td>APP_ENV</td>
             <td>The environment mode (development or production) that the app is running in.</td>
           </tr>
+          <tr>
+            <td>APP_KEY</td>
+            <td>The unique key for the app.</td>
+          </tr>
+          <tr>
+            <td>APP_URL</td>
+            <td>The url to access the app.  By default this is set to autodetect.</td>
+          </tr>
+          <tr>
+            <td>FRIENDLY_URLS</td>
+            <td>Set to true or false.  Specifies whether the system should use friendly URLs (urls without .html).  This requires an .htaccess or similar mechanism set on the site to enable friendly URLs.</td>
+          </tr>
+          <tr>
+            <td>DEFAULT_LANGUAGE</td>
+            <td>The default language for the app.</td>
+          </tr>
+          <tr>
+            <td>DEFAULT_DIRECTION</td>
+            <td>The default direction for the app.</td>
+          </tr>
         </tbody>
       </table>
+      
+      <h3>Email Settings</h3>
+      
+      <table class="table">
+        <thead>
+          <th>Variable</th>
+          <th>Description</th>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EMAILS_FROM</td>
+            <td>The from email address for emails sent by the app.</td>
+          </tr>
+          <tr>
+            <td>EMAILS_FROM_NAME</td>
+            <td>The from name for emails sent by the app.</td>
+          </tr>
+          <tr>
+            <td>IS_SMTP</td>
+            <td>Specifies whether the email is sent via SMTP.</td>
+          </tr>
+          <tr>
+            <td>SMTP_HOST</td>
+            <td>The SMTP Host for the server sending the emails</td>
+          </tr>
+          <tr>
+            <td>SMTP_AUTH</td>
+            <td>The SMTP Auth flag.</td>
+          </tr>
+          <tr>
+            <td>SMTP_USERNAME</td>
+            <td>The username to access the SMTP server.</td>
+          </tr>
+          <tr>
+            <td>SMTP_PASSWORD</td>
+            <td>The password to access the SMTP server.</td>
+          </tr>
+          <tr>
+            <td>SMTP_SECURE</td>
+            <td>The type of security used by the server.</td>
+          </tr>
+          <tr>
+            <td>SMTPENC_KEY</td>
+            <td>The penc key used by the server.</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p>You can find more details on setting up email in the <a href="documentation/setting-up-email">Setting up Email</a> reference.</p>
+      
+      <h3>App Settings</h3>
+      
+      <table class="table">
+        <thead>
+          <th>Variable</th>
+          <th>Description</th>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>JWT_KEY</td>
+            <td>The JavaScript Web Token key used to obfuscate tokens in Respond.</td>
+          </tr>
+          <tr>
+            <td>PASSCODE</td>
+            <td>The passcode used to create sites in the app.</td>
+          </tr>
+          <tr>
+            <td>ALLOWED_FILETYPES</td>
+            <td>Allowed filetypes that can be uploaded to your sites in Respond.</td>
+          </tr>
+          <tr>
+            <td>THUMB_MAX_WIDTH</td>
+            <td>The max width of thumbs created in Respond.</td>
+          </tr>
+          <tr>
+            <td>THUMB_MAX_HEIGHT</td>
+            <td>The max height of thumbs created in Respond.</td>
+          </tr>
+        </tbody>
+      </table>
+      
     </div>
   </div>
 </div>

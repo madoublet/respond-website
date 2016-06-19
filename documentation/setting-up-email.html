@@ -68,47 +68,62 @@
   <div id="block-1" class="block row">
     <div  class="col col-md-12">
       <h1>Setting up Email</h1>
-      <p>Respond uses the&nbsp;<a href="https://github.com/PHPMailer/PHPMailer">PHPMailer project</a>&nbsp;to send email within the system. &nbsp;So when a user signs up for a site, signs up for a subscription, or sends an email from a form on your site, it all goes through PHPMailer. &nbsp;</p>
+      <p>Respond uses the <a href="https://github.com/PHPMailer/PHPMailer">PHPMailer project</a> to send email within the system. So when a user signs up for a site, signs up for a subscription, or sends an email from a form on your site, it all goes through PHPMailer. </p>
       <h3>Default Configuration</h3>
-      <p>By default, email is sent out via the default mail provider configured on your server. &nbsp;If you followed the Digital Ocean installation or use another VPS, you probably don't have one. &nbsp;Some shared servers offer this as an option. &nbsp;But, we think it is much better to outsource to a provider that specializes in this. &nbsp;<a href="https://mandrill.com/" target="_blank">Mandrill</a>&nbsp;is a great option (and it is free to start).</p>
+      <p>By default, email is sent out via the default mail provider configured on your server. If you followed the Digital Ocean installation or use another VPS, you probably don't have one. Some shared servers offer this as an option. But, we think it is much better to outsource to a provider that specializes in this.</p>
+      
       <p>Email from the app is always sent out to the primary email setup on the account.</p>
       <h3>Custom Configuration</h3>
-      <p>To setup a custom email provider, Respond provides an SMTP configuration option. &nbsp;This is located in <b>api/setup.php</b>.</p>
-      <pre class="prettyprint linenums">// Advanced SMTP settings (see https://github.com/Synchro/PHPMailer)
-define('IS_SMTP', false);
-define('SMTP_HOST', 'smtp.mailserver.com');
-define('SMTP_AUTH', true);
-define('SMTP_USERNAME', '');
-define('SMTP_PASSWORD', '');
-define('SMTP_SECURE', 'tls');
-
-// Key used to encrypt site SMTP passwords
-define('SMTPENC_KEY', 'iloverespond');
-
-// Set what emails should be sent out and a reply-to email address
-define('REPLY_TO', '');
-define('REPLY_TO_NAME', '');</pre>
-      <p>You can also configure the types of emails sent out in <b>api/setup.php</b></p>
-      <pre class="prettyprint linenums">// Welcome email
-define('SEND_WELCOME_EMAIL', true);
-define('WELCOME_EMAIL_SUBJECT', 'Respond: Welcome to Respond!');
-define('WELCOME_EMAIL_FILE', '../emails/new-user.html');
-
-// New subscription email (to user)
-define('NEW_SUBSCRIPTION_EMAIL', true);
-define('NEW_SUBSCRIPTION_EMAIL_SUBJECT', 'Respond: Thank you for subscribing!');
-define('NEW_SUBSCRIPTION_EMAIL_FILE', '../emails/subscribe-success.html');
-
-// New subscriber email (to admin)
-define('NEW_SUBSCRIBER_EMAIL', true);
-define('NEW_SUBSCRIBER_EMAIL_SUBJECT', 'Respond: We have a new subscriber!');
-define('NEW_SUBSCRIBER_EMAIL_FILE', '../emails/subscribe-details.html');
-
-// Site emails
-define('SITE_RECEIPT_EMAIL_SUBJECT', '[{{site}}] Receipt for your purchase (Transaction #: {{transactionId}})');
-define('SITE_WELCOME_EMAIL_SUBJECT', 'Welcome to {{site}}');</pre>
+      <p>To setup a custom email provider, Respond provides an SMTP configuration option. This is located in the <code>.env</code> file in the root.</p>
+      <table class="table">
+        <thead>
+          <th>Variable</th>
+          <th>Description</th>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EMAILS_FROM</td>
+            <td>The from email address for emails sent by the app.</td>
+          </tr>
+          <tr>
+            <td>EMAILS_FROM_NAME</td>
+            <td>The from name for emails sent by the app.</td>
+          </tr>
+          <tr>
+            <td>IS_SMTP</td>
+            <td>Specifies whether the email is sent via SMTP.</td>
+          </tr>
+          <tr>
+            <td>SMTP_HOST</td>
+            <td>The SMTP Host for the server sending the emails</td>
+          </tr>
+          <tr>
+            <td>SMTP_AUTH</td>
+            <td>The SMTP Auth flag.</td>
+          </tr>
+          <tr>
+            <td>SMTP_USERNAME</td>
+            <td>The username to access the SMTP server.</td>
+          </tr>
+          <tr>
+            <td>SMTP_PASSWORD</td>
+            <td>The password to access the SMTP server.</td>
+          </tr>
+          <tr>
+            <td>SMTP_SECURE</td>
+            <td>The type of security used by the server.</td>
+          </tr>
+          <tr>
+            <td>SMTPENC_KEY</td>
+            <td>The penc key used by the server.</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
       <h3>Customizing Email Content</h3>
-      <p>You can easily customize the content in your emails by just editing an HTML file. &nbsp;The following emails are sent out from the Respond application:</p>
+      <p>You can easily customize the content in your emails by just editing an HTML file. The following emails are sent out from the Respond application:</p>
       <table class="table table-striped table-bordered col-3">
         <thead>
           <tr>
@@ -120,58 +135,17 @@ define('SITE_WELCOME_EMAIL_SUBJECT', 'Welcome to {{site}}');</pre>
         <tbody>
           <tr>
             <td>Welcome Email</td>
-            <td>/emails/new-user.html</td>
+            <td>resources/emails/new-user.html</td>
             <td>Sent out to the new user when a site is created.</td>
           </tr>
           <tr>
             <td>Reset Password</td>
-            <td>/emails/reset-password.html</td>
+            <td>resources/emails/reset-password.html</td>
             <td>Sent out when a user selects to reset a password.</td>
           </tr>
-          <tr>
-            <td>Subscribe Details</td>
-            <td>/emails/subscribe-details.html</td>
-            <td>Sent out to the default system administrator (EMAIL in api/setup.php) when a new site is created.</td>
-          </tr>
-          <tr>
-            <td>Subscribe Success</td>
-            <td>/emails/subscribe-success.html</td>
-            <td>Sent out to the default email of a site when they successfully subscribe to the Respond application.</td>
-          </tr>
-          <tr>
-            <td>Invoice Payment Failed</td>
-            <td>/emails/invoice-payment-failed.html</td>
-            <td>Sent out when a Stripe invoice payment fails.</td>
-          </tr>
-          <tr>
-            <td>Invoice Payment Succeeded</td>
-            <td>/emails/invoice-payment-succeeded.html</td>
-            <td>Sent out when a Stripe invoice payment succeeds.</td>
-          </tr>
         </tbody>
       </table>
-      <p>The following emails are sent out from sites created with Respond:</p>
-      <table id="table-2" class="table table-striped table-bordered col-3">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>File</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Form submitted</td>
-            <td>Not configurable</td>
-            <td>Sent when a form is submitted on Respond site. &nbsp;By default, forms are sent to the primary email for the site.</td>
-          </tr>
-          <tr>
-            <td>Receipt</td>
-            <td>/site/emails/receipt.html</td>
-            <td>Sent when a successful payment is made. &nbsp;Shows all line items for the payment. &nbsp;This file is copied to the database when the site is created and can be configured after creation in the settings for the site.</td>
-          </tr>
-        </tbody>
-      </table>
+      
     </div>
   </div>
 </div>

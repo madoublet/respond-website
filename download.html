@@ -76,16 +76,18 @@
 
          <h3>Pay what you want</h3>
 
-         <span class="mark">$</span> <input type="number" value="25" class="pay-input">
+         <span class="mark">$</span> <input id="amount" type="number" value="25" class="pay-input">
 
          <div class="pay-radio">
-          <label><input type="radio" name="pay-per" checked> One time</label>
-          <label><input type="radio" name="pay-per"> Per month</label>
+          <label><input id="one-time" type="radio" name="pay-per" checked> One time</label>
+          <label><input id="per-month" type="radio" name="pay-per"> Per month</label>
          </div>
 
-         <button>Pay and Download</button>
+         <button pay-now>Pay and Download</button>
 
-         <a>I am just trying this out, let me download it now</a>
+         <a href="download-now">Skip and download Respond now</a>
+         
+         <p class="processed-by">Payments are processed by PayPal</p>
        </div>
 
        <h3>Perks</h3>
@@ -159,6 +161,7 @@
 <!-- js -->
 <script src="js/libs.min.js"></script>
 <script src="js/plugins.js"></script>
+<script src="js/pay.js"></script>
 
 <!-- respond-plugin:analytics -->
 <script>

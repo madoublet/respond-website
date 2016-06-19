@@ -29,6 +29,12 @@ h3 {
   font-size: 20px;
 }
 
+code {
+  background-color: rgba(50,153,187,0.05);
+  border: 1px solid #ddd;
+  padding: 2px 4px;
+}
+
 p {
   font-size: 14px;
   line-height: 25px;
@@ -276,6 +282,7 @@ body.content .container {
 body.content h3 {
   text-transform: uppercase;
   font-size: 15px;
+  padding-top: 25px;
 }
 
 body.content .table {
@@ -303,9 +310,17 @@ body.content .table tbody tr {
   border-bottom: 1px solid #f0f0f0;
 }
 
+body.content .table tbody tr:last-child {
+  border-bottom: none;
+}
+
 body.content .table td {
   margin: 0;
   padding: 10px 10px 10px 0;
+}
+
+body.content .table tbody td:first-child {
+  width: 250px;
 }
 
 body.content pre {
@@ -314,6 +329,22 @@ body.content pre {
     border: 1px solid #ddd;
     margin-bottom: 25px;
     color: #555;
+    padding: 20px;
+}
+
+body.content .support {
+    background-color: rgba(184,223,134,0.15);
+    border-radius: 0;
+    border: 1px solid #ddd;
+    margin-bottom: 25px;
+    color: #555;
+    padding: 20px;
+}
+
+body.content pre.prettyprint {
+    width: auto;
+    overflow: auto;
+    max-height: 300px
 }
 
 body.content li {

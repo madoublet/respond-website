@@ -65,13 +65,13 @@
 </header>
 
 <div id="content" class="container" role="main">
-  <div id="block-1" class="block row">
-    <div  class="col col-md-12">
-      <h1>Install On Digital Ocean</h1>
-    </div>
-  </div>
   <div id="block-2" class="block row">
     <div  class="col col-md-9">
+      
+      <h1>Install On Digital Ocean</h1>
+      
+      <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>. This helps us pay for hosting.</p>
+    
       <p>This tutorial will walk you step-by-step through installation on Digital Ocean.</p>
       <h3 id="h3-1">Create Digital Ocean Account</h3>
       <p id="p-1">1. Start by creating your account on Digital Ocean. &nbsp;Use our<a href=" https://www.digitalocean.com/?refcode=a0ca7859692b"> referral code to support the project.</a>
@@ -80,25 +80,14 @@
       <p id="p-3">3. Select Applications -&gt; LAMP on Ubuntu 14.04. &nbsp;You could do this manually, but this speeds up the process.</p>
       <p id="p-4">4. Your will receive a password via email to SSH into your account. &nbsp;It is recommended you change this to an SSH key later.</p>
       <p id="p-28">5. You should now have a basic LAMP install, but it is good form to double check&nbsp;<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Digital Ocean's guide on setting up and securing the installation</a>.</p>
-      <h3 id="h3-2">Install PHPMyAdmin and the&nbsp;Respond&nbsp;Schema</h3>
-      <p id="p-5">1. SSH into the server. &nbsp;The welcome message will give you your default password for MySQL.</p>
-      <p id="p-6">2. Run&nbsp;mysql_secure_installation to secure your installation. &nbsp;Change your default password, disable anonymous accounts, etc.</p>
-      <p id="p-7">3. Install PHPMyAdmin. This is just a visual way to create your databases. &nbsp;For the options, select Apache2 and choose default options.</p>
-      <pre id="pre-1" class="prettyprint linenums pre-scrollable">apt-get update
-apt-get install phpmyadmin</pre>
-      <p id="p-8" data-i18n="5415de777e724.p-8">4. Enable mcrypt</p>
+      
+      <h3>Install mcrypt, git, curl</h3>
       <pre id="pre-2" class="prettyprint linenums pre-scrollable">php5enmod mcrypt
+apt-get install php5-curl
+apt-get install git
+
 service apache2 restart</pre>
-      <p id="p-10">5. Login to PHPMyAdmin at: &nbsp;http://your_ip/phpmyadmin (your_ip is given to you in the welcome email). &nbsp;This page produced an error for me, so I had to do the following:</p>
-      <pre id="pre-4" class="prettyprint linenums pre-scrollable" description="Bug Fix" respond-pre="true">sudo cp /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
-sudo a2enconf phpmyadmin
-sudo service apache2 restart</pre>
-      <p id="p-11">7. Create a database called Respond and install the schema. &nbsp;The schema is located in the root of the Github repository under schema.sql.</p>
-      <p id="p-29">8. Secure your install using&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04">Digital Ocean's guide on Securing your PHPMyAdmin installation.</a>
-      </p>
-      <h3 id="h3-3">Install Git</h3>
-      <p id="p-9">1. Install Git</p>
-      <pre id="pre-3" class="prettyprint linenums pre-scrollable">apt-get install git</pre>
+      
       <h3 id="h3-4">Setup App</h3>
       <p id="p-12">1. Create directory structure, setup permissions for sites&nbsp;</p>
       <pre id="pre-5" class="prettyprint linenums pre-scrollable">// change to html directory
@@ -117,26 +106,12 @@ cd app</pre>
       <pre id="pre-6" class="prettyprint linenums pre-scrollable">git clone https://github.com/madoublet/respond.git .</pre>
       <p id="p-14">3. Create the sites directory in a subdirectory of the app directory. &nbsp;This will hold the sites created by Respond.</p>
       <pre id="pre-7" >// make sites directory in app (app/sites)
-mkdir sites
+mkdir public/sites
 
 // give respond permissions to write to sites
-chown -R www-data sites</pre>
-      <p id="p-15">4. Install CURL</p>
-      <pre id="pre-8" class="prettyprint linenums pre-scrollable">apt-get install php5-curl</pre>
-      <h3 id="h3-5">Update Setup (setup.php)</h3>
-      <p id="p-22">1. Update /respond/app/setup.php with your database connection parameters and your application URL.</p>
-      <pre id="pre-12" class="prettyprint linenums pre-scrollable">/*********************************/
-/*  BASIC SETUP                  */
-/*********************************/
-
-// DB connection parameters
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'respond');
-define('DB_USER', 'dbuser');
-define('DB_PASSWORD', 'dbpass');
-
-// APP URL
-define('APP_URL', 'http://app.myrespond.com');</pre>
+chown -R www-data public/sites
+chown -R www-data resources/sites</pre>
+      
       <h3 id="h3-6">Enable Mod_Rewrite</h3>
       <p id="p-17">1. Enable mod_rewrite extension</p>
       <pre id="pre-13">sudo a2enmod rewrite</pre>
