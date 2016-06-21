@@ -13,7 +13,7 @@ a {
 
 h1, h2, h3, h4, h5, p, blockquote {
   margin: 0 0 20px 0;
-  padding: 0;
+  padding: 0 20px;
   color: #2F3243;
 }
 
@@ -207,6 +207,11 @@ header .search {
     border-bottom: none;
     border-left: 10px solid #f8f8f8;
     border-top: 10px solid #f8f8f8;
+  }
+
+  .screenshot {
+    width: calc(100% - 20px);
+    border: 10px solid #f8f8f8;
   }
 
 /* footer */
