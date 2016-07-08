@@ -26,6 +26,7 @@
 
   <!-- css -->
   <link type="text/css" href="css/libs.min.css" rel="stylesheet">
+  <link type="text/css" href="css/plugins.css" rel="stylesheet">
   <link type="text/css" href="css/site.css" rel="stylesheet">
 
 </head>
@@ -58,47 +59,28 @@
     </svg>
   </div>
 
-  <div class="search" fire-event="search-toggled">
+  <div class="search" respond-search>
     <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
   </div>
 
 </header>
 
+<nav class="drawer">
+  <ul respond-menu type="primary">
+    <li><a href="index">Home</a></li>
+    <li><a href="download">Download</a></li>
+    <li><a href="page/tour">Tour</a></li>
+    <li><a href="learn">Learn</a></li>
+    <li><a href="marketplace">Store</a></li>
+    <li><a href="help">Help</a></li>
+  </ul>
+</nav>
+
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
     <div  class="col col-md-12">
       <h1>Marketplace</h1>
-      <p>Purchase themes for use with your Respond CMS installation. &nbsp;All themes are built using static HTML.</p>
-    </div>
-  </div>
-  <div  class="container marketplace-featured">
-    <div id="block-2" class="block row" data-nested="nested" data-containerid="" data-containercssclass="marketplace-featured">
-      <div  class="col col-md-6">
-        <div id="image-1" class="respond-image" data-display="standalone" data-i18n="5410f7f504f40.image-1"><img src="http://respondcms.com/files/energy.png" data-location="local"></div>
-      </div>
-      <div  class="col col-md-6">
-        <h2 id="h2-1">Energy</h2>
-        <h3 id="h3-1">New for Respond 4.9</h3>
-        <p id="p-2">Energy is perfect for your small business. &nbsp;It features a split call-to-action that allows for a robust description on the left and a beautiful slideshow on the right. &nbsp;Of course, it is fully responsive to adapt to any device.</p>
-        <p id="p-1">With over 25 point-and-click configurations built-in to the the theme, you can quickly make the Getaway theme your own without ever touching any code.</p>
-        <p id="p-3"><a href="theme/energy">Coming Soon</a></p>
-      </div>
-    </div>
-  </div>
-  <div id="block-4" class="block row marketplace-all" data-nested="not-nested" data-containerid="" data-containercssclass="">
-    <div  class="col col-md-9">
-      <h2 id="h2-2">Our Themes</h2>
-      <p>Themes are <b>just $15 for unlimited sites</b> (per Respond install)<b>. &nbsp;</b>Not a bad deal, right? &nbsp;Plus, by purchasing a theme you are contributing to a great open source project.</p>
-      <respond-list type="theme" display="list-thumbnails" pagesize="20" orderby="Name" pageresults="false"></respond-list>
-    </div>
-    <div  class="col col-md-3 inline-callout">
-      <h3 id="h3-2">All themes for $99</h3>
-      <p id="p-7">With our <b>PRO package,</b> you get all the Respond themes for just $99. &nbsp;Plus, you get GIT access to our private theme repository. &nbsp;<a ui-sref="page/pro" href="/page/pro">Get Started</a></p>
-    </div>
-  </div>
-  <div id="block-5" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
-    <div  class="col col-md-12">
-      <p id="p-5">If you have purchased a previous version of the theme, just&nbsp;<a href="page/contact">email us</a>&nbsp;and we will send you an update.</p>
+      <p>The marketplace is coming soon.</p>
     </div>
   </div>
 </div>
@@ -126,6 +108,7 @@
 <!-- js -->
 <script src="js/libs.min.js"></script>
 <script src="js/plugins.js"></script>
+<script src="js/site.js"></script>
 
 <!-- respond-plugin:analytics -->
 <script>

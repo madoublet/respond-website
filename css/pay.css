@@ -1,8 +1,12 @@
 .pay-block {
-  margin-bottom: 25px;
-  padding: 25px 10px;
+  margin: 0 20px 25px 20px;
+  padding: 25px 0;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+}
+
+.pay-block h3 {
+  padding-left: 0 !important;
 }
 
 .pay-block input[type=number] {
@@ -46,11 +50,26 @@
   cursor: pointer;
 }
 
+.pay-block button[disabled] {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #ccc;
+}
+
 .pay-block a {
+  display: inline-block;
   color: #00ADE3;
   text-transform: uppercase;
   font-size: 13px;
   cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+}
+
+.pay-block a[disabled] {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #ccc;
 }
 
 .pay-block .processed-by {
@@ -65,7 +84,7 @@
 .perk {
   border: 1px solid #ddd;
   background-color: #f8f8f8;
-  margin: 0 0 25px 0;
+  margin: 0 20px 25px 20px;
   padding: 25px;
 }
 

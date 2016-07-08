@@ -41,12 +41,20 @@ p {
   color: #555;
 }
 
+.warning {
+  color: #CF4647;
+}
+
 header, .hero, footer {
   background-color: #2F3243;
 }
 
 header *, .hero *, footer * {
   color: #fff;
+}
+
+[respond-search] {
+  cursor: pointer;
 }
 
 /* responsive styles */
@@ -180,6 +188,7 @@ header .search {
   padding: 10px 20px;
   border: 1px solid #fff;
   margin-right: 15px;
+  margin-bottom: 10px;
   min-width: 100px;
   text-align: center;
   text-transform: uppercase;
@@ -210,11 +219,16 @@ header .search {
   }
 
   .screenshot {
-    width: calc(100% - 20px);
+    margin: 0 10px 20px 10px;
+    width: calc(100% - 40px);
     border: 10px solid #f8f8f8;
   }
 
 /* footer */
+body.content footer {
+  margin-top: 50px;
+}
+
 footer nav ul {
   list-style: none;
   margin: 0 0 25px 0;
@@ -291,8 +305,8 @@ body.content h3 {
 }
 
 body.content .table {
-  width: 100%;
-  margin: 0 0 25px 0;
+  width: calc(100% - 40px);
+  margin: 0 20px 25px 20px;
   padding: 0;
   border-spacing: 0;
   border-collapse: collapse;
@@ -335,6 +349,7 @@ body.content pre {
     margin-bottom: 25px;
     color: #555;
     padding: 20px;
+    margin: 0 20px 20px 20px;
 }
 
 body.content .support {
@@ -344,6 +359,7 @@ body.content .support {
     margin-bottom: 25px;
     color: #555;
     padding: 20px;
+    margin: 0 20px 25px 20px;
 }
 
 body.content pre.prettyprint {
@@ -364,6 +380,10 @@ body.content ul, body.content ol {
 
 @media (max-width:768px) {
 
+  body.content .table tbody td:first-child {
+    width: auto;
+  }
+
   /* responsive styles */
   .md-plus {
     visibility: hidden;
@@ -373,6 +393,11 @@ body.content ul, body.content ol {
   .sm {
     visibility: visible;
     display: block;
+  }
+  
+  .hero a {
+    display: block;
+    margin-bottom: 10px;
   }
 
   /* grid */

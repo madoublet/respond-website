@@ -26,6 +26,7 @@
 
   <!-- css -->
   <link type="text/css" href="css/libs.min.css" rel="stylesheet">
+  <link type="text/css" href="css/plugins.css" rel="stylesheet">
   <link type="text/css" href="css/site.css" rel="stylesheet">
   <link type="text/css" href="css/pay.css" rel="stylesheet">
 
@@ -59,12 +60,22 @@
     </svg>
   </div>
 
-  <div class="search" fire-event="search-toggled">
+  <div class="search" respond-search>
     <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
   </div>
 
 </header>
 
+<nav class="drawer">
+  <ul respond-menu type="primary">
+    <li><a href="index">Home</a></li>
+    <li><a href="download">Download</a></li>
+    <li><a href="page/tour">Tour</a></li>
+    <li><a href="learn">Learn</a></li>
+    <li><a href="marketplace">Store</a></li>
+    <li><a href="help">Help</a></li>
+  </ul>
+</nav>
 
 <div id="content" class="container" role="main">
  <div class="block row">
@@ -112,6 +123,7 @@
 <!-- js -->
 <script src="js/libs.min.js"></script>
 <script src="js/plugins.js"></script>
+<script src="js/site.js"></script>
 
 <!-- respond-plugin:analytics -->
 <script>

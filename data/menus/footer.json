@@ -11,20 +11,32 @@
       {
         "cssClass": "",
         "isNested": false,
-        "html": "Blog",
-        "url": "blog"
+        "html": "Download",
+        "url": "download"
       },
       {
         "cssClass": "",
         "isNested": false,
-        "html": "About",
-        "url": "page/about"
+        "html": "Tour",
+        "url": "page/tour"
       },
       {
         "cssClass": "",
         "isNested": false,
-        "html": "Contact",
-        "url": "page/contact"
+        "html": "Learn",
+        "url": "learn"
+      },
+      {
+        "cssClass": "",
+        "isNested": false,
+        "html": "Store",
+        "url": "marketplace"
+      },
+      {
+        "cssClass": "",
+        "isNested": false,
+        "html": "Help",
+        "url": "help"
       }
   ]
 }
