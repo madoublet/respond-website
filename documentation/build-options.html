@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+ <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Respond Demo</title>
+  <title>Respond - Built Options</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Try out Respond using our demo">
+  <meta name="description" content="Learn about the gulp build options available to Respond.">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -77,12 +77,38 @@
 </nav>
 
 <div id="content" class="container" role="main">
-  <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
+  <div id="block-1" class="block row">
     <div  class="col col-md-12">
-      <h1>Demo</h1>
-      <p>The Respond demo allows you to create and modify a site created with Respond 6. Tap the link below to get started.</p>
+      <h1>Build Options</h1>
+      <p>Respond uses <a href="http://gulpjs.com/">gulp</a> to perform builds for the application. This references covers the build options available to Respond 6.</p>
 
-      <p><a href="https://demo.respondcms.com">Respond Demo</a></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Repo</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>gulp</code></td>
+            <td>The default build performs all actions necessary to deploy the application to production. It copies library files from the <code>node_modules</code> directory (installed by NPM) to the <code>public/app/libs</code> directory. It then copies the static HTML and image files from <code>public/src</code> to <code>public/app</code>.  It then runs the Typescript compiler and bundles the application using the SystemJS builder.</td>
+          </tr>
+          <tr>
+            <td><code>gulp dev-build</code></td>
+            <td>Used to debug code changes when using the systemjs loader. Copies the static files from <code>public/src</code> to <code>public/app</code> and runs the Typescript compiler.</td>
+          </tr>
+          <tr>
+            <td><code>gulp build</code></td>
+            <td>Used to debug code changes using the production bundles. Copies the static files from <code>public/src</code> to <code>public/app</code> and runs the Typescript compiler. I then bundles the application using the SystemJS builder.</td>
+          </tr>
+          <tr>
+            <td><code>gulp zip</code></td>
+            <td>ZIPS the code and places it in <code>dist/release.zip</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

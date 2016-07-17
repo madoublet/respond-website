@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Learn how to use Respond</title>
+  <title>Respond - Installing Respond</title>
 
   <!-- meta -->
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
-  <base href="">
+  <base href="../">
 
   <!-- icons -->
   <link theme-icon rel="icon" href="">
@@ -28,7 +28,6 @@
   <link type="text/css" href="css/libs.min.css" rel="stylesheet">
   <link type="text/css" href="css/plugins.css" rel="stylesheet">
   <link type="text/css" href="css/site.css" rel="stylesheet">
-  <link type="text/css" href="css/pay.css" rel="stylesheet">
 
 </head>
 
@@ -44,7 +43,7 @@
 
     <ul respond-plugin type="menu" menu="primary">
       <li><a href="index">Home</a></li>
-      <li active><a href="download">Download</a></li>
+      <li><a href="download">Download</a></li>
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
@@ -78,26 +77,72 @@
 </nav>
 
 <div id="content" class="container" role="main">
- <div class="block row">
-    <div  class="col col-md-12">
-       <h1>Download</h1>
+   <div id="block-1" class="block row">
+      <div class="col col-md-12">
 
-       <p>Thank you for supporting the Respond project! If you qualify for a perk, then we will email you within 48 hours.</p>
+         <h1>Installation from Github</h1>
 
-       <h3>ZIP File</h3>
+         <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>. This helps us pay for hosting.</p>
 
-       <p><a href="https://github.com/madoublet/respond/blob/master/dist/release.zip">Respond ZIP file</a></p>
+         <p>Are you ready to get started with Respond? Learn how to install it on a traditional LAMP deployment. Before we get started, read about the <a href="documentation/system-requirements">server requirements.</a> If you are an experience developer, you might also want to checkout out our <a href="documentation/installation-from-github">documentation on installing the app from Github</a>. This requires a little more work but gives you a number of long-term benefits.</p>
 
-       <h3>Github Access</h3>
+         <h3>1. Create the directory structure for Respond</h3>
+         <p>You create your directory structure by navigating to your web root and creating folders for Respond. You can also do this using a graphical tool (such as sFTP). Below we are creating the following structure: <code>var/www/html/respond/app</code>.  We are also adding a <code>var/www/html/respond/app/public/sites</code> folder that will hold the sites and a <code>var/www/html/respond/app/resources/sites</code> folder that will hold private data about your sites.</p>
+         <pre id="pre-1" class="prettyprint">// go to your HTML root
+cd var/www/html
 
-       <p><a href="https://github.com/madoublet/respond">Respond Github</a></p>
+// create the respond directory
+mkdir respond
 
-       <p>Thanks again, Matt</p>
+// switch directories
+cd respond
 
+// create a directory to hold the app and sites
+mkdir app
 
+// change to the app directory
+cd app
 
-    </div>
- </div>
+// make sites directory in app (app/public/sites)
+mkdir public/sites
+
+// make sites directory in app (app/resources/sites)
+mkdir resources/sites</pre>
+         <h3>2. Make the two sites directories writeable</h3>
+         <p>This is typically done by making Apache the owner of the directory. You can also set read-write permissions (e.g. 755) on the folder. Contact your hosting provider about the correct permissions for writeable directories.</p>
+         <pre id="pre-2" class="prettyprint pre-scrollable">chown -R www-data public/sites
+chown -R www-data resources/sites</pre>
+
+         <h3>3. Pull the repository and add dependencies</h3>
+         <p>Pull the repository into the app folder.</p>
+         <pre id="pre-2" class="prettyprint pre-scrollable">git clone https://github.com/madoublet/respond6 .
+
+// install front-end dependencies (angular, hashedit, etc)
+npm install
+
+// run gulp (this copies the node_modules folder into the public folder)
+gulp
+
+// run composer to install PHP dependencies
+php composer.phar install --prefer-dist --no-dev</pre>
+
+        <h3>4. Setup env</h3>
+         <p>Copy the env file.  You can <a href="documentation/setup-reference">set this up later</a> to specify email and other settings.</p>
+         <pre class="prettyprint pre-scrollable" description="Step 4" respond-pre="true">// switch to app directory
+cp .env.example .env
+</pre>
+
+      <h3>5. Map domains</h3>
+      <p>We recommend you setup a domain for your application and a sub-domain (or domain) for each of your sites. This allows you to secure your application using https and provide nice URLs for sites created using the CMS. Domains are typically setup
+            using DNS and your htdocs file. Refer to your hosting provider's documentation on setting up domains. For installs that will host multiple sites, we have created a guide for <a href="/documentation/wildcard-subdomain-install">installing wildcard DNS</a> based
+            on our Digital Ocean setup.
+         </p>
+         <pre class="prettyprint pre-scrollable">.../respond
+.../respond/app   ->  https://app.myrespond.com
+.../respond/app/public/sites/mysite  ->  https://mysite.myrespond.com or https://app.myrespond.com/sites/my-site</pre>
+
+      </div>
+   </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
@@ -119,6 +164,9 @@
 </footer>
 
 </body>
+
+<!-- prettyprint for docs -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 <!-- js -->
 <script src="js/libs.min.js"></script>

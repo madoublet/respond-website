@@ -79,11 +79,11 @@
 <div id="content" class="container" role="main">
   <div id="block-2" class="block row">
     <div  class="col col-md-9">
-      
+
       <h1>Install On Digital Ocean</h1>
-      
+
       <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>. This helps us pay for hosting.</p>
-    
+
       <p>This tutorial will walk you step-by-step through installation on Digital Ocean.</p>
       <h3 id="h3-1">Create Digital Ocean Account</h3>
       <p id="p-1">1. Start by creating your account on Digital Ocean. &nbsp;Use our<a href=" https://www.digitalocean.com/?refcode=a0ca7859692b"> referral code to support the project.</a>
@@ -92,14 +92,14 @@
       <p id="p-3">3. Select Applications -&gt; LAMP on Ubuntu 14.04. &nbsp;You could do this manually, but this speeds up the process.</p>
       <p id="p-4">4. Your will receive a password via email to SSH into your account. &nbsp;It is recommended you change this to an SSH key later.</p>
       <p id="p-28">5. You should now have a basic LAMP install, but it is good form to double check&nbsp;<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Digital Ocean's guide on setting up and securing the installation</a>.</p>
-      
+
       <h3>Install mcrypt, git, curl</h3>
       <pre id="pre-2" class="prettyprint linenums pre-scrollable">php5enmod mcrypt
 apt-get install php5-curl
 apt-get install git
 
 service apache2 restart</pre>
-      
+
       <h3 id="h3-4">Setup App</h3>
       <p id="p-12">1. Create directory structure, setup permissions for sites&nbsp;</p>
       <pre id="pre-5" class="prettyprint linenums pre-scrollable">// change to html directory
@@ -114,16 +114,26 @@ mkdir app
 
 // change to the app directory
 cd app</pre>
-      <p id="p-13">2. Clone the app repository into the app folder</p>
-      <pre id="pre-6" class="prettyprint linenums pre-scrollable">git clone https://github.com/madoublet/respond.git .</pre>
+      <p id="p-13">2. Clone the app repository into the app folder and install dependencies</p>
+      <pre id="pre-2" class="prettyprint pre-scrollable">git clone https://github.com/madoublet/respond6 .
+
+// install front-end dependencies (angular, hashedit, etc)
+npm install
+
+// run gulp (this copies the node_modules folder into the public folder)
+gulp
+
+// run composer to install PHP dependencies
+php composer.phar install --prefer-dist --no-dev</pre>
       <p id="p-14">3. Create the sites directory in a subdirectory of the app directory. &nbsp;This will hold the sites created by Respond.</p>
       <pre id="pre-7" >// make sites directory in app (app/sites)
 mkdir public/sites
+mkdir resources/sites
 
 // give respond permissions to write to sites
 chown -R www-data public/sites
 chown -R www-data resources/sites</pre>
-      
+
       <h3 id="h3-6">Enable Mod_Rewrite</h3>
       <p id="p-17">1. Enable mod_rewrite extension</p>
       <pre id="pre-13">sudo a2enmod rewrite</pre>
