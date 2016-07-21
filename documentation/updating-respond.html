@@ -80,13 +80,33 @@
   <div id="block-1" class="block row" data-nested="not-nested" data-containerid="" data-containercssclass="">
     <div  class="col col-md-12">
       <h1>Updating Respond</h1>
-      <p>Updating Respond is easy. &nbsp;It typically involves pulling the latest version, re-publishing sites, and occasionally updating the database. &nbsp;Instructions are always available in the README.md for the release.</p>
-      <h3 id="h3-1" data-i18n="55121f0fefa65.h3-1">1. Pull the latest Version or re-upload the contents of the ZIP file</h3>
-      <pre id="pre-1" description="PRE" respond-pre="true">// navigate to your install directory
-cd /var/www/html/respond/app
-  
+      <p>Updating Respond is easy. For ZIP installations, you simply replace the contents of your app directory.  For Github installations, you need to pull the latest version and run gulp.</p>
+
+      <h3>Updating your ZIP installation</h3>
+
+      <p>To update your ZIP installation, you simply upload the contents of your zip file and replace the duplicates in your <code>app/</code>.  directory. You can do this from and sFTP client or use the command line as follows.  Note that the code below assumes you followed the tutorial and are in the <code>respond/</code> directory.</p>
+
+      <pre>// navigate to your install directory
+cd /path/to/respond/
+
+// get the zip file
+wget --content-disposition https://github.com/madoublet/respond/blob/master/dist/release.zip?raw=true
+
+// unzip it into the app directory (choose to rewrite all)
+unzip release.zip -d app</pre>
+
+      <h3>Updating your Github installation</h3>
+
+      <p>To update your Github installation, you need to pull and run gulp.</p>
+
+      <pre>// navigate to your install directory
+cd /path/to/respond/app
+
 // pull the latest version
-git pull</pre>
+git pull
+
+// run gulp to build the app
+gulp</pre>
     </div>
   </div>
 </div>

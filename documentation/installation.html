@@ -91,7 +91,7 @@
          <pre id="pre-1" class="prettyprint">// go to your HTML root
 cd var/www/html
 
-// create the respond directory
+// create the install directory
 mkdir respond
 
 // switch directories
@@ -114,7 +114,15 @@ mkdir resources/sites</pre>
 chown -R www-data resources/sites</pre>
 
          <h3>3. Copy ZIP to app folder</h3>
-         <p>Copy the ZIP file you downloaded into your app folder</p>
+         <p>Copy the ZIP file you downloaded from our <a href="download">Download page</a> into your app folder.  You can use an sFTP client or the command line as shown below.</p>
+         <pre>// navigate back to the install directory
+cd ..
+
+// get the zip file
+wget --content-disposition https://github.com/madoublet/respond/blob/master/dist/release.zip?raw=true
+
+// unzip it into the app directory
+unzip release.zip -d app</pre>
         <h3>4. Setup env</h3>
          <p>Copy the env file.  You can <a href="documentation/setup-reference">set this up later</a> to specify email and other settings.</p>
          <pre id="pre-4" class="prettyprint pre-scrollable" description="Step 4" respond-pre="true">// switch to app directory

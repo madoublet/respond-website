@@ -101,19 +101,9 @@ cd respond
 mkdir app
 
 // change to the app directory
-cd app
+cd app</pre>
 
-// make sites directory in app (app/public/sites)
-mkdir public/sites
-
-// make sites directory in app (app/resources/sites)
-mkdir resources/sites</pre>
-         <h3>2. Make the two sites directories writeable</h3>
-         <p>This is typically done by making Apache the owner of the directory. You can also set read-write permissions (e.g. 755) on the folder. Contact your hosting provider about the correct permissions for writeable directories.</p>
-         <pre id="pre-2" class="prettyprint pre-scrollable">chown -R www-data public/sites
-chown -R www-data resources/sites</pre>
-
-         <h3>3. Pull the repository and add dependencies</h3>
+         <h3>2. Pull the repository and add dependencies</h3>
          <p>Pull the repository into the app folder.</p>
          <pre id="pre-2" class="prettyprint pre-scrollable">git clone https://github.com/madoublet/respond6 .
 
@@ -125,6 +115,19 @@ gulp
 
 // run composer to install PHP dependencies
 php composer.phar install --prefer-dist --no-dev</pre>
+
+         <h3>3. Make the sites directories</h3>
+         <p>Make the folders that store the sites public and private data. This is typically done by making Apache the owner of the directory. You can also set read-write permissions (e.g. 755) on the folder. Contact your hosting provider about the correct permissions for writeable directories.</p>
+         <pre>
+// make sites directory in app (app/public/sites)
+mkdir public/sites
+
+// make sites directory in app (app/resources/sites)
+mkdir resources/sites
+
+// make the directories writeable
+chown -R www-data public/sites
+chown -R www-data resources/sites</pre>
 
         <h3>4. Setup env</h3>
          <p>Copy the env file.  You can <a href="documentation/setup-reference">set this up later</a> to specify email and other settings.</p>

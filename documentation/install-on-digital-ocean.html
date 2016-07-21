@@ -100,40 +100,6 @@ apt-get install git
 
 service apache2 restart</pre>
 
-      <h3 id="h3-4">Setup App</h3>
-      <p id="p-12">1. Create directory structure, setup permissions for sites&nbsp;</p>
-      <pre id="pre-5" class="prettyprint linenums pre-scrollable">// change to html directory
-cd /var/www/html
-
-// create Respond directory
-mkdir respond
-cd respond
-
-// create app and sites directory
-mkdir app
-
-// change to the app directory
-cd app</pre>
-      <p id="p-13">2. Clone the app repository into the app folder and install dependencies</p>
-      <pre id="pre-2" class="prettyprint pre-scrollable">git clone https://github.com/madoublet/respond6 .
-
-// install front-end dependencies (angular, hashedit, etc)
-npm install
-
-// run gulp (this copies the node_modules folder into the public folder)
-gulp
-
-// run composer to install PHP dependencies
-php composer.phar install --prefer-dist --no-dev</pre>
-      <p id="p-14">3. Create the sites directory in a subdirectory of the app directory. &nbsp;This will hold the sites created by Respond.</p>
-      <pre id="pre-7" >// make sites directory in app (app/sites)
-mkdir public/sites
-mkdir resources/sites
-
-// give respond permissions to write to sites
-chown -R www-data public/sites
-chown -R www-data resources/sites</pre>
-
       <h3 id="h3-6">Enable Mod_Rewrite</h3>
       <p id="p-17">1. Enable mod_rewrite extension</p>
       <pre id="pre-13">sudo a2enmod rewrite</pre>
@@ -143,7 +109,12 @@ AllowOverride All
 Require all granted
 </pre>
       <p id="p-19">3. Restart Apache (service apache2 restart)</p>
-      <p id="p-20">4. Test API at&nbsp;&nbsp;http://your_ip/respond/app/api/site/test. It should say "API works!".</p>
+
+      <h3>Install Respond</h3>
+
+      <p>Follow the instructions to <a href="documentation/installation">Install Respond from ZIP</a> or <a href="documentation/installation-from-github">Install Respond from Github</a>.</p>
+
+
       <h3 id="h3-9">Setup your domains</h3>
       <p id="p-26">1. Point a domain or subdomain to your installation directory. &nbsp;This is done in Apache 2.4 by creating a configuration file at <b>etc/apache2/sites-available/app.myrespond.com.conf.</b></p>
       <pre id="pre-11" description="PRE" respond-pre="true">&lt;VirtualHost *:80>
