@@ -103,6 +103,43 @@
     {
         "id": "sortable",
         "value": ".col, .column"
+    },
+    {
+        "id": "blocks",
+        "value": ".row"
+    },
+    {
+        "id": "grid",
+        "value": [
+          {
+            "name": "1 Column",
+            "desc": "100%",
+            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-12\"&gt;&lt;/div&gt;&lt;/div&gt;"
+          },
+          {
+            "name": "2 Column",
+            "desc": "50%/50%",
+            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;div class=\"col col-md-6\">&lt;/div&gt;&lt;/div>"
+          }
+        ]
+    },
+    {
+        "id": "theme-logo",
+        "label": "Logo",
+        "description": "Primary logo of the site",
+        "type": "image",
+        "value": "resources\/logo.png",
+        "sets": "attribute",
+        "attribute": "src"
+    },
+    {
+        "id": "menu-background-color",
+        "label": "Menu Background Color",
+        "description": "Change the menu background color of the site",
+        "type": "color",
+        "value": "#B6C3CF",
+        "sets": "css",
+        "css": "nav{background-color: config(--menu-background-color);} body.home main .jumbotron p{background-color: config(--menu-background-color);}"
     }
 ]</pre>
 
@@ -122,6 +159,22 @@
                 <td>sortable</td>
                 <td>A comma separated list of selectors to elements that are sortable.  These should be a container of relative placed elements.</td>
               </tr>
+              <tr>
+                <td>blocks</td>
+                <td>The CSS selector for blocks in the theme.  Blocks are containers for other elements (e.g. .row in Bootstrap).  They can be sorted with siblings that match their selector.</td>
+              </tr>
+              <tr>
+                <td>grid</td>
+                <td>Defines what a block looks like for your theme.  When you click add in the block context menu, the menu contains the options defined in the grid.</td>
+              </tr>
+              <tr>
+                <td>[sets=attribute]</td>
+                <td>The <code>theme-logo</code> setting above is an example of the [sets=attribute] setting.  This setting can be used to set an attribute of an HTML element for pages in your site.  This is used to set a global image across your site (e.g. a logo or icon).</td>
+              </tr>
+              <tr>
+                <td>[sets=css]</td>
+                <td>The <code>menu-background-color</code> setting above is an example of the [sets=css] setting.  This setting can be used to set css for your site.  The <code>css</code> property is copied into a <code>style</code> block on each page of your site.  The <code>config(--menu-background-color)</code> is replaced with the value set in the object. The <code>--menu-background-color</code> must be set to the id of the object.</td>
+              </tr>
             </tbody>
           </table>
 
@@ -131,19 +184,19 @@
           <p>Default content is the content added to a new page created within Respond.  Default content should be placed in the <code>.default.html</code> file in the root of the theme.</p>
 
          <h3>Theme Best Practices</h3>
-         
+
          <h4>BASE element</h4>
-         
+
          <p>Respond adds all links and images relative to the root of the site.  As a result, pages in the theme must specify a <code>base</code> element relative to the root.  For instance, pages in a <code>/page/</code> subdirectory must have a base of <code>&lt;base href="../"&gt;.</code></p>
-         
+
          <h4>Sortable ellements must be positioned static or relative. These elements cannot be floated.</h4>
-         
-         <p>Immediate children of <code>sortable</code> containers (see settings) must be positioned relative or static.  They <b>cannot</b> be floated or positioned absolute.  However, children of those children do not have that restriction.</p>    
-         
+
+         <p>Immediate children of <code>sortable</code> containers (see settings) must be positioned relative or static.  They <b>cannot</b> be floated or positioned absolute.  However, children of those children do not have that restriction.</p>
+
          <h4>Specify a [role="main"]</h4>
-         
+
          <p>One element on the page should be given a <code>role="main"</code> attribute.  Respond uses this as the main content of the page.  This main content is searchable and added to the pages.json file so that it can be made available to plugins.</p>
-        
+
 
          <h3>Installing a theme</h3>
 
