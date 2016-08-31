@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Migrating from Respond 5 to Respond 6</title>
+  <title>Respond - Enabling Friendly URLs in your application</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to migrate a site from Respond 5 to Respond 6.">
+  <meta name="description" content="Learn how to enable friendly URLs in your application">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
@@ -79,40 +79,34 @@
 <div id="content" class="container" role="main">
   <div class="block row">
     <div class="col col-md-12">
-      <h1>Migrating from Respond 5 to Respond 6</h1>
+      <h1>Enabling Friendly URLs for your site</h1>
       
-      <p>Respond is a complete overhaul of the system, but you can transition a site created in R5 to R6.  In fact, we transitioned this site to use the new system.</p>
+      <p>By default, Respond 6 references pages using their .html extension.  This is done in both the menu and links created in the application.  However, you can enable friendly URLs by changing the <code>FRIENDLY_URLS</code> property in your <code>.env</code> file to <code>true</code>.  You will still need to make sure friendly URLs are supported by your server.</p>
       
-      <h3>1. Create a new site in R6</h3>
+      <h3>Sample .htaccess</h3>
       
-      <p>Start by creating a new, blank site in R6.  This will give you the structure you need to get started. We recommend using the theme that best matches your current theme or the basic Bootstrap theme to start. If you previously purchased a theme in R5, just send me an email at <a href="mailto:matt@matthewsmith.com">matt@matthewsmith.com</a>, and I will send you the current version (if available).</p>
+      <p>A sample .htaccess is shown below for Apache servers. This is typically placed in the root of your <code>site/site-name</code> folder.</p>
       
-      <h3>2. Copy the files</h3>
-      
-      <p>Copy your files directory over from your Respond 5 site (<code>sites/site-name/files</code>) into the files directory in your new Respond 6 site (<code>public/sites/site-name/files</code>).  You should copy all the files and thumbs.</p>
-      
-      <h3>3. Update the CSS customizations and layout changes to match your R5 site</h3>
-      
-      <p>Respond 5 used LESS as a pre-processor.  You can certainly continue to do this in R6, but you will need to setup a GULP task to do so.  R6 really has no opinion on how you structure and manage your CSS.  The themes included with the system store the CSS in <code>css/site.css</code> and <code>css/plugins.css</code> and are minified via a GULP task to site.min.css.  So, you can simply move your custom CSS into site.min.css or use a separate file.</p>
-      
-      <p>Next update the layout on the starter pages that were created with your R6 site.  This is a manual process, but there are only 8 pages created with the site.  You can find these pages in the root of the site and under the <code>page</code> and <post>post</post> directories.  You can delete these pages from the UI if they are not needed.</p> 
-      
-      <h3>4. Copy content from your R5 site to R6 site</h3>
-      
-      <p>One core difference between R5 and R6 is that content in R5 is stored in the database, whereas content in R6 is stored in the page itself.  So, you can just modify pages directly in R6.  I recommend copying the content manually.  Start by duplicating the <code>.default.html</code> page in your R6 site.  Name that page with the equivalent in R5 and put in the appropriate folder.  Then just replace the content in the <code>[role="main"]</code> element in R6 with the equivalent in R5. </p>
-      
-      <p>A few important notes:</p>
-      
-      <ul>
-        <li>Make sure your <code>base</code> tag has the appropriate depth for each new page created. </li>
-        <li>Make sure references to links and images are relative. Search for <code>img</code> and <code>a</code> tags.</li>
-        <li>Remove legacy plugins. Search for <code>respond-</code> tags.</li>
-      </ul>
-      
-      <h3>5. Update/Add your menus, forms, galleries from the UI</h3>
-      
-      <p>Plugins will not copy over from R6.  So, I recommend simply re-creating these using the R6 UI.</p>
-      
+      <pre class="prettyprint linenums pre-scrollable">
+Options -Indexes
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+ErrorDocument 404 /page/error
+&lt;/IfModule>
+&lt;IfModule mod_expires.c&gt;
+ExpiresActive On 
+ExpiresDefault "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType text/css "access 1 month"
+ExpiresByType application/javascript "access plus 1 year"
+&lt;/IfModule&gt;     
+      </pre>
       
     </div>
   </div>
