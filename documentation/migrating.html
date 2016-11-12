@@ -80,40 +80,48 @@
   <div class="block row">
     <div class="col col-md-12">
       <h1>Migrating from Respond 5 to Respond 6</h1>
-      
+
       <p>Respond is a complete overhaul of the system, but you can transition a site created in R5 to R6.  In fact, we transitioned this site to use the new system.</p>
-      
-      <h3>1. Create a new site in R6</h3>
-      
+
+      <h3>1. Create a new site in R6 using the Blank template</h3>
+
       <p>Start by creating a new, blank site in R6.  This will give you the structure you need to get started. We recommend using the theme that best matches your current theme or the basic Bootstrap theme to start. If you previously purchased a theme in R5, just send me an email at <a href="mailto:matt@matthewsmith.com">matt@matthewsmith.com</a>, and I will send you the current version (if available).</p>
-      
-      <h3>2. Copy the files</h3>
-      
-      <p>Copy your files directory over from your Respond 5 site (<code>sites/site-name/files</code>) into the files directory in your new Respond 6 site (<code>public/sites/site-name/files</code>).  You should copy all the files and thumbs.</p>
-      
-      <h3>3. Update the CSS customizations and layout changes to match your R5 site</h3>
-      
-      <p>Respond 5 used LESS as a pre-processor.  You can certainly continue to do this in R6, but you will need to setup a GULP task to do so.  R6 really has no opinion on how you structure and manage your CSS.  The themes included with the system store the CSS in <code>css/site.css</code> and <code>css/plugins.css</code> and are minified via a GULP task to site.min.css.  So, you can simply move your custom CSS into site.min.css or use a separate file.</p>
-      
-      <p>Next update the layout on the starter pages that were created with your R6 site.  This is a manual process, but there are only 8 pages created with the site.  You can find these pages in the root of the site and under the <code>page</code> and <post>post</post> directories.  You can delete these pages from the UI if they are not needed.</p> 
-      
-      <h3>4. Copy content from your R5 site to R6 site</h3>
-      
-      <p>One core difference between R5 and R6 is that content in R5 is stored in the database, whereas content in R6 is stored in the page itself.  So, you can just modify pages directly in R6.  I recommend copying the content manually.  Start by duplicating the <code>.default.html</code> page in your R6 site.  Name that page with the equivalent in R5 and put in the appropriate folder.  Then just replace the content in the <code>[role="main"]</code> element in R6 with the equivalent in R5. </p>
-      
-      <p>A few important notes:</p>
-      
-      <ul>
-        <li>Make sure your <code>base</code> tag has the appropriate depth for each new page created. </li>
-        <li>Make sure references to links and images are relative. Search for <code>img</code> and <code>a</code> tags.</li>
-        <li>Remove legacy plugins. Search for <code>respond-</code> tags.</li>
-      </ul>
-      
-      <h3>5. Update/Add your menus, forms, galleries from the UI</h3>
-      
+
+      <h3>2. Copy your R5 site to R6</h3>
+
+      <p>Copy the contents of your R5 site to your R6 sites folder (e.g. sites/my-site). <b style="color:red; text-transform: uppercase;">Do not copy</b> the following folders: js, components, data, locales, templates, and themes.</p>
+
+      <p>Next give Respond permission to write to your site</p>
+
+      <pre class="prettyprint pre-scrollable">
+// make the directories writeable
+chown -R www-data app/public/sites
+chown -R www-data app/resources/sites</pre>
+
+      <h3>3. Login and Run the migration developer tool</h3>
+
+      <p>Login to your Respond site and run the migration development tool. Learn more <a href="documentation/developer-tools">Development tools</a>. This does a lot of the heavy lifting for you.</p>
+
+      <h3>4. Re-index your site</h3>
+
+      <p>Re-index your site using the Re-index pages developer tool. Learn more <a href="documentation/developer-tools">Development tools</a>.</p>
+
+      <h3>5. Add references to the R6 plugins JS and CSS</h3>
+
+      <p>Add references to the R6 plugins JS and CSS.</p>
+
+      <pre class="prettyprint pre-scrollable">
+// head of document
+&lt;link type="text/css" href="css/plugins.css" rel="stylesheet"&gt;
+
+// end page
+&lt;script src="js/plugins.js"&gt;&lt;/script&gt;</pre>
+
+      <h3>6. Update/Add your menus, forms, galleries from the UI</h3>
+
       <p>Plugins will not copy over from R6.  So, I recommend simply re-creating these using the R6 UI.</p>
-      
-      
+
+
     </div>
   </div>
 </div>
@@ -131,6 +139,7 @@
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
       <li><a href="help">Help</a></li>
+      <li><a href="contributors">Contributors</a></li>
     </ul>
   </nav>
 

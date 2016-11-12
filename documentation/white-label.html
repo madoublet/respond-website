@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Documentation</title>
+  <title>Respond - White Label</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to create themes for Respond">
+  <meta name="description" content="Learn about the developer tools available within Respond">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
@@ -77,112 +77,29 @@
 </nav>
 
 <div id="content" class="container" role="main">
-  <div class="block row">
+  <div id="block-1" class="block row">
     <div  class="col col-md-12">
-      <h1>Learn</h1>
-      <p>Our documentation walks you through installing, configuring and extending Respond.</p>
-    </div>
-  </div>
-  <div class="block row">
-    <div  class="col col-md-12">
-      <h3>Installing and Updating Respond</h3>
-      <table id="table-1" class="table table-striped table-bordered col-2">
+      <h1>White Label</h1>
+      <p>Respond allows you to quickly white-label the application so that you can easily re-sell it or brand it as your own.  We allow you to set the logo URL and primary light and dark colors that completely change the look of the Respond app.  You white label the application in the .env file you created during setup.  Learn more below.</p>
+
+      <table class="table">
         <thead>
-          <tr>
-            <th>Tutorial</th>
-            <th>Description</th>
-          </tr>
+          <th>Variable</th>
+          <th>Description</th>
+          <tr></tr>
         </thead>
         <tbody>
           <tr>
-            <td><a href="documentation/installation">Installation</a><br></td>
-            <td>Learn how to install&nbsp;Respond&nbsp;on your own server.<br></td>
+            <td>LOGO_URL</td>
+            <td>The absolute URL to your logo in the Respond path</td>
           </tr>
           <tr>
-            <td><a href="documentation/install-on-digital-ocean">Digital Ocean Installation</a><br></td>
-            <td>Step-by-Step instructions to install Respond on Digital Ocean.</td>
+            <td>PRIMARY_COLOR</td>
+            <td>A hex value for the primary color of your app.</td>
           </tr>
           <tr>
-            <td><a href="documentation/wildcard-subdomain-install">Wildcard Subdomain Installation&nbsp;</a><br>
-            </td>
-            <td>Learn how to setup wildcard subdomains to host multiple sites on Respond.</td>
-          </tr>
-          <tr>
-            <td><a href="ddocumentation/server-requirements">Server Requirements</a></td>
-            <td>Learn more about the server requirements for Respond 4.</td>
-          </tr>
-          <tr>
-            <td><a ui-sref="documentation/install-from-zip" href="documentation/install-from-zip">Install from ZIP</a></td>
-            <td>Learn how to install Respond using a ZIP file.</td>
-          </tr>
-          <tr>
-            <td><a href="documentation/updating-respond">Updating Respond</a></td>
-            <td>Learn how to update Respond when a new version is released.</td>
-          </tr>
-        </tbody>
-
-      </table>
-
-      <h3>Key Concepts</h3>
-      <table class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th>Tutorial</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="documentation/create-themes">Themes</a><br></td>
-            <td>A reference for creating Themes with&nbsp;Respond.</td>
-          </tr>
-          <tr>
-            <td><a href="documentation/creating-plugins">Plugins</a></td>
-            <td>A reference for creating Plugins with Respond.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Configuring and Using Respond</h3>
-      <table class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th>Tutorial</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="documentation/setup-reference">Setup Reference</a><br></td>
-            <td>A reference to configuration options available .env.</td>
-          </tr>
-          <tr>
-            <td><a href="documentation/multiple-sites">Managing Multiple Sites</a></td>
-            <td>Learn how to manage multiple sites in Respond.</td>
-          </tr>
-          <tr>
-            <td><a href="documentation/setting-up-email">Setting up Email</a></td>
-            <td>Learn how to setup and customize emails in Respond.</td>
-          </tr>
-          <tr>
-            <td><a href="documentation/translations">Translating Respond</a></td>
-            <td>A reference on translating the app using simple JSON files.<br></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Troubleshooting</h3>
-      <table class="table table-striped table-bordered col-2">
-        <thead>
-          <tr>
-            <th>Tutorial</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="documentation/solutions">Solutions to Common Problems</a><br></td>
-            <td>This guide walks you through solutions to common problems encountered when setting up&nbsp;Respond.</td>
+            <td>PRIMARY_DARK_COLOR</td>
+            <td>A hex value for the primary dark of your app.</td>
           </tr>
         </tbody>
       </table>

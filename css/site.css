@@ -29,6 +29,13 @@ h3 {
   font-size: 20px;
 }
 
+h5 {
+  font-size: 13px;
+  color: #00ADE3;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
 code {
   background-color: rgba(50,153,187,0.05);
   border: 1px solid #ddd;
@@ -417,6 +424,20 @@ body.content ul, body.content ol {
   right: 0;
   border: 10px solid #f8f8f8;
   width: calc(40% - 20px);
+}
+
+.contributor {
+  border-top: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.contributor h3 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contributor:last-child {
+  border-bottom: 1px solid #ddd;
 }
 
 

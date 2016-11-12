@@ -84,7 +84,7 @@
 
          <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>. This helps us pay for hosting.</p>
 
-         <p>Are you ready to get started with Respond? Learn how to install it on a traditional LAMP deployment. Before we get started, read about the <a href="documentation/system-requirements">server requirements.</a> If you are an experience developer, you might also want to checkout out our <a href="documentation/installation-from-github">documentation on installing the app from Github</a>. This requires a little more work but gives you a number of long-term benefits.</p>
+         <p>Are you ready to get started with Respond? Learn how to install it on a traditional LAMP deployment. Before we get started, read about the <a href="documentation/server-requirements">server requirements.</a> If you are an experience developer, you might also want to checkout out our <a href="documentation/installation-from-github">documentation on installing the app from Github</a>. This requires a little more work but gives you a number of long-term benefits.</p>
 
          <h3>1. Create the directory structure for Respond</h3>
          <p>You create your directory structure by navigating to your web root and creating folders for Respond. You can also do this using a graphical tool (such as sFTP). Below we are creating the following structure: <code>var/www/html/respond/app</code>.  We are also adding a <code>var/www/html/respond/app/public/sites</code> folder that will hold the sites and a <code>var/www/html/respond/app/resources/sites</code> folder that will hold private data about your sites.</p>
@@ -112,6 +112,12 @@ npm install
 
 // run gulp (this copies the node_modules folder into the public folder)
 gulp
+
+// install composer (see https://getcomposer.org/download/)
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
 
 // run composer to install PHP dependencies
 php composer.phar install --prefer-dist --no-dev</pre>
@@ -161,6 +167,7 @@ cp .env.example .env
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
       <li><a href="help">Help</a></li>
+      <li><a href="contributors">Contributors</a></li>
     </ul>
   </nav>
 
