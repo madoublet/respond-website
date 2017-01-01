@@ -305,6 +305,25 @@ body.content .container {
   margin: 25px auto 0 auto;
 }
 
+body.content .container.title {
+  max-width: 1000px;
+  min-height: auto;
+  margin: 25px auto 0 auto;
+}
+
+  body.content .container.video-callout {
+    max-width: 100%;
+    background-color: #f0f0f0;
+    min-height: auto;
+    padding: 25px 0 !important;
+  }
+
+   body.content .container.video-callout .block {
+     max-width: 1000px;
+     margin: 0 auto;
+     padding: 0 20px;
+   }
+
 body.content h3 {
   text-transform: uppercase;
   font-size: 15px;
@@ -438,6 +457,12 @@ body.content ul, body.content ol {
 
 .contributor:last-child {
   border-bottom: 1px solid #ddd;
+}
+
+.responsive-video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 
