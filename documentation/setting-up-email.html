@@ -83,7 +83,7 @@
       <p>Respond uses the <a href="https://github.com/PHPMailer/PHPMailer">PHPMailer project</a> to send email within the system. So when a user signs up for a site, signs up for a subscription, or sends an email from a form on your site, it all goes through PHPMailer. </p>
       <h3>Default Configuration</h3>
       <p>By default, email is sent out via the default mail provider configured on your server. If you followed the Digital Ocean installation or use another VPS, you probably don't have one. Some shared servers offer this as an option. But, we think it is much better to outsource to a provider that specializes in this.</p>
-      
+
       <p>Email from the app is always sent out to the primary email setup on the account.</p>
       <h3>Custom Configuration</h3>
       <p>To setup a custom email provider, Respond provides an SMTP configuration option. This is located in the <code>.env</code> file in the root.</p>
@@ -132,8 +132,49 @@
           </tr>
         </tbody>
       </table>
-      
-      
+
+      <h3>Setting up Email Per Site</h3>
+      <p>You can configure Respond to send emails when forms are submitted by setting up the per site email settings.  To do this, simply edit the <code>settings.json</code> file at <code>resources/sites/my-site/settings.json</code>.</p>
+
+      <pre>
+ [
+   ...
+   {
+        "id": "IS_SMTP",
+        "value": true
+    },
+    {
+        "id": "SMTP_HOST",
+        "value": "sample.host"
+    },
+    {
+        "id": "SMTP_PORT",
+        "value": 25
+    },
+    {
+        "id": "SMTP_AUTH",
+        "value": true
+    },
+    {
+        "id": "SMTP_USERNAME",
+        "value": "username"
+    },
+    {
+        "id": "SMTP_PASSWORD",
+        "value": "password"
+    },
+    {
+        "id": "SMTP_SECURE",
+        "value": "tls"
+    },
+    {
+        "id": "SMTPENC_KEY",
+        "value": "iloverespond"
+    }
+ ]
+      </pre>
+
+
       <h3>Customizing Email Content</h3>
       <p>You can easily customize the content in your emails by just editing an HTML file. The following emails are sent out from the Respond application:</p>
       <table class="table table-striped table-bordered col-3">
@@ -157,7 +198,7 @@
           </tr>
         </tbody>
       </table>
-      
+
     </div>
   </div>
 </div>
