@@ -48,6 +48,20 @@ p {
   color: #555;
 }
 
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  min-width: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #00ADE3;
+}
+
+  .button.full-width {
+    display: block;
+  }
+
 .warning {
   color: #CF4647;
 }
