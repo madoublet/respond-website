@@ -47,6 +47,7 @@
       <li><a href="page/tour">Tour</a></li>
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
+      <li><a href="partners">Partners</a></li>
       <li><a href="help">Help</a></li>
     </ul>
 
@@ -72,6 +73,7 @@
     <li><a href="page/tour">Tour</a></li>
     <li><a href="learn">Learn</a></li>
     <li><a href="marketplace">Store</a></li>
+      <li><a href="partners">Partners</a></li>
     <li><a href="help">Help</a></li>
   </ul>
 </nav>
@@ -80,13 +82,13 @@
   <div class="block row">
     <div class="col col-md-12">
       <h1>Enabling Friendly URLs for your site</h1>
-      
+
       <p>By default, Respond 6 references pages using their .html extension.  This is done in both the menu and links created in the application.  However, you can enable friendly URLs by changing the <code>FRIENDLY_URLS</code> property in your <code>.env</code> file to <code>true</code>.  You will still need to make sure friendly URLs are supported by your server.</p>
-      
+
       <h3>Sample .htaccess</h3>
-      
+
       <p>A sample .htaccess is shown below for Apache servers. This is typically placed in the root of your <code>site/site-name</code> folder.</p>
-      
+
       <pre class="prettyprint linenums pre-scrollable">
 Options -Indexes
 &lt;IfModule mod_rewrite.c&gt;
@@ -96,7 +98,7 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 ErrorDocument 404 /page/error
 &lt;/IfModule>
 &lt;IfModule mod_expires.c&gt;
-ExpiresActive On 
+ExpiresActive On
 ExpiresDefault "access plus 1 month"
 ExpiresByType image/x-icon "access plus 1 year"
 ExpiresByType image/gif "access plus 1 month"
@@ -105,9 +107,9 @@ ExpiresByType image/jpg "access plus 1 month"
 ExpiresByType image/jpeg "access plus 1 month"
 ExpiresByType text/css "access 1 month"
 ExpiresByType application/javascript "access plus 1 year"
-&lt;/IfModule&gt;     
+&lt;/IfModule&gt;
       </pre>
-      
+
     </div>
   </div>
 </div>
@@ -125,7 +127,7 @@ ExpiresByType application/javascript "access plus 1 year"
       <li><a href="learn">Learn</a></li>
       <li><a href="marketplace">Store</a></li>
       <li><a href="help">Help</a></li>
-      <li><a href="contributors">Contributors</a></li>
+      <li><a href="partners">Partners</a></li>
     </ul>
   </nav>
 </footer>

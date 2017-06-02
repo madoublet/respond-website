@@ -547,24 +547,74 @@ body.content ul, body.content ol {
 }
 
 .contributor {
+  position: relative;
   border-top: 1px solid #ddd;
   padding-bottom: 10px;
+  margin: 20px;
+  margin-bottom: 0 !important;
 }
 
-.contributor h3 {
+.contributor h3, .contributor p {
+  margin: 0;
+  padding: 0;
+}
+
+.contributor .logo {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+}
+
+  .contributor .logo img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25%;
+    margin-top: -25%;
+    display: block;
+  }
+
+.contributor.featured h3, .contributor.featured p {
+  margin-left: 100px;
+}
+
+.contributor h3 a {
+  color: #111;
+}
+
+.contributor p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.contributor p:last-child {
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 
-.contributor:last-child {
-  border-bottom: 1px solid #ddd;
-}
 
 .responsive-video {
   width: 100%;
   max-width: 100%;
   height: auto;
 }
+
+div.more-space {
+  margin-top: 20px !important;
+}
+
+/* partner logo */
+.partner-logo {
+  filter: grayscale(100%);
+}
+
+  .partner-logo:hover {
+    filter: none;
+  }
 
 
 

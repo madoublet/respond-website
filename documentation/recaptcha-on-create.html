@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Bootstrap CMS</title>
+  <title>Respond - reCAPTCHA on Create</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to create themes for Respond">
+  <meta name="description" content="Learn how to use LDAP to provide login functionality for your organization">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
@@ -81,11 +81,32 @@
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
     <div  class="col col-md-12">
-      <h1>100% Bootstrap</h1>
-      <p >While it might not look like a traditional Bootstrap site, the app and editor are built using a customized version of the framework. &nbsp;So, if you are looking to extend the CMS or build on top of it, you can be assured that you will see a lot of familiar code that is tested and responsive.</p>
-      <img src="resources/tools.png">
-      <p>The default theme and all themes that are sold on the marketplace are built on Bootstrap as well. &nbsp;So, while most of the themes don't look like the default Bootstrap look and feel, you can be assured that they are just customized versions of the framework.</p>
-      <img src="resources/persistence.png">
+      <h1>reCAPTCHA on Create</h1>
+
+      <p>Learn how to use <a href="https://www.google.com/recaptcha/">Google's reCAPTCHA</a> to help prevent malicious site creations.</p>
+
+      <h3>1. Enable reCAPTCHA</h3>
+
+      <p>Update the reCAPTCHA settings in <code>.env</code> to get started using reCAPTCHA in Respond.  Google's reCAPTCHA tool requires you to sign up and generate a site and secret key for your site.  You must specify your domain for the tool to work.  Sign up for reCAPTCHA on the Google site: <a href="https://www.google.com/recaptcha/">google.com/recaptcha</a></p>
+
+      <table class="table">
+        <thead>
+          <th>Variable</th>
+          <th>Description</th>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RECAPTCHA_SITE_KEY</td>
+            <td><code>The site key for reCAPTCHA.</code></td>
+          </tr>
+          <tr>
+            <td>RECAPTCHA_SECRET_KEY</td>
+            <td>The secret key for reCAPTCHA.</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
