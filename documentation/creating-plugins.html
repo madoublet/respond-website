@@ -104,25 +104,25 @@
       <h3>Enabling Plugins in the Respond Editor</h3>
 
       <p>
-        You can enable the Respond visual editor to show your plugin by adding the following JavaScript to <code>resources/themes/theme-name/.private/plugins.js</code>. The file is copied to <code>resources/sites/site-name/plugins.js</code> when the site is created.
+        You can enable the Respond visual editor to show your plugin by adding the following JSON to <code>resources/themes/theme-name/data/plugins.json</code>. The file is copied to <code>public/sites/site-name/data/plugins.json</code> when the site is created.
       </p>
 
       <pre class="prettyprint">
 {
-      action: "respond.form",
-      selector: "[respond-plugin][type=form]",
-      title: "Form",
-      display: '&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="100%" width="100%"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/&gt;&lt;/svg&gt;',
-      view: '&lt;div class="respond-plugin"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="100%" width="100%"&gt;&lt;path d="M0 0h24v24H0z" fill="none"/&gt;&lt;path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/&gt;&lt;/svg&gt;&lt;span&gt;' + hashedit.i18n('Form') + '&lt;/span&gt;&lt;/div&gt;',
-      html: '&lt;div respond-plugin type="form" form="contact-us"&gt;&lt;/respond-form&gt;',
-      attributes: [
-        {
-          attr: 'form',
-          label: 'Form',
-          type: 'select',
-          values: ['respond.forms']
-        }
-      ]
+    "selector": "[respond-plugin][type=form]",
+    "title": "Form",
+    "display": "<i class=\"material-icons\">check_box</i>",
+    "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">check_box</i><span>Form</span></div>",
+    "html": "<div respond-plugin type=\"form\" form=\"contact-us\"></div>",
+    "attributes": [
+      {
+        "attr": "form",
+        "label": "Form",
+        "type": "select",
+        "values": ["respond.forms"]
+      }
+    ],
+    "assets": ["plugins/form.html"]
 }
       </pre>
 
