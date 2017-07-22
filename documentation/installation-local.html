@@ -132,19 +132,13 @@ mkdir respond
 cd respond
 
 // create a directory to hold the app and sites
-mkdir app
-
-// change to the app directory
-cd app</pre>
+mkdir app</pre>
 
          <h3>5. Copy ZIP to app folder</h3>
          <p>Copy the ZIP file you downloaded from our <a href="download">Download page</a> into your app folder.  You can use an sFTP client or the command line as shown below.</p>
          <pre>
 // get the zip file
 wget --content-disposition https://github.com/madoublet/respond/blob/master/dist/release.zip?raw=true
-
-// install unzip (if not already installed). The command below uses apt-get.  Your package manager may vary.
-sudo apt-get install unzip
 
 // unzip it into the app directory
 unzip release.zip -d app</pre>
