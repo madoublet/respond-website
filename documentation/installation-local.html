@@ -123,7 +123,7 @@ vagrant ssh</pre>
          <h3>4. Create the directory structure for Respond</h3>
          <p>You create your directory structure by navigating to your web root and creating folders for Respond. You can also do this using a graphical tool (such as sFTP). Below we are creating the following structure: <code>var/www/html/respond/app</code>.  We are also adding a <code>var/www/html/respond/app/public/sites</code> folder that will hold the sites and a <code>var/www/html/respond/app/resources/sites</code> folder that will hold private data about your sites.</p>
          <pre id="pre-1" class="prettyprint">// go to your HTML root
-cd var/www/
+cd /var/www/
 
 // create the respond directory
 mkdir respond
@@ -175,10 +175,12 @@ cd sites-available
 // edit the default configuration file
 sudo nano 000-default.conf
 
-// change only the default directory to point to Respond
+// this opens the .conf file in an editor called nano
+// change ONLY the DocumentRoot
+// this points any unknown requests to the server to Respond
 DocumentRoot /var/www/respond/app/public
 
-// save the file
+// save the file (^O, ^X)
 
 // reboot apache
 sudo service apache2 restart</pre>
