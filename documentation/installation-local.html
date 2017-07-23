@@ -101,11 +101,11 @@ mkdir my-vagrant-directory
 // navigate to the directory
 cd my-vagrant-directory</pre>
 
-         <h3>3. Clone Scotch/Box</h3>
-         <p>We are going to use the <a href="https://box.scotch.io/">Scotch/Box</a> Vagrant configuration to setup our VirtualBox.  This is a pre-configured LAMP stack running on Ubuntu.  You do need git installed locally to continue</p>
+         <h3>3. Clone Respond Box</h3>
+         <p>We have modified the <a href="https://box.scotch.io/">Scotch/Box</a> Vagrant configuration to setup our VirtualBox.  Scotch/Box is a pre-configured LAMP stack running on Ubuntu.  We have added a custom setup script to make installing Respond really easy. FYI, you do need git installed locally to continue</p>
 
          <pre id="pre-1" class="prettyprint">// clone scotch/box to respond directory
-git clone https://github.com/scotch-io/scotch-box respond
+git clone https://github.com/madoublet/respond-box respond
 
 // switch to the new directory
 cd respond</pre>
@@ -120,77 +120,20 @@ vagrant up
 vagrant ssh</pre>
 
 
-         <h3>4. Create the directory structure for Respond</h3>
-         <p>You create your directory structure by navigating to your web root and creating folders for Respond. You can also do this using a graphical tool (such as sFTP). Below we are creating the following structure: <code>var/www/html/respond/app</code>.  We are also adding a <code>var/www/html/respond/app/public/sites</code> folder that will hold the sites and a <code>var/www/html/respond/app/resources/sites</code> folder that will hold private data about your sites.</p>
+         <h3>4. Run Setup</h3>
+         <p>Now, we just run the pre-configured setup file and you are ready to go.</p>
          <pre id="pre-1" class="prettyprint">// go to your HTML root
-cd /var/www/
+cd /var/www
 
-// create the respond directory
-mkdir respond
+// run setup
+bash setup</pre>
 
-// switch directories
-cd respond
-
-// create a directory to hold the app and sites
-mkdir app</pre>
-
-         <h3>5. Copy ZIP to app folder</h3>
-         <p>Copy the ZIP file you downloaded from our <a href="download">Download page</a> into your app folder.  You can use an sFTP client or the command line as shown below.</p>
-         <pre>
-// get the zip file
-wget --content-disposition https://github.com/madoublet/respond/blob/master/dist/release.zip?raw=true
-
-// unzip it into the app directory
-unzip release.zip -d app</pre>
-
-         <h3>3. Make the two sites directories</h3>
-         <p>We are also adding a <code>var/www/html/respond/app/public/sites</code> folder that will hold the sites and a <code>var/www/html/respond/app/resources/sites</code> folder that will hold private data about your sites. We are then giving the app permission to write to these directoriesThis is typically done by making Apache the owner of the directory. You can also set read-write permissions (e.g. 755) on the folder. Contact your hosting provider about the correct permissions for writeable directories.</p>
-         <pre id="pre-2" class="prettyprint pre-scrollable">// make sites directory in app (app/public/sites)
-mkdir app/public/sites
-
-// make sites directory in app (app/resources/sites)
-mkdir app/resources/sites
-
-// make the directories writeable
-chown -R www-data app/public/sites
-chown -R www-data app/resources/sites</pre>
-
-        <h3>4. Setup env</h3>
-         <p>Copy the env file.  You can <a href="documentation/setup-reference">set this up later</a> to specify email and other settings.</p>
-         <pre id="pre-4" class="prettyprint pre-scrollable" description="Step 4" respond-pre="true">// switch to app directory
-cp app/.env.example app/.env
-</pre>
-
-
-      <h3>5. Change the default directory</h3>
-
-      <p>We recommend you setup a domain for your application and a sub-domain (or domain) for each of your sites. This allows you to secure your application using https and provide nice URLs for sites created using the CMS. Domains are typically setup
-            using DNS and your htdocs file. Refer to your hosting provider's documentation on setting up domains. For installs that will host multiple sites, we have created a guide for <a href="/documentation/wildcard-subdomain-install">installing wildcard DNS</a> based
-            on our Digital Ocean setup.
-         </p>
-         <pre class="prettyprint pre-scrollable">// change to the Apache sites-available directory
-cd /etc/apache2
-cd sites-available
-
-// edit the default configuration file
-sudo nano 000-default.conf
-
-// this opens the .conf file in an editor called nano
-// change ONLY the DocumentRoot
-// this points any unknown requests to the server to Respond
-DocumentRoot /var/www/respond/app/public
-
-// save the file (^O, ^X)
-
-// reboot apache
-sudo service apache2 restart</pre>
-
-      </div>
-
-      <h3>6. Test installation and create site</h3>
+      <h3>5. Test installation and create site</h3>
 
       <p>Navigate to <a href="http://192.168.33.10/install/">http://192.168.33.10/install/</a> to test your installation.  You should see all checks under the requirements.  You can then create your site at <a href="http://192.168.33.10/create">http://192.168.33.10/create</a>.</p>
    </div>
+</div>
+
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">
