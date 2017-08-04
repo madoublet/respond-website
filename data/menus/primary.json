@@ -35,6 +35,12 @@
       {
         "cssClass": "",
         "isNested": false,
+        "html": "Partners",
+        "url": "partners"
+      },
+      {
+        "cssClass": "",
+        "isNested": false,
         "html": "Help",
         "url": "help"
       }

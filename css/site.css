@@ -6,6 +6,10 @@ html, body {
   font-size: 14px;
 }
 
+body.hashedit-active {
+    margin-top: 50px !important;
+}
+
 a {
   text-decoration: none;
   color: #00ADE3;
@@ -227,7 +231,7 @@ header .search {
 }
 
 .screen {
-  width: 100%;
+  width: calc(100% - 10px);
   border-bottom: 1px solid #2F3243;
   border-left: 10px solid rgba(255,255,255,.25);
   border-top: 10px solid rgba(255,255,255,.25);
@@ -598,9 +602,15 @@ body.content ul, body.content ol {
 
 
 .responsive-video {
-  width: 100%;
-  max-width: 100%;
+  width: calc(100% - 20px);
+  max-width: calc(100% - 20px);
   height: auto;
+  border: 10px solid #f8f8f8;
+}
+
+.video {
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 div.more-space {

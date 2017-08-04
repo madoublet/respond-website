@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Respond - Recurring Payments</title>
+  <title>Respond - Releases</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to enable Respond to accept recurring payments using Stripe">
+  <meta name="description" content="Documents what has changed in each release and what you need to do to upgrade.">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
@@ -15,10 +15,10 @@
   <base href="../">
 
   <!-- open graph -->
-  <meta property="og:url" content="http://test.com/documentation/recurring-payments" />
+  <meta property="og:url" content="http://test.com/page/releases" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Recurring Payments" />
-  <meta property="og:description" content="Learn how to enable Respond to accept recurring payments using Stripe" />
+  <meta property="og:title" content="Releases" />
+  <meta property="og:description" content="Documents what has changed in each release and what you need to do to upgrade." />
   <meta property="og:image" content="http://test.com/" />
 
   <!-- icons -->
@@ -40,7 +40,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2017-08-03T12:59:11+0000" data-template="default" data-tags="">
+<body class="content" data-lastmodified="2017-08-03T12:52:40+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
@@ -80,76 +80,63 @@
 
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
-    <div  class="col col-md-12">
-      <h1>Recurring Payments</h1>
+    <div class="col col-md-12">
+        <h1>Releases</h1>
+        <p>Documents what has changed in each release and what you need to do to upgrade.</p>
+    <h2>Respond 6.2.0</h2><h3>What's new</h3><p>The Respond 6.2.0 release focuses on making meta data for pages better. &nbsp;It introduces a new page settings UI that gives you full control of the meta data on your page and adds new syntax options for pushing data into your templates. &nbsp;The new tags are documented here on the&nbsp;<a href="documentation/creating-themes">Creating Themes</a>&nbsp;page. &nbsp;</p><p>The release also adds some much needed usability fixes in the editor. &nbsp;Now, when you delete all the text in a text block, you do not lose the ability to edit that block.</p><h3>how to upgrade</h3><p>Below is a sample of how your new templates should look after the upgrade. &nbsp;Note the new {{page.element}} syntax for all the meta data and OG tags. &nbsp;This should be updated for all your custom themes, and for your existing sites. &nbsp;This can be done by going to Code &gt; Templates in the Respond UI.</p><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en" dir="ltr"&gt;
+  
+  &lt;head&gt;
+    &lt;title&gt;{{page.title}}&lt;/title&gt;
+  
+    &lt;!-- meta --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+    &lt;meta name="description" content="{{page.description}}"&gt;
+    &lt;meta name="keywords" content="{{page.keywords}}"&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+    &lt;meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"&gt;
+  
+    &lt;!-- set base --&gt;
+    &lt;base href="../"&gt;
+  
+    &lt;!-- open graph --&gt;
+    &lt;meta property="og:url" content="" /&gt;
+    &lt;meta property="og:type" content="website" /&gt;
+    &lt;meta property="og:title" content="" /&gt;
+    &lt;meta property="og:description" content="" /&gt;
+    &lt;meta property="og:image" content="" /&gt;
+  
+    &lt;!-- icons --&gt;
+    &lt;link theme-icon href="resources/icon.png" rel="icon"&gt;
+    &lt;meta theme-color content="#888" name="msapplication-TileColor"&gt;
+    &lt;meta theme-color content="#888" name="msapplication-TileImage"&gt;
+    &lt;link theme-icon href="resources/icon.png" rel="apple-touch-icon"&gt;
+  
+    &lt;!-- font --&gt;
+    &lt;link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'&gt;
+    &lt;link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.css" rel="stylesheet"&gt;
+  
+    &lt;!-- css --&gt;
+    &lt;link type="text/css" href="css/site.min.css" rel="stylesheet"&gt;
+  
+    &lt;!-- google maps --&gt;
+    &lt;script src="https://maps.googleapis.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
+  
+    {{page.customHeader}}
+    
+  &lt;body&gt;
+  
+  ...
+  
+  &lt;/body&gt;
+  
+  &lt;!-- js --&gt;
+  &lt;script src="js/site.all.js"&gt;&lt;/script&gt;
+  
+  {{page.customFooter}}
 
-      <p>Respond allows you to accept recurring payments.  This is done using <a href="https://stripe.com/checkout">Stripe Checkout</a>.  Simply set a few variables in your Respond .env file and create a subscription plan in Stripe and you are ready to go.</p>
-
-      <h3>1. Enable Trials</h3>
-
-      <p>To use Subscriptions, start by changing the <code>DEFAULT_STATUS</code> to <code>Trial</code>.  Optionally, you can change the <code>TRIAL_LENGTH</code> from the default of 30.
-
-      <table class="table">
-        <thead>
-          <th>Variable</th>
-          <th>Description</th>
-          <tr></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>DEFAULT_STATUS</td>
-            <td><code>Trial</code></td>
-          </tr>
-          <tr>
-            <td>TRIAL_LENGTH</td>
-            <td>The length of your trial.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>2. Setup Stripe</h3>
-
-      <p>To use Stripe, ensure that <code>ACTIVATION_METHOD</code> is set to <code>Stripe</code> then set your plan and keys.
-
-      <table class="table">
-        <thead>
-          <th>Variable</th>
-          <th>Description</th>
-          <tr></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ACTIVATION_METHOD</td>
-            <td><code>Stripe</code></td>
-          </tr>
-          <tr>
-            <td>STRIPE_SECRET_KEY</td>
-            <td>Secret Key provide by Stripe.</td>
-          </tr>
-          <tr>
-            <td>STRIPE_PUBLISHABLE_KEY</td>
-            <td>Publishable Key provide by Stripe.</td>
-          </tr>
-          <tr>
-            <td>STRIPE_PLAN</td>
-            <td>Stripe plan id that you created using the Stripe UI.</td>
-          </tr>
-          <tr>
-            <td>STRIPE_AMOUNT</td>
-            <td>The amount of the first payment of the plan (in cents).</td>
-          </tr>
-          <tr>
-            <td>STRIPE_NAME</td>
-            <td>The name that will show up in the Stripe Checkout dialog.</td>
-          </tr>
-          <tr>
-            <td>STRIPE_DESCRIPTION</td>
-            <td>The description that will show up in the Stripe Checkout dialog.</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
+&lt;/html&gt;</pre></div>
   </div>
 </div>
 
@@ -160,7 +147,7 @@
   <p>Built by Matthew Smith in Manchester, MO.  Respond 6 is an open source, responsive content management system built on the Lumen PHP and Angular 2 frameworks.  Respond 6 is built so that you can quickly build beautiful, responsive websites.  The latest version features flat-file storage, a beautiful visual editor, and fast static sites.</p>
 
   <nav>
-    <ul respond-plugin type="menu" menu="footer"><li><a href="index">Home</a></li><li><a href="download">Download</a></li><li><a href="learn">Learn</a></li><li><a href="page/releases">Releases</a></li><li><a href="page/terms-of-service">Terms</a></li><li><a href="page/privacy-policy">Privacy Policy</a></li><li><a href="help">Help</a></li></ul>
+    <ul respond-plugin type="menu" menu="footer"><li><a href="index">Home</a></li><li><a href="download">Download</a></li><li><a href="learn">Learn</a></li><li active><a href="page/releases">Releases</a></li><li><a href="page/terms-of-service">Terms</a></li><li><a href="page/privacy-policy">Privacy Policy</a></li><li><a href="help">Help</a></li></ul>
   </nav>
 
 </footer>

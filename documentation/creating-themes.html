@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
- <head>
+<head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Respond - Creating themes</title>
 
   <!-- meta -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="Learn how to create themes for Respond">
+  <meta name="description" content="Learn how to create themes for Respond.">
   <meta name="keywords" content="">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <!-- base -->
   <base href="../">
 
+  <!-- open graph -->
+  <meta property="og:url" content="http://test.com/documentation/creating-themes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Creating themes" />
+  <meta property="og:description" content="Learn how to create themes for Respond." />
+  <meta property="og:image" content="http://test.com/" />
+
   <!-- icons -->
-  <link theme-icon rel="icon" href="">
-  <meta theme-color name="msapplication-TileColor" content="">
-  <meta theme-color name="msapplication-TileImage" content="">
-  <meta theme-color name="theme-color" content="">
-  <link theme-icon rel="apple-touch-icon" href="">
+  <link theme-icon rel="icon" href="resources/icon.png">
+  <meta theme-color name="msapplication-TileColor" content="#2F3243">
+  <meta theme-color name="msapplication-TileImage" content="#2F3243">
+  <meta theme-color name="theme-color" content="#2F3243">
+  <link theme-icon rel="apple-touch-icon" href="resources/icon.png">
 
   <!-- font -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
   <!-- css -->
   <link type="text/css" href="css/libs.min.css" rel="stylesheet">
-  <link type="text/css" href="css/plugins.css" rel="stylesheet">
   <link type="text/css" href="css/site.css" rel="stylesheet">
+  <link type="text/css" href="css/plugins.css" rel="stylesheet">
 
-</head>
+  
 
-<body class="content">
+<style respond-settings></style></head>
+
+<body class="content" data-lastmodified="2017-08-03T13:05:37+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
   <a class="brand md-plus" href="index"><img theme-logo src="resources/respond-logo.png"></a>
 
-  <a class="brand sm" href="index"><img theme-logo src="resources/respond-logo-sm.png"></a>
+  <a class="brand sm" href="index"><img theme-logo src="resources/respond-logo.png"></a>
 
   <nav class="navbar md-plus" role="navigation">
 
-    <ul respond-plugin type="menu" menu="primary">
-      <li><a href="index">Home</a></li>
-      <li><a href="download">Download</a></li>
-      <li><a href="page/tour">Tour</a></li>
-      <li><a href="learn">Learn</a></li>
-      <li><a href="marketplace">Store</a></li>
-      <li><a href="partners">Partners</a></li>
-      <li><a href="help">Help</a></li>
-    </ul>
+    <ul respond-plugin type="menu" menu="primary"><li><a href="index">Home</a></li><li><a href="download">Download</a></li><li><a href="page/tour">Tour</a></li><li><a href="learn">Learn</a></li><li><a href="marketplace">Store</a></li><li><a href="partners">Partners</a></li><li><a href="help">Help</a></li></ul>
 
   </nav>
 
   <div class="menu sm" toggle-drawer>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24" viewBox="0 0 24 24" width="24">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24" viewbox="0 0 24 24" width="24">
         <path d="M0 0h24v24H0z" fill="none"/>
         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
     </svg>
   </div>
 
   <div class="search" respond-search>
-    <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" preserveAspectRatio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
+    <svg fill="#fff" height="24" viewbox="0 0 24 24" width="24" preserveaspectratio="xMidYMid meet"><g><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></g></svg>
   </div>
 
 </header>
@@ -73,12 +74,11 @@
     <li><a href="page/tour">Tour</a></li>
     <li><a href="learn">Learn</a></li>
     <li><a href="marketplace">Store</a></li>
-      <li><a href="partners">Partners</a></li>
     <li><a href="help">Help</a></li>
   </ul>
 </nav>
 
-<div class="container" id="content" role="main">
+<div id="content" class="container" role="main">
    <div class="block row">
       <div class="col col-md-12">
          <h1>Creating Themes</h1>
@@ -90,17 +90,16 @@
 
          <h3>Sites as Themes</h3>
 
-         <p>To build a theme for Respond 6, simply build a site and then add a <code>theme.json</code> configuration file to tell the CMS what containers can be edited and what elements can be dragged.</p>
+         <p>Our goal with Respond is to make building themes as easy as building a site. &nbsp;In fact, all of our themes can be viewed outside of Respond using a standard browser. &nbsp;The best way to get started building a theme with Respond is to start with one of our existing themes. &nbsp;The Bootstrap theme is a great place to start. &nbsp;You can view it on&nbsp;<a href="https://github.com/madoublet/respond/tree/master/public/themes/bootstrap">Github</a>. &nbsp;</p><p>The rest of this document will outline the core parts of the Bootstrap theme so you can understand what goes into making your own theme.</p>
 
          <h3>Theme Settings</h3>
 
-         <p>The <code>settings.json</code> file should be placed in the <code>.private/settings.json</code> folder for your theme.</p>
+         <p>The <code>settings.json</code> file is found at&nbsp;<code>private/settings.json</code>. &nbsp;The role of this file is to provide Respond with instructions on how to interact with your theme. &nbsp;The file is copied into the&nbsp;<code>resources/sites/site-name</code>&nbsp;folder when the site is created using the theme. The settings file has two types of settings. &nbsp;The first are private settings that are not editable by the end user. &nbsp;Examples of these are the editable, sortable, blocks, and framework settings below. &nbsp;These can only be changed by the theme creator or bythe app administrator when the theme is used to create a site. &nbsp;The second type of setting is a public setting. &nbsp;These have the type attribute associated with them. &nbsp;These settings are exposed to the end user in the Settings menu item within Respond. &nbsp;All settings can change aspects of the themes and can also be used within plugins. &nbsp;See the table below for more details on how to use these settings.</p>
 
-         <pre class="prettyprint linenums pre-scrollable">
-[
+         <pre class="prettyprint linenums pre-scrollable">[
     {
         "id": "editable",
-        "value": "[role=\"main\"]"
+        "value": "[role=main]"
     },
     {
         "id": "sortable",
@@ -125,7 +124,7 @@
           {
             "name": "2 Column",
             "desc": "50%/50%",
-            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;div class=\"col col-md-6\">&lt;/div&gt;&lt;/div>"
+            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;/div&gt;"
           }
         ]
     },
@@ -189,9 +188,81 @@
           </table>
 
 
-          <h3>Default Content</h3>
-
-          <p>Default content is the content added to a new page created within Respond.  Default content should be placed in the <code>.default.html</code> file in the root of the theme.</p>
+          <h3>Templates</h3>
+          
+          <p>Templates hold the content that is used to create new pages and provide common headers and footers across pages.  You can find the templates in the <code>templates/</code> folder in your sites directory. Templates have their own unique syntax to inject 
+          common settings into your page.  To change page settings, you use the settings in the page settings modal.</p>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Setting</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{page.title}}</td>
+                <td>The title of the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.description}}</td>
+                <td>The description of the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.keywords}}</td>
+                <td>The keywords of the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.tags}}</td>
+                <td>The tags of the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.callout}}</td>
+                <td>A short phrase to call attention to a page.</td>
+              </tr>
+              <tr>
+                <td>{{page.url}}</td>
+                <td>The url of the page (not editable in page settings).</td>
+              </tr>
+              <tr>
+                <td>{{page.fullUrl}}</td>
+                <td>The full url of the page (not editable in page settings).</td>
+              </tr>
+              <tr>
+                <td>{{page.photoUrl}}</td>
+                <td>The url of the selected photo for the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.fullPhotoUrl}}</td>
+                <td>The full url of the selected photo for the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.thumbUrl}}</td>
+                <td>The thumb url of the selected photo for the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.fullThumbUrl}}</td>
+                <td>The thumb url of the selected photo for the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.language}}</td>
+                <td>The selected language for the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.direction}}</td>
+                <td>The text direction (ltr, rtl) for the page..</td>
+              </tr>
+              <tr>
+                <td>{{page.customHeader}}</td>
+                <td>Custom HTML for the header of the page.</td>
+              </tr>
+              <tr>
+                <td>{{page.customFooter}}</td>
+                <td>Custom HTML for the footer of the page.</td>
+              </tr>
+            </tbody>
+          </table>
 
          <h3>Theme Best Practices</h3>
 
@@ -225,14 +296,7 @@
   <p>Built by Matthew Smith in Manchester, MO.  Respond 6 is an open source, responsive content management system built on the Lumen PHP and Angular 2 frameworks.  Respond 6 is built so that you can quickly build beautiful, responsive websites.  The latest version features flat-file storage, a beautiful visual editor, and fast static sites.</p>
 
   <nav>
-    <ul respond-plugin type="menu" menu="footer">
-      <li><a href="index">Home</a></li>
-      <li><a href="page/tour">Tour</a></li>
-      <li><a href="learn">Learn</a></li>
-      <li><a href="marketplace">Store</a></li>
-      <li><a href="help">Help</a></li>
-      <li><a href="partners">Partners</a></li>
-    </ul>
+    <ul respond-plugin type="menu" menu="footer"><li><a href="index">Home</a></li><li><a href="download">Download</a></li><li><a href="learn">Learn</a></li><li><a href="page/releases">Releases</a></li><li><a href="page/terms-of-service">Terms</a></li><li><a href="page/privacy-policy">Privacy Policy</a></li><li><a href="help">Help</a></li></ul>
   </nav>
 
 </footer>
@@ -257,4 +321,6 @@
 </script>
  <!-- /respond-plugin:analytics -->
 
-</html>s
+ 
+
+</html>
