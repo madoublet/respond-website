@@ -15,11 +15,11 @@
   <base href="../">
 
   <!-- open graph -->
-  <meta property="og:url" content="http://test.com/page/releases" />
+  <meta property="og:url" content="https://respondcms.com/page/releases" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Releases" />
   <meta property="og:description" content="Documents what has changed in each release and what you need to do to upgrade." />
-  <meta property="og:image" content="http://test.com/" />
+  <meta property="og:image" content="https://respondcms.com/" />
 
   <!-- icons -->
   <link theme-icon rel="icon" href="resources/icon.png">
@@ -40,7 +40,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2017-08-03T12:52:40+0000" data-template="default" data-tags="">
+<body class="content" data-lastmodified="2017-08-13T21:01:40+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
@@ -81,9 +81,9 @@
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
     <div class="col col-md-12">
-        <h1>Releases</h1>
-        <p>Documents what has changed in each release and what you need to do to upgrade.</p>
-    <h2>Respond 6.2.0</h2><h3>What's new</h3><p>The Respond 6.2.0 release focuses on making meta data for pages better. &nbsp;It introduces a new page settings UI that gives you full control of the meta data on your page and adds new syntax options for pushing data into your templates. &nbsp;The new tags are documented here on the&nbsp;<a href="documentation/creating-themes">Creating Themes</a>&nbsp;page. &nbsp;</p><p>The release also adds some much needed usability fixes in the editor. &nbsp;Now, when you delete all the text in a text block, you do not lose the ability to edit that block.</p><h3>how to upgrade</h3><p>Below is a sample of how your new templates should look after the upgrade. &nbsp;Note the new {{page.element}} syntax for all the meta data and OG tags. &nbsp;This should be updated for all your custom themes, and for your existing sites. &nbsp;This can be done by going to Code &gt; Templates in the Respond UI.</p><pre>&lt;!DOCTYPE html&gt;
+        <h1 style="">Releases</h1>
+        <p style="">Documents what has changed in each release and what you need to do to upgrade.</p>
+    <h2 style="">Respond 6.3.0</h2><h3 style="">What's New</h3><p style="">The big feature of the Respond 6.3.0 release is the inclusion of the Angular CLI into the build process. &nbsp;This separates the UI for the application into its own repository at&nbsp;<a href="https://github.com/madoublet/respond-ui">https://github.com/madoublet/respond-ui</a>. &nbsp;The release also includes support for search on the pages screen and a single sign in URL. &nbsp;This allows you to login to any site at the /login URL without having to specify the site's name. &nbsp;</p><h3 style="">How to Upgrade</h3><p>You can upgrade by following the standard&nbsp;<a href="documentation/updating-respond">upgrade instructions</a>. &nbsp;If you want to develop for Respond, new documentation is available under&nbsp;<a href="documentation/installation-from-github">Developer Installation</a>.</p><p style="">You will also need to specify a new LOGO URL in the .env file as this is now stored to the respond-ui repository.</p><pre>LOGO_URL=/assets/resources/respond-logo.png</pre><h2 style="">Respond 6.2.0</h2><h3>What's new</h3><p>The Respond 6.2.0 release focuses on making meta data for pages better. &nbsp;It introduces a new page settings UI that gives you full control of the meta data on your page and adds new syntax options for pushing data into your templates. &nbsp;The new tags are documented here on the&nbsp;<a href="documentation/creating-themes">Creating Themes</a>&nbsp;page. &nbsp;</p><p>The release also adds some much needed usability fixes in the editor. &nbsp;Now, when you delete all the text in a text block, you do not lose the ability to edit that block.</p><h3>how to upgrade</h3><p>Below is a sample of how your new templates should look after the upgrade. &nbsp;Note the new {{page.element}} syntax for all the meta data and OG tags. &nbsp;This should be updated for all your custom themes, and for your existing sites. &nbsp;This can be done by going to Code &gt; Templates in the Respond UI.</p><pre>&lt;!DOCTYPE html&gt;
 &lt;html lang="en" dir="ltr"&gt;
   
   &lt;head&gt;

@@ -15,11 +15,11 @@
   <base href="../">
 
   <!-- open graph -->
-  <meta property="og:url" content="http://test.com/documentation/translations" />
+  <meta property="og:url" content="https://respondcms.com/documentation/translations" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Translating the Respond Application" />
   <meta property="og:description" content="Learn how to translate Respond into another language." />
-  <meta property="og:image" content="http://test.com/" />
+  <meta property="og:image" content="https://respondcms.com/" />
 
   <!-- icons -->
   <link theme-icon rel="icon" href="resources/icon.png">
@@ -40,7 +40,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2017-08-03T13:07:55+0000" data-template="default" data-tags="">
+<body class="content" data-lastmodified="2017-08-13T21:04:53+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
@@ -80,15 +80,15 @@
 
 <div id="content" class="container" role="main">
   <div class="block row">
-    <div  class="col col-md-12">
+    <div class="col col-md-12">
       <h1>Translations</h1>
-      <p>Respond supports multiple languages for the application</p>
+      <p>Respond supports multiple languages. &nbsp;The locales are stored in the&nbsp;<a href="https://github.com/madoublet/respond-ui/">respond-ui repository on Github</a>.</p>
       <h2 class="top-divider">Translating the Respond Application</h2>
-      <p>Translating Respond into your preferred language is really easy.  The basic process is duplicating a the existing English translation (stored in JSON format) and updating the name-value pairs with your language.</p>
-      <h3>1. Create a new file in /public/i18n/your-language-code.json</h3>
-      <p>Create a new file in /locales/ using the <a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO639-1 code</a>.  For example, English would be /locales/en.</p>
+      <p>Translating Respond into your preferred language is really easy.  The basic process is duplicating a the existing English translation (stored in JSON format) and updating the name-value pairs with your language. &nbsp;</p>
+      <h3>1. Create a new file in /SRC/ASSETS/i18n/your-language-code.json</h3>
+      <p>Create a new file in /src/assets/i18n/ using the <a href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO639-1 code</a>.  For example, English would be /src/assets/i18n/en.json.</p>
       <h3>2.  Copy the English translations</h3>
-      <p>Copy the translations from /public/i18/en.json</p>
+      <p>Copy the translations from /src/assets/i18n/en.json</p>
       <h3>3.  Update the Name-Value pairs</h3>
       <p>Update the name value pairs with the translation in your language.  See the example below.</p>
       <pre>{
@@ -96,7 +96,7 @@
   "account_created_click_login": "Cuenta creada! Para empezar haz click en el enlace de acceso.",
   ...
 }</pre>
-      <h3>4. Add your language to /public/i18n/languages.json</h3>
+      <h3>4. Add your language to /src/assets/i18n/your-language.json</h3>
 
       <p>Submitting a language to the open source project is a great way to contribute.  The easiest way to add your language is to submit a pull request with your updates.  If you are not familiar with GIT, then simply send your JSON file via email.</p>
       </div>

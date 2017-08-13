@@ -422,7 +422,7 @@
     {
         "title": "Repositories",
         "description": "Learn about the repositories that house the Respond codebase",
-        "text": "Repositories Learn about the repositories that house the Respond codebase. Respository Description madoublet\/respond The Respond repository contains the PHP and Angular 2 code for the application. This is the primary repo for the app. You can submit issues here for errors in the application. madoublet\/hashedit The Hashedit repository contains the code that powers the Respond editor. You can submit issues here for errors in the editor. madoublet\/respond-plugins To keep the respond code base small, additional plugins are available in the respond-plugins repository. You can submit your own plugins to this repository. madoublet\/respond-website This repository contains the code that powers the respond website. You can submit PRs for new documentation or add an issue for needed documentation.",
+        "text": "Repositories Learn about the repositories that house the Respond codebase. Respository Description madoublet\/respond The Respond repository contains the PHP (powered by Lumen) code for the application. This is the primary repo for the app. You can submit issues here for errors in the application. madoublet\/respond-ui The Respond UI repository contains the Angular 4 code for the application. madoublet\/hashedit The Hashedit repository contains the code that powers the Respond editor. You can submit issues here for errors in the editor. madoublet\/respond-plugins To keep the respond code base small, additional plugins are available in the respond-plugins repository. You can submit your own plugins to this repository. madoublet\/respond-website This repository contains the code that powers the respond website. You can submit PRs for new documentation or add an issue for needed documentation.",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -435,7 +435,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T13:00:39+0000",
+        "lastModifiedDate": "2017-08-13T21:10:10+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -548,7 +548,7 @@
     {
         "title": "Translating the Respond Application",
         "description": "Learn how to translate Respond into another language.",
-        "text": "Translations Respond supports multiple languages for the application Translating the Respond Application Translating Respond into your preferred language is really easy. The basic process is duplicating a the existing English translation (stored in JSON format) and updating the name-value pairs with your language. 1. Create a new file in \/public\/i18n\/your-language-code.json Create a new file in \/locales\/ using the ISO639-1 code. For example, English would be \/locales\/en. 2. Copy the English translations Copy the translations from \/public\/i18\/en.json 3. Update the Name-Value pairs Update the name value pairs with the translation in your language. See the example below. { \"Account\": \"Cuenta\", \"account_created_click_login\": \"Cuenta creada! Para empezar haz click en el enlace de acceso.\", ... } 4. Add your language to \/public\/i18n\/languages.json Submitting a language to the open source project is a great way to contribute. The easiest way to add your language is to submit a pull request with your updates. If you are not familiar with GIT, then simply send your JSON file via email.",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -561,7 +561,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T13:07:55+0000",
+        "lastModifiedDate": "2017-08-13T21:04:53+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -1358,7 +1358,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T12:52:40+0000",
+        "lastModifiedDate": "2017-08-13T21:01:40+0000",
         "template": "default",
         "location": "",
         "customHeader": "",
