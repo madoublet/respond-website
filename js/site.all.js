@@ -366,8 +366,6 @@ respond.form = (function() {
         input.setAttribute("name", "submitted-from");
         input.setAttribute("value", window.location.href);
         
-        alert('submitted-from=' + window.location.href);
-        
         forms[x].appendChild(input);
         
       }
