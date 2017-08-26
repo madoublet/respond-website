@@ -306,6 +306,17 @@ respond.form = (function() {
       // setup submit event for form
       for(x=0; x<forms.length; x++) {
         forms[x].addEventListener('submit', respond.form.submitForm);
+        
+        // add hidden field to track submission url
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "submitted-from");
+        input.setAttribute("value", window.location.href);
+        
+        alert('submitted-from=' + window.location.href);
+        
+        forms[x].appendChild(input);
+        
       }
       
     
