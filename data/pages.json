@@ -905,7 +905,7 @@
     {
         "title": "Help",
         "description": "Get Help with Respond!",
-        "text": "Help Having problems using or installing Respond? &nbsp;Try our community support. Google Groups Forum Additional Questions Get in touch. &nbsp;matt@matthewsmith.com",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -918,7 +918,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T13:07:02+0000",
+        "lastModifiedDate": "2017-08-29T13:02:17+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -1031,7 +1031,7 @@
     {
         "title": "Contact",
         "description": "Get in touch using our contact form.",
-        "text": "Contact Us Got a question about Respond? &nbsp;Reach out to me at&nbsp;matt@matthewsmith.com",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -1044,7 +1044,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T13:07:49+0000",
+        "lastModifiedDate": "2017-08-29T12:54:13+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""

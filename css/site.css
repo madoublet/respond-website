@@ -625,7 +625,46 @@ div.more-space {
   .partner-logo:hover {
     filter: none;
   }
+  
+/* form */
+div[type=form] {
+    margin: 0 20px;
+}
 
+div[type=form] label {
+    display: block;
+    color: #555;
+    margin: 0 0 5px 0;
+}
+
+div[type=form] input[type=text] {
+    margin: 0 0 20px 0;
+    padding: 10px 5px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 15px;
+}
+
+div[type=form] textarea {
+    margin: 0 0 20px 0;
+    padding: 10px 5px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 15px;
+}
+
+div[type=form] button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #00ADE3;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    min-width: 100px;
+    text-align: center;
+    color: #555;
+    background: #fff;
+    font-size: 15px;
+}
 
 
 @media (max-width:768px) {
