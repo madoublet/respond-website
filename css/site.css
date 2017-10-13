@@ -125,11 +125,11 @@ header *, .hero *, footer * {
 }
 
   .pad-top {
-    padding-top: 40px;
+    padding-top: 100px;
   }
 
   .pad-bottom {
-    padding-bottom: 40px;
+    padding-bottom: 100px;
   }
 
 /* alignment */
