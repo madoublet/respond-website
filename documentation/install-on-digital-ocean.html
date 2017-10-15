@@ -15,11 +15,11 @@
   <base href="../">
 
   <!-- open graph -->
-  <meta property="og:url" content="http://test.com/documentation/install-on-digital-ocean" />
+  <meta property="og:url" content="https://respondcms.com/documentation/install-on-digital-ocean" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Install on Digital Ocean" />
   <meta property="og:description" content="Learn how to install Respond on a Digital Ocean droplet with this step-by-step tutorial." />
-  <meta property="og:image" content="http://test.com/" />
+  <meta property="og:image" content="https://respondcms.com/" />
 
   <!-- icons -->
   <link theme-icon rel="icon" href="resources/icon.png">
@@ -36,11 +36,11 @@
   <link type="text/css" href="css/site.css" rel="stylesheet">
   <link type="text/css" href="css/plugins.css" rel="stylesheet">
 
-
+  
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2017-08-03T13:08:24+0000" data-template="default" data-tags="">
+<body class="content" data-lastmodified="2017-10-15T18:26:48+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
@@ -80,7 +80,7 @@
 
 <div id="content" class="container" role="main">
   <div id="block-2" class="block row">
-    <div  class="col col-md-9">
+    <div class="col col-md-9">
 
       <h1>Install On Digital Ocean</h1>
 
@@ -90,7 +90,7 @@
       <h3 id="h3-1">Create Digital Ocean Account</h3>
       <p id="p-1">1. Start by creating your account on Digital Ocean. &nbsp;Use our<a href=" https://www.digitalocean.com/?refcode=a0ca7859692b"> referral code to support the project.</a>
       </p>
-      <p id="p-2" >2. Key a hostname (e.g. respondcms.com), select a size for your installation, and select a region.</p>
+      <p id="p-2">2. Key a hostname (e.g. respondcms.com), select a size for your installation, and select a region.</p>
       <p id="p-3">3. Select Applications -&gt; LAMP on Ubuntu 14.04. &nbsp;You could do this manually, but this speeds up the process.</p>
       <p id="p-4">4. Your will receive a password via email to SSH into your account. &nbsp;It is recommended you change this to an SSH key later.</p>
       <p id="p-28">5. You should now have a basic LAMP install, but it is good form to double check&nbsp;<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Digital Ocean's guide on setting up and securing the installation</a>.</p>
@@ -119,7 +119,7 @@ Require all granted
 
       <h3 id="h3-9">Setup your domains</h3>
       <p id="p-26">1. Point a domain or subdomain to your installation directory. &nbsp;This is done in Apache 2.4 by creating a configuration file at <b>etc/apache2/sites-available/app.myrespond.com.conf.</b></p>
-      <pre id="pre-11" description="PRE" respond-pre="true">&lt;VirtualHost *:80>
+      <pre id="pre-11" description="PRE" respond-pre="true">&lt;VirtualHost *:80&gt;
 
     ServerAdmin admin@myrespond.com
     ServerName app.myrespond.com
@@ -128,10 +128,10 @@ Require all granted
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-&lt;/VirtualHost>
+&lt;/VirtualHost&gt;
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet</pre>
-      <p id="p-21" data-i18n="5415de777e724.p-21">You then enable the site using the command:&nbsp;<code>a2ensite app.myrespond.com.conf</code>&nbsp;and restarting Apache. You can find a lot more detail on the Digital Ocean site:&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-ubuntu-14-04-lts">How to Set Up Apache Virtual Hosts tutorial on Digital Ocean.</a></p>
-      <p id="p-24" data-i18n="5415de777e724.p-24"><b>Important: </b>If you get the default Apache page after setting up and enabling your configuration, you might have to set the default server name to localhost. &nbsp;To do this, open <b>etc/apache2/sites-available/000-default.conf</b></p>
+      <p id="p-21" data-i18n="5415de777e724.p-21">5415de777e724.p-21</p>
+      <p id="p-24" data-i18n="5415de777e724.p-24">5415de777e724.p-24</p>
       <pre id="pre-14" description="PRE" respond-pre="true">// change
 #ServerName www.example.com
 
@@ -139,9 +139,9 @@ Require all granted
 ServerName localhost</pre>
       <p id="p-27">2. You can optionally&nbsp;setup wildcard subdomains or individual subdomains for the sites you create. &nbsp;Follow our tutorial on&nbsp;<a ui-sref="documentation/wildcard-subdomain-install" class="" target="" title="" href="/documentation/wildcard-subdomain-install">Setting up Wildcard subdomains</a>&nbsp;to setup wildcard subdomains.</p>
       <h3 id="h3-7">Create your first site</h3>
-      <p id="p-23">1. If all goes well you should be able to create your first site at: &nbsp;http://your_url/create. &nbsp;You should see a carousel of themes if the API is working.</p>
+      <p id="p-23">1. If all goes well you should be able to create your first site at: &nbsp;http://your_url/create. &nbsp;<b>Note:</b> the default passcode is "iloverespond". This can be changed in your .env file or removed if you set it to blank.</p>
     </div>
-    <div  class="col col-md-3">
+    <div class="col col-md-3">
       <respond-content url="component/support-respond"></respond-content>
     </div>
   </div>
@@ -179,6 +179,6 @@ ServerName localhost</pre>
 </script>
  <!-- /respond-plugin:analytics -->
 
-
+ 
 
 </html>
