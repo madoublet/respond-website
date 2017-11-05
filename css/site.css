@@ -434,6 +434,10 @@ body.content ul, body.content ol {
   .product[theme="aspire"] {
     background-color: #334663;
   }
+  
+  .product[theme="broadway"] {
+      background-color: rgba(80,145,199,1);
+  }
 
   .product[theme="highrise"] {
     background-color: #111111;
@@ -664,6 +668,10 @@ div[type=form] button {
     color: #555;
     background: #fff;
     font-size: 15px;
+}
+
+.g-recaptcha-holder {
+    margin-bottom: 25px;
 }
 
 

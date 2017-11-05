@@ -246,7 +246,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-10-15T18:26:48+0000",
+        "lastModifiedDate": "2017-10-15T18:35:43+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -422,7 +422,7 @@
     {
         "title": "Repositories",
         "description": "Learn about the repositories that house the Respond codebase",
-        "text": "Repositories Learn about the repositories that house the Respond codebase. Respository Description madoublet\/respond The Respond repository contains the PHP (powered by Lumen) code for the application. This is the primary repo for the app. You can submit issues here for errors in the application. madoublet\/respond-ui The Respond UI repository contains the Angular 4 code for the application. madoublet\/hashedit The Hashedit repository contains the code that powers the Respond editor. You can submit issues here for errors in the editor. madoublet\/respond-plugins To keep the respond code base small, additional plugins are available in the respond-plugins repository. You can submit your own plugins to this repository. madoublet\/respond-website This repository contains the code that powers the respond website. You can submit PRs for new documentation or add an issue for needed documentation.",
+        "text": "Repositories Learn about the repositories that house the Respond codebase. Respository Description madoublet\/respond The Respond repository contains the PHP (powered by Lumen) code for the application. This is the primary repo for the app. You can submit issues here for errors in the application. madoublet\/respond-ui The Respond UI repository contains the Angular 4 code for the application. madoublet\/hashedit The Hashedit repository contains the code that powers the Respond editor. You can submit issues here for errors in the editor. madoublet\/respond-plugins To keep the respond code base small, additional plugins are available in the respond-plugins repository. You can submit your own plugins to this repository. madoublet\/respond-scripts This repository contains bash scripts that you can use to automate creating and updating your Respond installation. madoublet\/respond-website This repository contains the code that powers the respond website. You can submit PRs for new documentation or add an issue for needed documentation.",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -435,7 +435,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-13T21:13:35+0000",
+        "lastModifiedDate": "2017-11-05T19:19:32+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -968,7 +968,7 @@
     {
         "title": "Marketplace",
         "description": "Purchase and download free themes in the Respond marketplace.",
-        "text": "Marketplace Ten free themes and more to come! Support our work on Patreon. Respond themes are available to download from the themes repository. Aspire A bold, mobile-first design built to propel your brand in new directions. Demo Free - Download now Market An elegant theme featuring a slideshow in the call-to-action. Demo Free - Download now Energy An elegant theme featuring a slideshow in the call-to-action. Demo Free - Download now Persistence An beautiful theme featuring a beautiful texture background and a unique layout. Demo Free - Download now Perspective Perspective is an elegant theme featuring a big callout image an d beautiful typography. Demo Free - Download now Executive Executive is a professional theme built with a large callout image and a beautiful call-to-action. Demo Free - Download now Highrise An elegant theme featuring a slideshow in the call-to-action. Demo Free - Download now Serene Serene is a calming theme built with a photography portfolio in mind. Demo Free - Download now Sidebar Sidebar is a new theme that features a dramatic sidebar to navigate your site. Demo Free - Download now Stark Stark delivers a compelling design that complements your company's brand. Demo Free - Download now",
+        "text": "Marketplace 12 free themes and more to come! Support our work on Patreon. Respond themes are available to download from the themes repository. Aspire Aspire is a bold, mobile-first design built to push your site forward.. Demo Free - Download now Broadway Broadway combines the best features of the Executive and Sidebar themes to create something entirely new. As a bonus, it is our first theme to feature subtle scroll animations. Demo Free - Download now Market Market provides a beautiful look-and-feel to your corporate or personal website. Demo Free - Download now Energy An elegant theme featuring a slideshow in the call-to-action. Demo Free - Download now Persistence A beautiful theme featuring a beautiful texture background and a unique layout. Demo Free - Download now Perspective Perspective is an elegant theme featuring a big callout image an d beautiful typography. Demo Free - Download now Executive Executive is a professional theme built with a large callout image and a beautiful call-to-action. Demo Free - Download now Highrise Highrise provides a dramatic look-and-feel to your corporate or personal website. Demo Free - Download now Serene Serene is a calming theme built with a photography portfolio in mind. Demo Free - Download now Sidebar Sidebar is a new theme that features a dramatic sidebar to navigate your site. Demo Free - Download now Stark Stark delivers a compelling design that complements your company's brand. Demo Free - Download now Base Base is a knowledge base theme created for Respond. Demo Free - Download now",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -981,7 +981,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T13:02:42+0000",
+        "lastModifiedDate": "2017-11-05T19:25:55+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -1044,7 +1044,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-29T12:54:13+0000",
+        "lastModifiedDate": "2017-11-05T19:16:49+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""

@@ -2,11 +2,11 @@
     "id": "contact-us",
     "name": "Contact Us",
     "cssClass": "",
-    "validate": null,
-    "success": null,
-    "error": null,
-    "recaptchaError": null,
-    "notify": null,
+    "validate": "true",
+    "success": "Form submitted successfully.  We will be in contact.",
+    "error": "There was an error.",
+    "recaptchaError": "There was an error validating the form.  Please try again.",
+    "notify": "",
     "fields": [
         {
             "id": "name",
