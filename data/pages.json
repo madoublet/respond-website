@@ -422,7 +422,7 @@
     {
         "title": "Repositories",
         "description": "Learn about the repositories that house the Respond codebase",
-        "text": "Repositories Learn about the repositories that house the Respond codebase. Respository Description madoublet\/respond The Respond repository contains the PHP (powered by Lumen) code for the application. This is the primary repo for the app. You can submit issues here for errors in the application. madoublet\/respond-ui The Respond UI repository contains the Angular 4 code for the application. madoublet\/hashedit The Hashedit repository contains the code that powers the Respond editor. You can submit issues here for errors in the editor. madoublet\/respond-plugins To keep the respond code base small, additional plugins are available in the respond-plugins repository. You can submit your own plugins to this repository. madoublet\/respond-scripts This repository contains bash scripts that you can use to automate creating and updating your Respond installation. madoublet\/respond-website This repository contains the code that powers the respond website. You can submit PRs for new documentation or add an issue for needed documentation.",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -435,7 +435,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-11-05T19:19:32+0000",
+        "lastModifiedDate": "2017-12-05T13:34:23+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -527,7 +527,7 @@
     {
         "title": "Solutions to Common Problems",
         "description": "Learn about how to solve common problems that come up with setting up and using Respond.",
-        "text": "Solutions to Common Problems This page contains a list of solutions to problems that come up when installing or using Respond. We will update this page based on community feedback.",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -540,7 +540,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-03T12:54:50+0000",
+        "lastModifiedDate": "2017-12-05T13:46:37+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
@@ -918,7 +918,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2017-08-29T13:02:17+0000",
+        "lastModifiedDate": "2017-12-05T13:38:14+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""

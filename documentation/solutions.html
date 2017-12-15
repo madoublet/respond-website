@@ -15,11 +15,11 @@
   <base href="../">
 
   <!-- open graph -->
-  <meta property="og:url" content="http://test.com/documentation/solutions" />
+  <meta property="og:url" content="https://respondcms.com/documentation/solutions" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Solutions to Common Problems" />
   <meta property="og:description" content="Learn about how to solve common problems that come up with setting up and using Respond." />
-  <meta property="og:image" content="http://test.com/" />
+  <meta property="og:image" content="https://respondcms.com/" />
 
   <!-- icons -->
   <link theme-icon rel="icon" href="resources/icon.png">
@@ -40,7 +40,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2017-08-03T12:54:50+0000" data-template="default" data-tags="">
+<body class="content" data-lastmodified="2017-12-05T13:46:37+0000" data-template="default" data-tags="">
 
 <header role="banner">
 
@@ -80,10 +80,10 @@
 
 <div id="content" class="container" role="main">
   <div id="block-1" class="block row">
-    <div  class="col col-md-12">
+    <div class="col col-md-12">
       <h1>Solutions to Common Problems</h1>
-      <p>This page contains a list of solutions to problems that come up when installing or using Respond. We will update this page based on community feedback.</p>
-    </div>
+      <p style="">This page contains a list of solutions to problems that come up when installing or using Respond. We will update this page based on community feedback.</p>
+    <h3 style="">Connection to API Fails</h3><p draggable="false" class="">This is a common problem that occurs when setting up a new Respond instance.&nbsp; The installation tests (https://myrespond.com/install) will indicate that the connection to the API has failed.&nbsp; This error typically results from 1 of 2 problems.&nbsp; The first problem is that Respond requires your app to be installed at the root of your domain (e.g. https://myrespond.com/).&nbsp; You cannot have it in a sub-folder (e.g. https://myrespond.com/respond).&nbsp; This is an Angular 2+ requirement.</p><p>If you do have Respond installed at the root of your domain, then the problem is most likely related to mod_rewrite.&nbsp; Lumen (and Laravel) require the mod_rewrite extension to be installed and properly configured in order to direct API routes.&nbsp; See the<a href="https://laravel.com/docs/5.0/configuration"> Laravel configuration documents</a>&nbsp;or the Digital Ocean document on&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-mod_rewrite-for-apache-on-ubuntu-14-04">enabling mod_rewrite</a>&nbsp;for more details.</p></div>
   </div>
 
 </div>
