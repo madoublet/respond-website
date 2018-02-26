@@ -1,48 +1,37 @@
 {
-  "id": "primary",
-  "name": "Primary",
-  "items": [
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Home",
-        "url": "index"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Download",
-        "url": "download"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Tour",
-        "url": "page/tour"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Learn",
-        "url": "learn"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Store",
-        "url": "marketplace"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Partners",
-        "url": "partners"
-      },
-      {
-        "cssClass": "",
-        "isNested": false,
-        "html": "Help",
-        "url": "help"
-      }
-  ]
+    "id": "primary",
+    "name": "Primary",
+    "items": [
+        {
+            "cssClass": "",
+            "isNested": false,
+            "html": "Home",
+            "url": "index"
+        },
+        {
+            "cssClass": "",
+            "isNested": false,
+            "html": "Get Started",
+            "url": "download",
+            "target": ""
+        },
+        {
+            "cssClass": "",
+            "isNested": false,
+            "html": "Tour",
+            "url": "page\/tour"
+        },
+        {
+            "cssClass": "",
+            "isNested": false,
+            "html": "Learn",
+            "url": "learn"
+        },
+        {
+            "cssClass": "",
+            "isNested": false,
+            "html": "Help",
+            "url": "help"
+        }
+    ]
 }

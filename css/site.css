@@ -1,3 +1,7 @@
+[editor-active] header, [editor-active] footer {
+  display: none;
+}
+
 html, body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -47,7 +51,7 @@ code {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 25px;
   color: #555;
 }
@@ -70,8 +74,23 @@ a.button {
   color: #CF4647;
 }
 
-header, .hero, footer {
-  background-color: #2F3243;
+.hero {
+    padding-top: 100px;
+    background-image: url(../resources/background-texture.svg), linear-gradient(-190deg, #80D371 0%, #33B5E5 100%);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+header, footer {
+  background-color: #09203F;
+}
+
+.home header {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 50px);
 }
 
 header *, .hero *, footer * {
@@ -101,7 +120,7 @@ header *, .hero *, footer * {
 }
 
   .grid.alternate-background {
-    background-color: #2F3243;
+    background-color: #09203F;
   }
 
   .grid.alternate-background * {
@@ -113,6 +132,12 @@ header *, .hero *, footer * {
   margin: 0;
   padding: 0;
 }
+
+.grid-cell-50 {
+  flex: 50%;
+  margin: 0;
+  padding: 0;
+ }
 
   /* consistent with #edit */
   .grid-cell * {
@@ -162,6 +187,7 @@ header {
   padding: 20px;
   text-align: right;
   z-index: 11;
+  background-color: #09203F;
 }
 
 header .brand {
@@ -181,14 +207,19 @@ header nav ul {
 }
 
 header nav ul li {
-  margin: 0 0 0 20px;
-  padding: 0;
+  margin: 0;
+  padding: 0 5px 0 0;
   display: inline-block;
+}
+
+header nav ul li ~ li::before {
+  content: '/';
+  padding: 0 15px;
+  color: rgba(255,255,255,0.5);
 }
 
 header nav ul li a {
   font-size: 14px;
-  text-transform: uppercase;
 }
 
 header .menu {
@@ -216,11 +247,21 @@ header .search {
   margin-bottom: 10px;
   min-width: 100px;
   text-align: center;
-  text-transform: uppercase;
+  border-radius: 25px;
 }
 
 .hero a.primary {
   border: 1px solid #00ADE3;
+  background-color: #fff;
+  color: #34B6E5;
+  font-weight: bold;
+}
+
+.hero .screen {
+  margin-right: 25px;
+  margin-bottom: 10px;
+  border-right: 10px solid rgba(255,255,255,.25);
+  border-bottom: 10px solid rgba(255,255,255,.25);
 }
 
 /* images */
@@ -261,14 +302,19 @@ footer nav ul {
 }
 
 footer nav ul li {
-  margin: 0 0 0 20px;
+  margin: 0;
   padding: 0;
   display: inline-block;
 }
 
+footer nav ul li ~ li::before {
+  content: '/';
+  padding: 0 15px;
+  color: rgba(255,255,255,0.5);
+}
+
 footer nav ul li a {
   font-size: 14px;
-  text-transform: uppercase;
 }
 
 /* drawer */
@@ -283,7 +329,7 @@ footer nav ul li a {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #2F3243;
+  background-color: #09203F;
   z-index: 10;
   border-top: 1px solid #00ADE3;
   transition: all 0.1s ease;
@@ -302,7 +348,7 @@ footer nav ul li a {
 
   .drawer ul li {
     display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-top: 1px solid rgba(255,255,255,0.25);
     margin: 0;
     padding: 0;
   }
@@ -312,7 +358,7 @@ footer nav ul li a {
     padding: 20px;
     text-align: center;
     color: #fff;
-    background-color: #2F3243;
+    background-color: #09203F;
     text-transform: uppercase;
   }
 
@@ -674,6 +720,74 @@ div[type=form] button {
     margin-bottom: 25px;
 }
 
+/* compare */
+.compare {
+  width: calc(100% - 10px);
+  border: 1px solid #ddd;
+  padding: 0;
+  margin: 0 5px 5px 5px;
+  border-collapse: collapse;
+}
+
+.compare td, .compare th {
+  margin: 0;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.compare thead th {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 20px;
+  background-color: #F5FBFD;
+}
+
+.compare thead th small {
+  color: #555;
+  font-weight: normal;
+}
+
+.compare thead th, .compare tfoot th {
+  text-align: center;
+}
+
+.compare tfoot th {
+  border-top: 1px solid #ddd;
+  padding: 20px 20px;
+}
+
+.compare tfoot a {
+  display: inline-block;
+  padding: 15px 35px;
+  background-color: #33B5E5;
+  color: #fff;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.compare td i {
+  display: inline-block;
+  font-size: 20px;
+  color: #80D371;
+  margin: 0 5px 0 0;
+}
+
+.compare td.negative i {
+  color: red;
+}
+
+.compare td.negative {
+  color: #AAA;
+  text-decoration: line-through;
+}
+
+
+.compare td:first-child, .compare th:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.compare .border-top td {
+  border-top: 1px solid #ddd;
+}
 
 @media (max-width:768px) {
 
@@ -707,7 +821,7 @@ div[type=form] button {
     flex: none;
     display: block;
   }
-
+  
   .screen {
     width: 100%;
     width: calc(100% - 20px);

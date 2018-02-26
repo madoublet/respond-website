@@ -11,8 +11,9 @@
         {
             "cssClass": "",
             "isNested": false,
-            "html": "Download",
-            "url": "download"
+            "html": "Get Started",
+            "url": "download",
+            "target": ""
         },
         {
             "cssClass": "",

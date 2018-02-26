@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Pro Download",
+        "url": "pro-download.html",
+        "codeOnly": true
+    },
+    {
+        "name": "Pro Standard",
+        "url": "pro-standard.html",
+        "codeOnly": true
+    },
+    {
+        "name": "Pro Builder",
+        "url": "pro-builder.html",
+        "codeOnly": true
+    },
+    {
+        "name": "Core Download",
+        "url": "core-download.html",
+        "codeOnly": true
+    }
+]

@@ -139,8 +139,80 @@
       "selector": "[respond-plugin][type=byline]",
       "title": "Byline",
       "display": "<i class=\"material-icons\">account_box</i>",
-      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">account_box</i></div>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">account_box</i><span>Byline</span></div>",
       "html": "<div respond-plugin type=\"byline\"></div>",
       "assets": ["plugins/byline.php"]
+  },
+  {
+      "selector": "[respond-plugin][type=cart]",
+      "title": "Cart",
+      "display": "<i class=\"material-icons\">shopping_cart</i>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">shopping_cart</i><span>Shopping Cart</span></div>",
+      "html": "<div respond-plugin type=\"cart\"></div>",
+      "assets": ["plugins/cart.html"]
+  },
+  {
+      "selector": "[respond-plugin][type=product-images]",
+      "title": "Product Images",
+      "display": "<i class=\"material-icons\">photo_library</i>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">photo_library</i><span>Product Images</span></div>",
+      "html": "<div respond-plugin type=\"product-images\" product=\"\"></div>",
+      "assets": ["plugins/product-images.html"],
+      "attributes": [
+        {
+          "attr": "product",
+          "label": "Product",
+          "type": "select",
+          "values": ["respond.products"]
+        }
+      ]
+  },
+  {
+      "selector": "[respond-plugin][type=product-purchase]",
+      "title": "Purchase Buttons",
+      "display": "<i class=\"material-icons\">credit_card</i>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">credit_card</i><span>Product Buttons</span></div>",
+      "html": "<div respond-plugin type=\"product-purchase\" product=\"\" showadd=\"yes\" addtext=\"Add to Cart\" showbuynow=\"yes\" buynowtext=\"Buy Now\" subscribetext=\"Subscribe\" modaltext=\"Purchase\"></div>",
+      "assets": ["plugins/product-purchase.html"],
+      "attributes": [
+        {
+          "attr": "product",
+          "label": "Product",
+          "type": "select",
+          "values": ["respond.products"]
+        },
+        {
+          "attr": "showadd",
+          "label": "Show Add to Cart button?",
+          "type": "select",
+          "values": ["yes", "no"]
+        },
+        {
+          "attr": "addtext",
+          "label": "Add to Cart",
+          "type": "text"
+        },
+        {
+          "attr": "showbuynow",
+          "label": "Show Buy Now button?",
+          "type": "select",
+          "values": ["yes", "no"]
+        },
+        {
+          "attr": "buynowtext",
+          "label": "Buy Now Button Text",
+          "type": "text"
+        },
+        {
+          "attr": "subscribetext",
+          "label": "Subscribe Button Text",
+          "type": "text"
+        },
+        {
+          "attr": "modaltext",
+          "label": "Stripe Modal Button Text",
+          "type": "text"
+        }
+      ]
   }
 ]
