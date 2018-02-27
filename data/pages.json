@@ -926,7 +926,7 @@
     {
         "title": "Respond - Build fast, responsive sites with Respond CMS",
         "description": "Build fast, responsive sites with Respond CMS.  Built for Bootstrap 4.",
-        "text": "What's New in Respond Respond features a modern toolkit powered by Lumen PHP and Angular 5+. Responds makes building a responsive website easy with easy-to-build themes, a sane plugin system, and a beautiful UI that you will enjoy using everyday. The latest release speeds up the load times in the app and refreshes the themes with beautiful designs. Learn more about the latest release Build your own Site Builder with Respond White Label Quickly customize the look-and-feel of Respond to make it your own. Multiple Sites Effortlessly build and host multiple sites on a single server. Recurring Payments Accept recurring credit card payments using Stripe Checkout. Beautiful Themes Respond comes with 5 starter themes that give you a great starting point for your site. All themes support major frameworks. So, you can quickly make Respond your Bootstrap CMS or Foundation CMS of choice. You can download more ready-to-go for free from our marketplace. Powered by a Modern Technology Stack Lumen PHP Lumen is an elegant, well-documented, and easy-to-use backend framework that enables you to quickly extend Respond to meet the needs of your application. Angular 5 Angular 5 is the fast, component-based framework built by Google that enables you to quickly add new experiences to your Respond-powered application. Bootstrap 4 By pairing the brand new Bootstrap 4 with static sites, Respond makes backups easy and allows you to save money by enabling deployment to static hosting services. Easy-to-Use Visual Editor Respond features a beautiful, easy-to-use visual editor that allows you to edit content right on the page. Quickly modify text style, color, shadows and more using our brilliant contextual editor. Built Simple Simple Plugins With Respond 6, Respond plugins are as simple as writing a small line of HTML to specify what is output to the screen. More advanced plugins can easily be made using a bit of JavaScript. Sites as Themes Tired of learning a new framework just to create a theme? With Respond 6, your site is your theme. Just add a few attributes and a configuration file and you are ready to go. Flat File Our flat-file approach makes it easy to move, backup and restore sites. And, not having a database makes it easier then ever before to setup and secure Respond. Perfect for designers, developers and entrepreneurs Respond has completely rethought the CMS experience to make it easy for you to compete with the big-box website creation tools. We provide you everything you need to build and scale your sites while providing you with the flexibility to create beautiful experiences for your customers. On top of that we provide a one-of-a-kind editing experience that we think your clients will love. Get started today",
+        "text": "",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -939,7 +939,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2018-02-26T21:11:07+0000",
+        "lastModifiedDate": "2018-02-27T04:54:39+0000",
         "template": "home",
         "customHeader": "",
         "customFooter": ""
