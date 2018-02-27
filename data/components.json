@@ -18,5 +18,10 @@
         "name": "Core Download",
         "url": "core-download.html",
         "codeOnly": true
+    },
+    {
+        "name": "Starter Download",
+        "url": "starter-download.html",
+        "codeOnly": true
     }
 ]
