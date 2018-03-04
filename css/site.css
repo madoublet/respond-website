@@ -144,6 +144,12 @@ header *, .hero *, footer * {
   margin: 0;
   padding: 0;
  }
+ 
+ .grid-cell-25 {
+  flex: 25%;
+  margin: 0;
+  padding: 0;
+ }
 
   /* consistent with #edit */
   .grid-cell * {

@@ -23,5 +23,10 @@
         "name": "Starter Download",
         "url": "starter-download.html",
         "codeOnly": true
+    },
+    {
+        "name": "Builder Download",
+        "url": "build-download.html",
+        "codeOnly": true
     }
 ]
