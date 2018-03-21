@@ -801,6 +801,60 @@ div[type=form] button {
   border-top: 1px solid #ddd;
 }
 
+#subscribe-box {
+    position: fixed;
+    display: none;
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    z-index: 99999999;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 250px);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+#subscribe-box[active] {
+    display: block;
+}
+
+#subscribe-box>div {
+    padding: 25px;
+}
+
+#subscribe-box a {
+    display: block;
+    padding: 15px 35px;
+    background-color: #33B5E5;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+#subscribe-box h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#subscribe-box p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#subscribe-box ul li {
+    font-size: 15px;
+    line-height: 25px;
+    color: #555;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
 @media (max-width:768px) {
 
   body.content .table tbody td:first-child {

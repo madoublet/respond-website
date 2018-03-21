@@ -5,16 +5,6 @@
         "codeOnly": true
     },
     {
-        "name": "Pro Standard",
-        "url": "pro-standard.html",
-        "codeOnly": true
-    },
-    {
-        "name": "Pro Builder",
-        "url": "pro-builder.html",
-        "codeOnly": true
-    },
-    {
         "name": "Core Download",
         "url": "core-download.html",
         "codeOnly": true
@@ -25,8 +15,8 @@
         "codeOnly": true
     },
     {
-        "name": "Builder Download",
-        "url": "build-download.html",
+        "name": "Subscribe Box",
+        "url": "subscribe-box.html",
         "codeOnly": true
     }
 ]
