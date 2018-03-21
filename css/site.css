@@ -1,4 +1,4 @@
-[editor-active] header, [editor-active] footer {
+[editor-active] header, [editor-active] footer, [editor-active] #subscribe-component {
   display: none;
 }
 
@@ -792,6 +792,9 @@ div[type=form] button {
   text-decoration: line-through;
 }
 
+.compare td i.up {
+  color: #33B5E5 !important;
+}
 
 .compare td:first-child, .compare th:first-child {
   border-right: 1px solid #ddd;
@@ -856,6 +859,10 @@ div[type=form] button {
 }
 
 @media (max-width:768px) {
+
+  html, body {
+      overflow-x: hidden;
+    }
 
   body.content .table tbody td:first-child {
     width: auto;

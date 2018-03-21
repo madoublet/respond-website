@@ -674,7 +674,7 @@
     {
         "title": "Download",
         "description": "Download Respond to get started.",
-        "text": "Pricing Respond comes in four flavors designed to meet your budget.&nbsp; The Starter, Builder, and Core products provide everything you need to build, design and manage beautiful responsive websites.&nbsp; The Pro product increases the security and scaleability of the product by using the Amazon cloud for authentication and data storage. Look for Respond 7 to launch at the end of March 2018. extensionComponent extensionComponent extensionComponent",
+        "text": "Pricing Respond comes in three flavors designed to meet your budget.&nbsp; The Starter, Core, and Pro products provide everything you need to build, design and manage beautiful responsive websites.&nbsp;&nbsp;Want to discuss Respond 7?&nbsp; Reach out via our&nbsp;contact form. * Potential profit based on $25\/mo per site price and $5\/per site Amazon costs (including CloudFront, S3, and Route 53 services)",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -687,7 +687,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2018-03-20T18:27:50+0000",
+        "lastModifiedDate": "2018-03-21T03:42:28+0000",
         "template": "subscribe",
         "customHeader": "",
         "customFooter": ""
