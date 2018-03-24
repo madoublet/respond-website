@@ -789,6 +789,7 @@ div[type=form] button {
   color: #fff;
   border-radius: 25px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .compare td i {
@@ -834,12 +835,20 @@ div[type=form] button {
     border: 1px solid #ddd;
 }
 
+#close-subscribe-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+}
+
 #subscribe-box[active] {
     display: block;
 }
 
 #subscribe-box>div {
-    padding: 25px;
+    padding: 40px 25px;
 }
 
 #subscribe-box a {
@@ -863,6 +872,13 @@ div[type=form] button {
     font-size: 15px;
     margin-bottom: 15px;
     padding: 0;
+}
+
+#subscribe-box ul {
+   border: 1px solid #ddd;
+   background-color: #f8f8f8;
+   list-style: none;
+   padding: 10px;
 }
 
 #subscribe-box ul li {

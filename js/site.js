@@ -6,7 +6,7 @@ var site = (function() {
 
   'use strict';
 
-  var x, els, drawer, el, plan, starter, core, pro, target;
+  var x, els, drawer, el, plan, starter, core, pro, target, close;
 
   // setup toggle drawer
   els = document.querySelectorAll('[toggle-drawer]');
@@ -69,5 +69,13 @@ var site = (function() {
 
     });
   }
+  
+  // close subscribe box
+  close = document.querySelector('#close-subscribe-box');
+  
+  close.addEventListener('click', function(e) { 
+    el = document.querySelector('#subscribe-box');
+    el.removeAttribute('active');
+  });
 
 }());

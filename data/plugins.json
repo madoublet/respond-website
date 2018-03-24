@@ -164,15 +164,28 @@
           "label": "Product",
           "type": "select",
           "values": ["respond.products"]
+        },
+        {
+          "attr": "interval",
+          "label": "Interval",
+          "type": "text",
+          "values": "5000"
+        },
+        {
+          "attr": "height",
+          "label": "Image height (in pixels)",
+          "type": "select",
+          "values": ["auto", "100", "200", "300", "400", "500"]
         }
+
       ]
   },
   {
-      "selector": "[respond-plugin][type=product-purchase]",
-      "title": "Purchase Buttons",
+      "selector": "[respond-plugin][type=buy-now]",
+      "title": "Buy Now",
       "display": "<i class=\"material-icons\">credit_card</i>",
-      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">credit_card</i><span>Product Buttons</span></div>",
-      "html": "<div respond-plugin type=\"product-purchase\" product=\"\" showadd=\"yes\" addtext=\"Add to Cart\" showbuynow=\"yes\" buynowtext=\"Buy Now\" subscribetext=\"Subscribe\" modaltext=\"Purchase\"></div>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">credit_card</i><span>Buy Now Button</span></div>",
+      "html": "<div respond-plugin type=\"buy-now\" product=\"\" text=\"Buy Now\" modaltext=\"Purchase\"></div>",
       "assets": ["plugins/product-purchase.html"],
       "attributes": [
         {
@@ -182,35 +195,39 @@
           "values": ["respond.products"]
         },
         {
-          "attr": "showadd",
-          "label": "Show Add to Cart button?",
-          "type": "select",
-          "values": ["yes", "no"]
-        },
-        {
-          "attr": "addtext",
-          "label": "Add to Cart",
-          "type": "text"
-        },
-        {
-          "attr": "showbuynow",
-          "label": "Show Buy Now button?",
-          "type": "select",
-          "values": ["yes", "no"]
-        },
-        {
-          "attr": "buynowtext",
-          "label": "Buy Now Button Text",
-          "type": "text"
-        },
-        {
-          "attr": "subscribetext",
-          "label": "Subscribe Button Text",
+          "attr": "text",
+          "label": "Link Text",
           "type": "text"
         },
         {
           "attr": "modaltext",
-          "label": "Stripe Modal Button Text",
+          "label": "Modal Button Text",
+          "type": "text"
+        }
+      ]
+  },
+  {
+      "selector": "[respond-plugin][type=add-to-cart]",
+      "title": "Add to Cart",
+      "display": "<i class=\"material-icons\">credit_card</i>",
+      "view": "<div class=\"respond-plugin\"><i class=\"material-icons\">credit_card</i><span>Add to Cart Button</span></div>",
+      "html": "<div respond-plugin type=\"add-to-cart\" product=\"\" text=\"Add to Cart\" modaltext=\"Purchase\"></div>",
+      "assets": ["plugins/product-purchase.html"],
+      "attributes": [
+        {
+          "attr": "product",
+          "label": "Product",
+          "type": "select",
+          "values": ["respond.products"]
+        },
+        {
+          "attr": "text",
+          "label": "Link Text",
+          "type": "text"
+        },
+        {
+          "attr": "modaltext",
+          "label": "Modal Button Text",
           "type": "text"
         }
       ]

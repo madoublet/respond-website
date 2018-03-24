@@ -4,7 +4,17 @@
 
   {% if product.id == attributes.product  %}
 
-<div id="{{ product.id }}" class="carousel slide" data-ride="carousel">
+{% if attributes.height != 'auto'  %}
+
+<style>
+  #{{ product.id }} img {
+    height: {{ attributes.height }}px;
+  }
+</style>
+
+{% endif %}
+
+<div id="{{ product.id }}" class="carousel slide" data-ride="carousel" data-interval="{{ attributes.interval }}">
 
   {% set count = 0 %}
   {% set active = "" %}

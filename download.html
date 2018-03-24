@@ -39,7 +39,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2018-03-21T03:42:28+0000" data-template="subscribe" data-tags="">
+<body class="content" data-lastmodified="2018-03-21T03:42:28+0000" data-template="subscribe" data-tags="" show-cart="false">
 
 <header role="banner">
 
@@ -165,8 +165,7 @@
 </tbody>
 <tfoot>
   <tr>
-    <th><a>Coming Soon</a></th>
-    <!--<th><a show-subscribe data-plan="respond-starter">Subscribe Now&mdash;$100/mo</a></th>-->
+    <th><a show-subscribe data-plan="respond-starter">Subscribe Now&mdash;$100/mo</a></th>
   </tr>
 </tfoot>
 </table>
@@ -253,8 +252,7 @@
 </tbody>
 <tfoot>
   <tr>
-    <th><a>Coming Soon</a></th>
-    <!--<th><a show-subscribe data-plan="respond-core">Subscribe Now&mdash;$250/mo</a></th>-->
+    <th><a show-subscribe data-plan="respond-core">Subscribe Now&mdash;$250/mo</a></th>
   </tr>
 </tfoot>
 </table>
@@ -341,8 +339,7 @@
 </tbody>
 <tfoot>
   <tr>
-    <th><a>Coming Soon</a></th>
-    <!--<th><a show-subscribe data-plan="respond-pro">Subscribe Now&mdash;$500/mo</a></th>-->
+    <th><a show-subscribe data-plan="respond-pro">Subscribe Now&mdash;$500/mo</a></th>
   </tr>
 </tfoot>
 </table>
@@ -363,24 +360,27 @@
   </nav>
   
   <div respond-plugin type="cart"><div cart
-    data-flat-rate-shipping=""
-    data-tax-rate=""
-    data-currency=""
-    data-locale=""
-    data-image="https://respondcms.com/"
-    data-name=""
-    data-zip-code=""
-    data-billing-address=""
-    data-shipping-address=""
-    data-key=""
+    data-flat-rate-shipping="0.00"
+    data-tax-rate="0.00"
+    data-currency="USD"
+    data-locale="en-US"
+    data-image="https://respondcms.com/files/respond-stripe.png"
+    data-name="Respond CMS"
+    data-zip-code="true"
+    data-billing-address="false"
+    data-shipping-address="false"
+    data-key="pk_live_YJQDzjalfdjT2ujVr5U9Z44O"
     data-pay-api="http://dev.respondcms.com/api/payment/pay/respond"
-    data-subscribe-api="http://dev.respondcms.com/api/payment/subscribe/respond"></div>
+    data-subscribe-api="http://dev.respondcms.com/api/payment/subscribe/respond"
+    data-success-url="page/thank-you.html"></div>
 
 <script src="https://checkout.stripe.com/checkout.js"></script></div>
   
 </footer>
 
 <div id="subscribe-component" type="component" respond-plugin runat="publish" component="subscribe-box.html"><div id="subscribe-box">
+    
+    <i id="close-subscribe-box" class="material-icons">close</i>
     
     <div id="subscribe-box-container">
     
@@ -399,24 +399,27 @@
     </ul>
 
     <a id="respond-starter" subscribe
- data-name="Respond CMS Starter Subscription - $100/month"
+ data-name="Respond Starter Subscription - $100/month"
             data-sku="respond-starter"
             data-quantity="1"
             data-price="100"
+            data-success-url="page/thank-you.html"
             data-button-label="Subscribe">Subscribe $100 /month</a>
             
     <a id="respond-core" subscribe
- data-name="Respond CMS Core Subscription - $250/month"
+ data-name="Respond Core Subscription - $250/month"
             data-sku="respond-core"
             data-quantity="1"
             data-price="250"
+            data-success-url="page/thank-you.html"
             data-button-label="Subscribe">Subscribe $250 /month</a>
             
     <a id="respond-pro" subscribe
- data-name="Respond CMS Pro Subscription - $250/month"
+ data-name="Respond Pro Subscription - $250/month"
             data-sku="respond-pro"
             data-quantity="1"
             data-price="500"
+            data-success-url="page/thank-you.html"
             data-button-label="Subscribe">Subscribe $500 /month</a>
     
     </div>
