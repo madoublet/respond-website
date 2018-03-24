@@ -23,7 +23,7 @@
     {
         "title": "Respond Demo",
         "description": "Try out Respond using our demo",
-        "text": "Demo The Respond demo allows you to create and modify a site created with Respond 6. Tap the link below to get started. Respond Demo",
+        "text": "Demo The Respond demo walks you through the process of creating and modifying a site with Respond.&nbsp; It is meant to give you a glimpse of what it is like to use Respond as an end user. Start the Respond Demo If you want a personalized tour of Respond, reach out using our&nbsp;contact form.",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -36,7 +36,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2018-02-25T19:35:27+0000",
+        "lastModifiedDate": "2018-03-24T19:57:11+0000",
         "template": "default",
         "customHeader": "",
         "customFooter": ""
