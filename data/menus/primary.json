@@ -28,6 +28,13 @@
             "url": "learn"
         },
         {
+            "html": "About",
+            "cssClass": "",
+            "isNested": false,
+            "url": "page\/about",
+            "target": ""
+        },
+        {
             "cssClass": "",
             "isNested": false,
             "html": "Help",

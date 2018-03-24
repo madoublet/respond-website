@@ -56,6 +56,11 @@ p {
   color: #555;
 }
 
+p.top-lead {
+  color: #AAA;
+  margin-top: -10px;
+}
+
 a.button {
   display: inline-block;
   padding: 10px 20px;
@@ -122,10 +127,12 @@ header *, .hero *, footer * {
   .grid.alternate-background {
     background-color: #09203F;
   }
-
-  .grid.alternate-background * {
+  
+  .grid.alternate-background h2, .grid.alternate-background h3, .grid.alternate-background p {
     color: #fff;
   }
+
+  
 
 .grid-cell {
   flex: 1;
@@ -300,6 +307,14 @@ header .search {
     margin: 0 10px 20px 10px;
     width: calc(100% - 40px);
     border: 10px solid #f8f8f8;
+  }
+  
+  body.content .screenshot {
+    margin: 0 0 20px 0;
+  }
+  
+  body.content p>.screenshot {
+    margin: 0;
   }
 
 /* footer */

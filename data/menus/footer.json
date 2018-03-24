@@ -22,13 +22,6 @@
             "url": "learn"
         },
         {
-            "html": "Releases",
-            "cssClass": "",
-            "isNested": false,
-            "url": "page\/releases",
-            "target": ""
-        },
-        {
             "html": "Terms",
             "cssClass": "",
             "isNested": false,
