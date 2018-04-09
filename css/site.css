@@ -820,6 +820,66 @@ div[type=form] button {
   border-top: 1px solid #ddd;
 }
 
+#subscription-callout {
+ border: 1px solid #ddd;
+ border-radius: 10px;
+ padding: 0;
+ margin: 0 25px 25px 25px;
+}
+
+#subscription-callout h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#subscription-callout .col {
+  padding: 50px 25px;
+}
+
+#subscription-callout .col:last-child {
+  border-left: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+#subscription-features {
+  list-style: none;
+  margin: 0 25px 0 25px;
+  padding: 0;
+}
+
+#subscription-features i {
+  display: inline-block;
+  font-size: 20px;
+  color: #80D371;
+  margin: 0 5px 0 0;
+}
+
+.subscription-generate {
+  position: relative;
+  padding-left: 60px;
+  font-size: 14px;
+  color: #333;
+}
+
+.subscription-generate i {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  color: #aaa;
+  font-size: 25px;
+}
+
+.subscribe-now {
+    font-size: 14px;
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #33B5E5;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
 #subscribe-box {
     position: fixed;
     display: none;
@@ -848,16 +908,35 @@ div[type=form] button {
 }
 
 #subscribe-box>div {
-    padding: 40px 25px;
+    padding: 25px 25px;
 }
 
 #subscribe-box a {
+    font-size: 14px;
     display: block;
     padding: 15px 35px;
+    margin: 0 0 10px 0;
     background-color: #33B5E5;
     color: #fff;
     border-radius: 25px;
-    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+#subscribe-box form {
+    margin: 0;
+    padding: 0;
+}
+
+#subscribe-box input[type=submit] {
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    padding: 15px 35px;
+    border: 1px solid #33B5E5;
+    background-color: #fff;
+    color: #33B5E5;
+    border-radius: 25px;
     text-align: center;
     cursor: pointer;
 }
@@ -950,5 +1029,20 @@ div[type=form] button {
     width: calc(100% - 20px);
     border-bottom: 10px solid rgba(255,255,255,0.25);
   }
+  
+  #subscribe-box {
+    position: fixed;
+    display: none;
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    z-index: 99999999;
+    top: 50px;
+    left: calc(50vw - 45%);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
 
 }

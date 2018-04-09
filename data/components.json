@@ -18,5 +18,15 @@
         "name": "Subscribe Box",
         "url": "subscribe-box.html",
         "codeOnly": true
+    },
+    {
+        "name": "Subscribe Button",
+        "url": "subscribe-button.html",
+        "codeOnly": true
+    },
+    {
+        "name": "Subscription Features",
+        "url": "subscription-features.html",
+        "codeOnly": true
     }
 ]

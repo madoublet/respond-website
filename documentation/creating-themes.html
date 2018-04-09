@@ -41,7 +41,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2018-02-25T19:35:27+0000" data-template="default" data-tags="" show-cart="false">
+<body class="content" data-lastmodified="2018-04-04T02:01:49+0000" data-template="default" data-tags="" show-cart="false">
 
 <header role="banner">
 
@@ -80,214 +80,178 @@
 </nav>
 
 <div id="content" class="container" role="main">
-   <div class="block row">
-      <div class="col col-md-12">
-         <h1>Creating Themes</h1>
-         <p>This tutorial will provide you
-            with everything you need to know about themes in&nbsp;Respond. This
-            tutorial includes the location of themes, creating a new theme, and a
-            description of&nbsp;all the files that make up a theme.
-         </p>
+ <div class="block row">
+ <div class="col col-md-12">
+ <h1>Creating Themes</h1>
+ 
+ <p>Respond 7 makes it easier than ever to create themes. In Respond, we like to say that Respond uses "sites as themes". This is because our themes are just standalone sites. 
+ They can be viewed in the browser without modification. In fact, when Respond creates a site, it simply copies the theme folder's contents over to the site's production folder.</p>
+ 
+ <p>With that said, Respond does require the HTML to follow the bootstrap grid framework to be editable, and Respond relies on a few key components. That is why we believe the best
+ way to create a theme is to copy an existing one and customize it to meet your needs. Existing themes can be found in your installation folder at <code>public/themes</code>.
+ You can simply copy the theme and update the folder name and the <code>theme.json</code> file with your theme's name and description.
+ </p>
+ 
+ <p>Now that you have a solid framework for creating your own themes, the rest of this documentation will walk you through the components of a theme and describe some best best practices that we
+ follow when creating our own themes.</p>
+ 
+ <h3>Theme Components</h3>
+ 
+ <p>Themes consist of: (1) the HTML, CSS, and JS content of the theme, (2) the <code>theme.json</code> file, (3) the <code>screenshot.png</code> file and (4) the templates.</p>
 
-         <h3>Sites as Themes</h3>
+ <h3>The HTML, CSS, and JS content of the theme,</h3>
+ 
+ <p>The theme HTML, CSS, and JS is easily recognizable if you have developed a website before. Respond uses Bootsrap 4 to style its themes. You can use other frameworks, but that is out of the scope of this document.</p>
 
-         <p>Our goal with Respond is to make building themes as easy as building a site. &nbsp;In fact, all of our themes can be viewed outside of Respond using a standard browser. &nbsp;The best way to get started building a theme with Respond is to start with one of our existing themes. &nbsp;The Bootstrap theme is a great place to start. &nbsp;You can view it on&nbsp;<a href="https://github.com/madoublet/respond/tree/master/public/themes/bootstrap">Github</a>. &nbsp;</p><p>The rest of this document will outline the core parts of the Bootstrap theme so you can understand what goes into making your own theme.</p>
+<p >A subset of the theme code is shown below for demonstration purposes.&nbsp; We recommend that you structure documents with header, main, and footer elements.&nbsp; The header and footer are hidden in the editor by default.&nbsp; And, the main element should hold the editable content of your page.&nbsp; The main element should also have a role="main" attribute.&nbsp; This attribute is key for editing and saving content.</p><p>The content in the role="main" element should also be set in the Bootstrap 4 grid with the .content, .row, .col nesting.&nbsp; This nesting enables elements in the .col block to be sortable.</p><pre class="prettyprint linenums pre-scrollable">&lt;header role="banner"&gt;
+...
+&lt;/header&gt;
 
-         <h3>Theme Settings</h3>
+&lt;main class="content" role="main"&gt;
 
-         <p>The <code>settings.json</code> file is found at&nbsp;<code>private/settings.json</code>. &nbsp;The role of this file is to provide Respond with instructions on how to interact with your theme. &nbsp;The file is copied into the&nbsp;<code>resources/sites/site-name</code>&nbsp;folder when the site is created using the theme. The settings file has two types of settings. &nbsp;The first are private settings that are not editable by the end user. &nbsp;Examples of these are the editable, sortable, blocks, and framework settings below. &nbsp;These can only be changed by the theme creator or bythe app administrator when the theme is used to create a site. &nbsp;The second type of setting is a public setting. &nbsp;These have the type attribute associated with them. &nbsp;These settings are exposed to the end user in the Settings menu item within Respond. &nbsp;All settings can change aspects of the themes and can also be used within plugins. &nbsp;See the table below for more details on how to use these settings.</p>
+ &lt;div class="block row jumbotron"&gt;
+ &lt;div class="col col-md-12"&gt;
+ &lt;h1&gt;Beautiful themes built for speed&lt;/h1&gt;
+ &lt;p&gt;Take your idea from concept to completion faster by starting with our beautiful, responsive themes.&lt;/p&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ 
+&lt;/main&gt;
 
-         <pre class="prettyprint linenums pre-scrollable">[
-    {
-        "id": "editable",
-        "value": "[role=main]"
-    },
-    {
-        "id": "sortable",
-        "value": ".col, .column"
-    },
-    {
-        "id": "blocks",
-        "value": ".row"
-    },
-    {
-        "id": "framework",
-        "value": "bootstrap"
-    },
-    {
-        "id": "grid",
-        "value": [
-          {
-            "name": "1 Column",
-            "desc": "100%",
-            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-12\"&gt;&lt;/div&gt;&lt;/div&gt;"
-          },
-          {
-            "name": "2 Column",
-            "desc": "50%/50%",
-            "html": "&lt;div class=\"block row\"&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;div class=\"col col-md-6\"&gt;&lt;/div&gt;&lt;/div&gt;"
-          }
-        ]
-    },
-    {
-        "id": "theme-logo",
-        "label": "Logo",
-        "description": "Primary logo of the site",
-        "type": "image",
-        "value": "resources\/logo.png",
-        "sets": "attribute",
-        "attribute": "src"
-    },
-    {
-        "id": "menu-background-color",
-        "label": "Menu Background Color",
-        "description": "Change the menu background color of the site",
-        "type": "color",
-        "value": "#B6C3CF",
-        "sets": "css",
-        "css": "nav{background-color: config(--menu-background-color);} body.home main .jumbotron p{background-color: config(--menu-background-color);}"
-    }
-]</pre>
+&lt;footer&gt;
+...
+&lt;/footer&gt;
+</pre>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Setting</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>editable</td>
-                <td>A comma separated list of selectors to elements that are editable</td>
-              </tr>
-              <tr>
-                <td>sortable</td>
-                <td>A comma separated list of selectors to elements that are sortable.  These should be a container of relative placed elements.</td>
-              </tr>
-              <tr>
-                <td>blocks</td>
-                <td>The CSS selector for blocks in the theme.  Blocks are containers for other elements (e.g. .row in Bootstrap).  They can be sorted with siblings that match their selector.</td>
-              </tr>
-              <tr>
-                <td>framework</td>
-                <td>The front-end framework used to render the site (bootstrap, foundation, mdl, custom).  Defaults to bootstrap.</td>
-              </tr>
-              <tr>
-                <td>grid</td>
-                <td>Defines what a block looks like for your theme.  When you click add in the block context menu, the menu contains the options defined in the grid.</td>
-              </tr>
-              <tr>
-                <td>[sets=attribute]</td>
-                <td>The <code>theme-logo</code> setting above is an example of the [sets=attribute] setting.  This setting can be used to set an attribute of an HTML element for pages in your site.  This is used to set a global image across your site (e.g. a logo or icon).</td>
-              </tr>
-              <tr>
-                <td>[sets=css]</td>
-                <td>The <code>menu-background-color</code> setting above is an example of the [sets=css] setting.  This setting can be used to set css for your site.  The <code>css</code> property is copied into a <code>style</code> block on each page of your site.  The <code>config(--menu-background-color)</code> is replaced with the value set in the object. The <code>--menu-background-color</code> must be set to the id of the object.</td>
-              </tr>
-            </tbody>
-          </table>
+ <h3>The theme.json file</h3>
+
+ <p>The <code>theme.json</code> file is found at&nbsp;<code>public/themes/theme-name/theme.json</code>. &nbsp;The role of this file is to provide Respond with meta data to display when creating your theme.</p>
+
+ <pre class="prettyprint linenums pre-scrollable">{
+	"name": "Aspire",
+	"desc": "Aspire is a bold, mobile-first design built to push your site forward."
+} 
+</pre>
+
+ <table class="table">
+ <thead>
+ <tr>
+ <th>Setting</th>
+ <th>Description</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>name</td>
+ <td>The name of the theme.</td>
+ </tr>
+ <tr>
+ <td>desc</td>
+ <td>The description of the theme.</td>
+ </tr>
+ </tbody>
+ </table>
 
 
-          <h3>Templates</h3>
-          
-          <p>Templates hold the content that is used to create new pages and provide common headers and footers across pages.  You can find the templates in the <code>templates/</code> folder in your sites directory. Templates have their own unique syntax to inject 
-          common settings into your page.  To change page settings, you use the settings in the page settings modal.</p>
-          
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Setting</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{page.title}}</td>
-                <td>The title of the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.description}}</td>
-                <td>The description of the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.keywords}}</td>
-                <td>The keywords of the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.tags}}</td>
-                <td>The tags of the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.callout}}</td>
-                <td>A short phrase to call attention to a page.</td>
-              </tr>
-              <tr>
-                <td>{{page.url}}</td>
-                <td>The url of the page (not editable in page settings).</td>
-              </tr>
-              <tr>
-                <td>{{page.fullUrl}}</td>
-                <td>The full url of the page (not editable in page settings).</td>
-              </tr>
-              <tr>
-                <td>{{page.photoUrl}}</td>
-                <td>The url of the selected photo for the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.fullPhotoUrl}}</td>
-                <td>The full url of the selected photo for the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.thumbUrl}}</td>
-                <td>The thumb url of the selected photo for the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.fullThumbUrl}}</td>
-                <td>The thumb url of the selected photo for the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.language}}</td>
-                <td>The selected language for the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.direction}}</td>
-                <td>The text direction (ltr, rtl) for the page..</td>
-              </tr>
-              <tr>
-                <td>{{page.customHeader}}</td>
-                <td>Custom HTML for the header of the page.</td>
-              </tr>
-              <tr>
-                <td>{{page.customFooter}}</td>
-                <td>Custom HTML for the footer of the page.</td>
-              </tr>
-            </tbody>
-          </table>
+ <h3>Templates</h3>
+ 
+ <p>Templates hold the content that is used to create new pages and provide common headers and footers across pages. You can find the templates in the <code>public/themes/theme-name/templates/</code> folder in your sites directory. Templates have their own unique syntax to inject 
+ common settings into your page. To change page settings, you use the settings in the page settings modal.</p>
+ 
+ <table class="table">
+ <thead>
+ <tr>
+ <th>Setting</th>
+ <th>Description</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>{{page.title}}</td>
+ <td>The title of the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.description}}</td>
+ <td>The description of the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.keywords}}</td>
+ <td>The keywords of the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.tags}}</td>
+ <td>The tags of the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.callout}}</td>
+ <td>A short phrase to call attention to a page.</td>
+ </tr>
+ <tr>
+ <td>{{page.url}}</td>
+ <td>The url of the page (not editable in page settings).</td>
+ </tr>
+ <tr>
+ <td>{{page.fullUrl}}</td>
+ <td>The full url of the page (not editable in page settings).</td>
+ </tr>
+ <tr>
+ <td>{{page.photoUrl}}</td>
+ <td>The url of the selected photo for the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.fullPhotoUrl}}</td>
+ <td>The full url of the selected photo for the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.thumbUrl}}</td>
+ <td>The thumb url of the selected photo for the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.fullThumbUrl}}</td>
+ <td>The thumb url of the selected photo for the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.language}}</td>
+ <td>The selected language for the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.direction}}</td>
+ <td>The text direction (ltr, rtl) for the page..</td>
+ </tr>
+ <tr>
+ <td>{{page.customHeader}}</td>
+ <td>Custom HTML for the header of the page.</td>
+ </tr>
+ <tr>
+ <td>{{page.customFooter}}</td>
+ <td>Custom HTML for the footer of the page.</td>
+ </tr>
+ </tbody>
+ </table>
 
-         <h3>Theme Best Practices</h3>
+ <h3>Theme Best Practices</h3>
 
-         <h4>BASE element</h4>
+ <h4>BASE element</h4>
 
-         <p>Respond adds all links and images relative to the root of the site.  As a result, pages in the theme must specify a <code>base</code> element relative to the root.  For instance, pages in a <code>/page/</code> subdirectory must have a base of <code>&lt;base href="../"&gt;.</code></p>
+ <p>Respond adds all links and images relative to the root of the site. As a result, pages in the theme must specify a <code>base</code> element relative to the root. For instance, pages in a <code>/page/</code> subdirectory must have a base of <code>&lt;base href="../"&gt;.</code></p>
 
-         <h4>Sortable ellements must be positioned static or relative. These elements cannot be floated.</h4>
+ <h4>Sortable ellements must be positioned static or relative. These elements cannot be floated.</h4>
 
-         <p>Immediate children of <code>sortable</code> containers (see settings) must be positioned relative or static.  They <b>cannot</b> be floated or positioned absolute.  However, children of those children do not have that restriction.</p>
+ <p>Immediate children of <code>sortable</code> containers (see settings) must be positioned relative or static. They <b>cannot</b> be floated or positioned absolute. However, children of those children do not have that restriction.</p>
 
-         <h4>Specify a [role="main"]</h4>
+ <h4>Specify a [role="main"]</h4>
 
-         <p>One element on the page should be given a <code>role="main"</code> attribute.  Respond uses this as the main content of the page.  This main content is searchable and added to the pages.json file so that it can be made available to plugins.</p>
+ <p>One element on the page should be given a <code>role="main"</code> attribute. Respond uses this as the main content of the page. This main content is searchable and added to the pages.json file so that it can be made available to plugins.</p>
 
 
-         <h3>Installing a theme</h3>
+ <h3>Installing a theme</h3>
 
-         <p>
-           Simply place the theme folder in <code>resources/themes</code>.
-         </p>
+ <p>
+ Simply place the theme folder in <code>resources/themes</code>.
+ </p>
 
-      </div>
-   </div>
+ </div>
+ </div>
 </div>
 
 <footer role="contentinfo" class="base-padding align-center pad-top pad-bottom">

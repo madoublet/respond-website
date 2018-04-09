@@ -19,28 +19,20 @@
     </ul>
 
     <a id="respond-starter" subscribe
- data-name="Respond Starter Subscription - $100/month"
+ data-name="Respond Subscription - $100/month"
             data-sku="respond-starter"
             data-quantity="1"
             data-price="100"
             data-success-url="page/thank-you.html"
-            data-button-label="Subscribe">Subscribe $100 /month</a>
+            data-button-label="Subscribe">Subscribe via Credit Card - $100 /month</a>
             
-    <a id="respond-core" subscribe
- data-name="Respond Core Subscription - $250/month"
-            data-sku="respond-core"
-            data-quantity="1"
-            data-price="250"
-            data-success-url="page/thank-you.html"
-            data-button-label="Subscribe">Subscribe $250 /month</a>
-            
-    <a id="respond-pro" subscribe
- data-name="Respond Pro Subscription - $250/month"
-            data-sku="respond-pro"
-            data-quantity="1"
-            data-price="500"
-            data-success-url="page/thank-you.html"
-            data-button-label="Subscribe">Subscribe $500 /month</a>
+    
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="YZ4FRKF5YDJGC">
+    <input type="submit" value="Subscribe via PayPal - $100 / month">
+    </form>
+
     
     </div>
     

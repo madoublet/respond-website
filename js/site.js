@@ -35,13 +35,6 @@ var site = (function() {
     
       target = e.target;    
       el = document.querySelector('#subscribe-box');
-      starter = document.querySelector('#respond-starter');
-      core = document.querySelector('#respond-core');
-      pro = document.querySelector('#respond-pro');
-      
-      starter.style.display = 'none';
-      core.style.display = 'none';
-      pro.style.display = 'none';
 
       // toggle [active]
       if(el.hasAttribute('active')) {
@@ -53,20 +46,7 @@ var site = (function() {
      
       // get plan
       plan = target.getAttribute('data-plan');
-      
-      if(plan == "respond-starter") {
-        starter.style.display = 'block';
-        starter.setAttribute('disabled', 'disabled');
-      }
-      else if(plan == "respond-core") {
-        core.style.display = 'block';
-        starter.setAttribute('disabled', 'disabled');
-      }
-      else if(plan == "respond-pro") {
-        pro.style.display = 'block';
-        starter.setAttribute('disabled', 'disabled');
-      }
-
+     
     });
   }
   
