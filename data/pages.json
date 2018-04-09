@@ -674,7 +674,7 @@
     {
         "title": "Download",
         "description": "Download Respond to get started.",
-        "text": "Pricing Respond starts at $100 per month for 25 sites.&nbsp; That is just $4 \/ site \/ month.&nbsp; Click the \"Subscribe Now\" button to get started.&nbsp;Want to talk about Respond 7?&nbsp;&nbsp;Get in touch. extensionComponent extensionComponent * Potential profit based on $25\/mo per site price and $5\/per site Amazon costs (including CloudFront, S3, and Route 53 services)",
+        "text": "Pricing Respond starts at $100 per month for 50 sites.&nbsp; That is just $2 \/ site \/ month.&nbsp; Want to talk about Respond 7?&nbsp;&nbsp;Get in touch. extensionComponent extensionComponent * Potential profit based on $25\/mo per site price and $5\/per site Amazon costs (including CloudFront, S3, and Route 53 services)",
         "keywords": "",
         "tags": "",
         "callout": "",
@@ -687,7 +687,7 @@
         "firstName": "New",
         "lastName": "User",
         "lastModifiedBy": "matt@matthewsmith.com",
-        "lastModifiedDate": "2018-04-09T03:01:52+0000",
+        "lastModifiedDate": "2018-04-09T11:44:50+0000",
         "template": "subscribe",
         "customHeader": "",
         "customFooter": ""
