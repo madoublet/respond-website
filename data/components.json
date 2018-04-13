@@ -28,5 +28,10 @@
         "name": "Subscription Features",
         "url": "subscription-features.html",
         "codeOnly": true
+    },
+    {
+        "name": "Respond Separator",
+        "url": "respond-separator.html",
+        "codeOnly": true
     }
 ]

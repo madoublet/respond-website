@@ -79,6 +79,35 @@ a.button {
   color: #CF4647;
 }
 
+/* section-separator */  
+.section-separator {
+  position: relative;
+  margin: 0 auto 50px auto;
+  height: 3px;
+  width: 200px;
+  background-image: url(../resources/background-texture.svg), linear-gradient(-190deg, #80D371 0%, #33B5E5 100%);
+}
+
+/* article-lead */
+body.content .article-lead h1 {
+    font-size: 25px;
+    margin: 50px 25px 5px 25px;
+    padding: 0;
+    text-align: center;
+    font-weight: normal;
+    color: #111;
+}
+
+body.content .article-lead h3 {
+    font-size: 13px;
+    margin: 0 25px 25px 25px;
+    padding: 0;
+    text-align: center;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #2D9FD2;
+}
+
 .hero {
     padding-top: 100px;
     background-image: url(../resources/background-texture.svg), linear-gradient(-190deg, #80D371 0%, #33B5E5 100%);
@@ -1043,6 +1072,11 @@ div[type=form] button {
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
     border-radius: 4px;
     border: 1px solid #ddd;
-}
+  }
+  
+  #subscribe-box ul li {
+    max-height: 225px;
+    overflow: scroll;
+  }
 
 }

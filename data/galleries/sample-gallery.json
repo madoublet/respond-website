@@ -3,18 +3,11 @@
     "name": "Sample Gallery",
     "images": [
         {
-            "id": "balloon-png",
-            "name": "balloon.png",
-            "url": "files\/balloon.png",
-            "thumb": "files\/thumbs\/balloon.png",
-            "caption": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-        {
-            "id": "limes-png",
-            "name": "limes.png",
-            "url": "files\/limes.png",
-            "thumb": "files\/thumbs\/limes.png",
-            "caption": "Vivamus vehicula risus vel eros interdu."
+            "id": "advanced-sync-jpg",
+            "name": "advanced-sync.jpg",
+            "url": "files\/advanced-sync.jpg",
+            "thumb": "files\/thumbs\/advanced-sync.jpg",
+            "caption": ""
         }
     ]
 }
