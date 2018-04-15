@@ -41,7 +41,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2018-04-13T15:46:00+0000" data-template="default" data-tags="" show-cart="false">
+<body class="content" data-lastmodified="2018-04-14T12:18:24+0000" data-template="default" data-tags="" show-cart="false">
 
 <header role="banner">
 
@@ -79,15 +79,19 @@
   </ul>
 </nav>
 
-<div id="content" class="container" role="main">
+<div id="content" class="container" role="main"> <div class="article-lead block row">
+ <div class="col col-md-12">
+ <h1>Installation</h1>
+ <h3>Learn how to install Respond on a LAMP setup</h3>
+ <div respond-plugin type="component" component="respond-separator.html" runat="publish"><div class="section-separator"></div></div>
+ </div>
+</div>
+
+
    <div id="block-1" class="block row">
       <div class="col col-md-12">
 
-         <h1>Installation</h1>
-
-         <p class="support"><b>Support Respond!</b> You can support the development of Respond 6 by using our <a href="https://www.digitalocean.com/?refcode=a0ca7859692b">Digital Ocean referral Code</a>.</p>
-
-         <p>Are you ready to get started with Respond? Learn how to install it on a traditional LAMP deployment. Before we get started, read about the <a href="documentation/server-requirements">server requirements.</a> If you are an experience developer, you might also want to checkout out our <a href="documentation/installation-from-github">documentation on installing the app from Github</a>. This requires a little more work but gives you a number of long-term benefits.</p>
+         <p>Installation is included with Respond 7.  But, if you are the DIY type or you just want to see how it works, you can learn how to install Respond on a traditional LAMP deployment. Before we get started, read about the <a href="documentation/server-requirements">server requirements.</a> If you are an experience developer, you might also want to checkout out our <a href="documentation/installation-from-github">documentation on installing the app from Github</a>. This requires a little more work but gives you a number of long-term benefits.</p>
 
          <h3>1. Create the directory structure for Respond</h3>
          <p>You create your directory structure by navigating to your web root and creating folders for Respond. You can also do this using a graphical tool (such as sFTP). Below we are creating the following structure: <code>var/www/html/respond/app</code>.  The zip will go in the app folder.</p>
@@ -105,11 +109,8 @@ mkdir app
 </pre>
 
         <h3>2. Copy ZIP to app folder</h3>
-         <p>Copy the ZIP file you downloaded from our <a href="download">Download page</a> into your app folder.  You can use an sFTP client or the command line as shown below.</p>
+         <p>Copy the provided zip to your respond directory.  You can use an sFTP client or the command line.</p>
          <pre>
-// get the zip file
-wget --content-disposition https://github.com/madoublet/respond/blob/master/dist/release.zip?raw=true
-
 // install unzip (if not already installed). The command below uses apt-get.  Your package manager may vary.
 sudo apt-get install unzip
 
