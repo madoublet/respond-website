@@ -41,7 +41,7 @@
 
 <style respond-settings></style></head>
 
-<body class="content" data-lastmodified="2018-04-13T15:46:01+0000" data-template="default" data-tags="" show-cart="false">
+<body class="content" data-lastmodified="2018-04-23T00:44:22+0000" data-template="default" data-tags="" show-cart="false">
 
 <header role="banner">
 
@@ -79,35 +79,43 @@
   </ul>
 </nav>
 
-<div id="content" class="container" role="main">
-  <div id="block-1" class="block row">
-    <div  class="col col-md-12">
-      <h1>White Label</h1>
-      <p>Respond allows you to quickly white-label the application so that you can easily re-sell it or brand it as your own.  We allow you to set the logo URL and primary light and dark colors that completely change the look of the Respond app.  You white label the application in the .env file you created during setup.  Learn more below.</p>
+<div id="content" class="container" role="main"><div class="article-lead block row">
+ <div class="col col-md-12">
+ <h1>White Label</h1>
+ <h3>Quickly add your own logo and styles to Respond to make it your own.</h3>
+ <div respond-plugin type="component" component="respond-separator.html" runat="publish"><div class="section-separator"></div></div>
+ </div>
+</div>
+  
+<div id="block-1" class="block row">
+<div  class="col col-md-12">
+  <p>Respond allows you to quickly white-label the application so that you can re-sell it or brand it as your own. Learn more below.</p>
+  
+  <h3>Set Logo in .env</h3>
+  
+  <p>Change the logo in the .env file by setting the <code>LOGO_URL</code> property.</p>
 
-      <table class="table">
-        <thead>
-          <th>Variable</th>
-          <th>Description</th>
-          <tr></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LOGO_URL</td>
-            <td>The absolute URL to your logo in the Respond path</td>
-          </tr>
-          <tr>
-            <td>PRIMARY_COLOR</td>
-            <td>A hex value for the primary color of your app.</td>
-          </tr>
-          <tr>
-            <td>PRIMARY_DARK_COLOR</td>
-            <td>A hex value for the primary dark of your app.</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table">
+    <thead>
+      <th>Variable</th>
+      <th>Description</th>
+      <tr></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LOGO_URL</td>
+        <td>The absolute URL to your logo in the Respond path</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Customize CSS for the Application and Editor</h3>
+  
+  <p>Respond allows you to override any CSS in the application and editor.  To override any styles, navigate to <code>resources/white-label</code> on your server.  
+  Make a copy of <code>app.example.css</code> and/or <code>editor.example.css</code>.  Remove the <code>.example</code> to activate the file.  You can then add
+  your custom styles to the document and they will pass to the app and editor.</p>
 
-    </div>
+</div>
   </div>
 </div>
 
