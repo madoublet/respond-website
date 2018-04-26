@@ -2081,9 +2081,11 @@ var site = (function() {
   // close subscribe box
   close = document.querySelector('#close-subscribe-box');
   
-  close.addEventListener('click', function(e) { 
-    el = document.querySelector('#subscribe-box');
-    el.removeAttribute('active');
-  });
+  if(close != null) {
+      close.addEventListener('click', function(e) { 
+        el = document.querySelector('#subscribe-box');
+        el.removeAttribute('active');
+      });
+  }
 
 }());
