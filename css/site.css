@@ -99,13 +99,13 @@ body.content .article-lead h1 {
 }
 
 body.content .article-lead h3 {
-    font-size: 13px;
-    margin: 0 25px 25px 25px;
+    font-size: 14px;
+    margin: 10px 25px 25px 25px;
     padding: 0;
     text-align: center;
     font-weight: normal;
-    text-transform: uppercase;
-    color: #2D9FD2;
+    text-transform: none;
+    color: #888;
 }
 
 .hero {
@@ -351,6 +351,16 @@ body.content footer {
   margin-top: 50px;
 }
 
+footer h2 {
+    font-size: 25px;
+    padding: 0 50px;
+}
+
+footer p {
+    font-size: 13px;
+    padding: 25px 50px;
+}
+
 footer nav ul {
   list-style: none;
   margin: 0 0 25px 0;
@@ -361,6 +371,7 @@ footer nav ul li {
   margin: 0;
   padding: 0;
   display: inline-block;
+    font-size: 13px;
 }
 
 footer nav ul li ~ li::before {
@@ -506,6 +517,17 @@ body.content .support {
     color: #555;
     padding: 20px;
     margin: 0 20px 25px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+body.content .support .material-icons {
+    position: absolute;
+    top: 18px;
+    display: inline-block;
+    color: rgb(128,211,113);
+    margin: 0 0 0 -35px;
 }
 
 body.content pre.prettyprint {
